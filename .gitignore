@@ -1,0 +1,48 @@
+# This file contains default .gitignore rules and was created by chatGPT.
+#
+# Because .gitignore can be specific to your site, this file has a different
+# name; updating Drupal core will not override your custom .gitignore file.
+
+# Ignore core/contrib managed by Composer
+# including Drupal core.
+/web/core
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+
+# Composer dependencies
+/vendor/
+
+# Ignore configuration files that may contain sensitive information.
+/web/sites/*/settings*.php
+/web/sites/*/services*.yml
+
+# Ignore paths that contain user-generated content.
+/web/sites/*/files/
+/web/sites/*/private/
+/web/sites/simpletest/
+
+# Drupal cache/export artefacts sometimes created locally
+/web/sites/*/files/php/
+/web/sites/*/files/css/
+/web/sites/*/files/js/
+
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+#macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+#PHPStorm project files
+.idea/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
