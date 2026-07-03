@@ -46,3 +46,23 @@
 *.tmp
 *.bak
 *.swp
+
+# PHPUnit
+/.phpunit.result.cache
+
+# VS Code
+.vscode/
+
+# Node
+node_modules/
+
+# Composer auth credentials
+auth.json
+
+# npm/yarn
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Keep the Drupal example out of Git
+/web/example.gitignore
