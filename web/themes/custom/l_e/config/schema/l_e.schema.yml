@@ -1,0 +1,5 @@
+# Schema for the configuration files of the l_e theme.
+
+l_e.settings:
+  type: theme_settings
+  label: 'l_e settings'
