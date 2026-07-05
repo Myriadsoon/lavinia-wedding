@@ -1,6 +1,9 @@
 @charset "UTF-8";
 
 /* src/scss/main.style.scss */
+.page-nav-offset {
+  top: var(--drupal-displace-offset-top, 0px);
+}
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -283,6 +286,9 @@
   --bs-form-valid-border-color: rgb(117, 183, 152.4);
   --bs-form-invalid-color: rgb(234, 133.8, 143.4);
   --bs-form-invalid-border-color: rgb(234, 133.8, 143.4);
+}
+.page-nav-offset {
+  top: var(--drupal-displace-offset-top, 0px);
 }
 :root,
 [data-bs-theme=light] {

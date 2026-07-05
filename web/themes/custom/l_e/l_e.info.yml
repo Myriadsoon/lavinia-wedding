@@ -12,6 +12,7 @@ regions:
   navbar_branding: 'Navbar branding'
   navbar_left: 'Navbar left'
   navbar_right: 'Navbar right'
+  hero: Hero
   header: Header
   content: Content
   page_bottom: 'Page bottom'
