@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.countdown-flipclock__title {
+  margin-bottom: 2rem;
+}
+
 .countdown-flipclock__units {
   display: flex;
   justify-content: center;
@@ -32,33 +36,48 @@
   width: 100%;
   height: 50%;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
+
   background: #222;
   color: #fff;
+}
+
+.countdown-flipclock__card-face span,
+.countdown-flipclock__card-flap span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .countdown-flipclock__card-face--top,
 .countdown-flipclock__card-flap--top {
   top: 0;
-  align-items: flex-end;
   border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.countdown-flipclock__card-face--top span,
+.countdown-flipclock__card-flap--top span {
+  top: 0;
 }
 
 .countdown-flipclock__card-face--bottom,
 .countdown-flipclock__card-flap--bottom {
   bottom: 0;
-  align-items: flex-start;
   border-radius: 0 0 0.5rem 0.5rem;
-}
-
-.countdown-flipclock__card-face--bottom,
-.countdown-flipclock__card-flap--bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
+.countdown-flipclock__card-face--bottom span,
+.countdown-flipclock__card-flap--bottom span{
+  bottom: 0;
+}
+
 .countdown-flipclock__label {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
