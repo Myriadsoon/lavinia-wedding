@@ -1,0 +1,5 @@
+name: 'countdown_flipclock'
+type: module
+description: 'Provides reusable animated flip-card countdown components'
+package: User Interface
+core_version_requirement: ^10 || ^11

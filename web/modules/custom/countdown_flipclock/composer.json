@@ -1,0 +1,9 @@
+{
+    "name": "mymyriad/countdown_flipclock",
+    "description": "Reusable animated flip-card countdown block for Drupal.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "drupal/core": "^10 || ^11"
+    }
+}

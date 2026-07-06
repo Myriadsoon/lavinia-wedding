@@ -1,0 +1,11 @@
+flipclock:
+  css:
+    theme:
+      css/countdown_flipclock.css: {}
+
+  js:
+    js/countdown_flipclock.js: {}
+
+  dependencies:
+    - core/drupal
+    - core/once
