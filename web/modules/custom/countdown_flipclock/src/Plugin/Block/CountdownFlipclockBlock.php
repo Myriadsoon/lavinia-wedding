@@ -29,6 +29,11 @@ final class CountdownFlipclockBlock extends BlockBase
             'days' => 0,
             'hours' => 0,
           ],
+          '#attached' => [
+            'library' => [
+              'countdown_flipclock/flipclock',
+            ],
+          ],
         ];
     }
 }

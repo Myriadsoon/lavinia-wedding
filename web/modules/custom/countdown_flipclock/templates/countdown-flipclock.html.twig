@@ -5,11 +5,19 @@
     {% for unit, value in units %}
       <div class="countdown-flipclock__unit" data-countdown-unit="{{ unit }}">
         <div class="countdown-flipclock__card" data-flip-card>
-          <div class="countdown-flipclock__card-top" data-flip-card-top>
+          <div class="countdown-flipclock__card-face countdown-flipclock__card-face--top" data-flip-card-static-top>
             <span>{{ value }}</span>
           </div>
 
-          <div class="countdown-flipclock__card-bottom" data-flip-card-bottom>
+          <div class="countdown-flipclock__card-face countdown-flipclock__card-face--bottom" data-flip-card-static-bottom>
+            <span>{{ value }}</span>
+          </div>
+
+          <div class="countdown-flipclock__card-flap countdown-flipclock__card-flap--top" data-flip-card-flap-top>
+            <span>{{ value }}</span>
+          </div>
+
+          <div class="countdown-flipclock__card-flap countdown-flipclock__card-flap--bottom" data-flip-card-flap-bottom>
             <span>{{ value }}</span>
           </div>
         </div>
