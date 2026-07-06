@@ -21,7 +21,14 @@ final class CountdownFlipclockBlock extends BlockBase
      */
     public function build():array {
         return [
-          '#markup' => '<div class="countdown-flipclock" id="countdown_flipclock">Countdown Flipclock is rendering.</div>',
+          '#theme' => 'countdown_flipclock',
+          '#title' => 'Countdown to the wedding',
+          '#units' => [
+            'months'=> 0,
+            'weeks' => 0,
+            'days' => 0,
+            'hours' => 0,
+          ],
         ];
     }
 }

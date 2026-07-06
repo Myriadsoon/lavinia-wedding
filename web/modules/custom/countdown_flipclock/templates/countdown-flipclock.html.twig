@@ -1,0 +1,24 @@
+<section class="countdown-flipclock" data-countdown-flipclock>
+  <h2 class="countdown-flipclock__title">{{ title }}</h2>
+
+  <div class="countdown-flipclock__units">
+    {% for unit, value in units %}
+      <div class="countdown-flipclock__unit" data-countdown-unit="{{ unit }}">
+        <div class="countdown-flipclock__card" data-flip-card>
+          <div class="countdown-flipclock__card-top" data-flip-card-top>
+            <span>{{ value }}</span>
+          </div>
+
+          <div class="countdown-flipclock__card-bottom" data-flip-card-bottom>
+            <span>{{ value }}</span>
+          </div>
+        </div>
+
+        <div class="countdown-flipclock__label">
+          {{ unit|capitalize }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
