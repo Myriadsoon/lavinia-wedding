@@ -44,15 +44,21 @@ export default class FlipCard {
   flipTo(nextValue) {
     const normalisedValue = String(nextValue);
 
-    if (normalisedValue === this.value) {
+    if (normalisedValue === this.value || this.isFlipping) {
       return;
     }
-
+    this.isFlipping = true;
     this.#prepare(normalisedValue);
 
-    // Temporary, until animation wired in
-    this.#finish(normalisedValue);
+    this.element.classList.add('countdown-flipclock__card--flipping');
 
+    const finish = () =>{
+      this.element.classList.remove('countdown-flipclock__card--flipping');
+      this.#finish(normalisedValue);
+      this.isFlipping = false;
+    };
+
+    this.bottomFlap.addEventListener('animationend', finish, {once: true});
   }
 
   #prepare(nextValue) {
