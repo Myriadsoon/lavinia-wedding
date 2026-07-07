@@ -172,7 +172,56 @@
    Animation
    ========================================================== */
 
-/*
- * Animation classes will be added in the next phase.
- * For now this section intentionally remains minimal.
- */
+.countdown-flipclock__card-flap--top {
+  z-index: 4;
+  transform-origin: bottom;
+  transform: rotateX(0deg);
+}
+
+.countdown-flipclock__card-flap--bottom {
+  z-index: 3;
+  transform-origin: top;
+  transform: rotateX(90deg);
+}
+
+.countdown-flipclock__card--flipping .countdown-flipclock__card-flap--top {
+  animation: countdown-flipclock-flip-top
+  calc(var(--countdown-flipclock-flip-duration) / 2)
+  var(--countdown-flipclock-flip-easing)
+  forwards;
+}
+
+.countdown-flipclock__card--flipping .countdown-flipclock__card-flap--bottom {
+  animation: countdown-flipclock-flip-bottom
+  calc(var(--countdown-flipclock-flip-duration) / 2)
+  var(--countdown-flipclock-flip-easing)
+  calc(var(--countdown-flipclock-flip-duration) / 2)
+  forwards;
+}
+
+@keyframes countdown-flipclock-flip-top {
+  from {
+    transform: rotateX(0deg);
+  }
+
+  to {
+    transform: rotateX(-90deg);
+  }
+}
+
+@keyframes countdown-flipclock-flip-bottom {
+  from {
+    transform: rotateX(90deg);
+  }
+
+  to {
+    transform: rotateX(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .countdown-flipclock__card--flipping .countdown-flipclock__card-flap--top,
+  .countdown-flipclock__card--flipping .countdown-flipclock__card-flap--bottom {
+    animation: none;
+  }
+}
