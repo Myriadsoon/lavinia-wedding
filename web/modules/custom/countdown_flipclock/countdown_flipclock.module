@@ -13,6 +13,7 @@ function countdown_flipclock_theme($existing, $type, $theme, $path):array {
     'countdown_flipclock' => [
       'variables' => [
         'title' => NULL,
+        'target_datetime' => NULL,
         'units' => [],
       ],
       'template' => 'countdown-flipclock',
