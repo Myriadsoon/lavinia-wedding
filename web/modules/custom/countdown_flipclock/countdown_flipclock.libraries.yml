@@ -4,7 +4,9 @@ flipclock:
       css/countdown_flipclock.css: {}
 
   js:
-    js/countdown_flipclock.js: {}
+    js/countdown_flipclock.js:
+      attributes:
+        type: module
 
   dependencies:
     - core/drupal
