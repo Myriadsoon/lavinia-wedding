@@ -1,11 +1,14 @@
 import FlipCard from "./flip-card.js";
 
 (function (Drupal, once) {
-  Drupal.behaviors.countdownFlipclock = {
+  Drupal.behaviors.countdown_flipclock = {
     attach(context) {
-      once('countdown-flipclock', '[data-flipcard], context').forEach((element) => {
+      once('countdown-flipclock', '[data-flipcard], context').forEach((element, index) => {
         const card = new FlipCard(element);
-        console.log('Flipcard discovered: ', card.getValue(), card);
+
+        setTimeout(() => {
+          card.flipTo(index + 1);
+        }, 1000);
       });
     },
   };
