@@ -17,7 +17,21 @@ export default class FlipCard {
       !this.topFlap ||
       !this.bottomFlap
     ) {
-      throw new Error('FlipCard is missing one or more required child elements.');
+      throw new Error('FlipCard is missing one or more required face elements.');
+    }
+
+    this.staticTopValue = this.staticTop.querySelector('span');
+    this.staticBottomValue = this.staticBottom.querySelector('span');
+    this.topFlapValue = this.topFlap.querySelector('span');
+    this.bottomFlapValue = this.bottomFlap.querySelector('span');
+
+    if (
+      !this.staticTopValue ||
+      !this.staticBottomValue ||
+      !this.topFlapValue ||
+      !this.bottomFlapValue
+    ) {
+      throw new Error('FlipCard is missing one or more required value spans.');
     }
 
     this.value = this.staticTop.textContent.trim();
@@ -42,21 +56,20 @@ export default class FlipCard {
   }
 
   #prepare(nextValue) {
-    this.#setFace(this.topFlap, this.value);
-    this.#setFace(this.bottomFlap, nextValue);
+    this.#setValue(this.topFlapValue, this.value);
+    this.#setValue(this.bottomFlapValue, nextValue);
   }
 
   #finish(nextValue) {
-    this.#setFace(this.staticTop, nextValue);
-    this.#setFace(this.staticBottom, nextValue);
-    this.#setFace(this.topFlap, nextValue);
-    this.#setFace(this.bottomFlap, nextValue);
+    this.#setValue(this.staticTopValue, nextValue);
+    this.#setValue(this.staticBottomValue, nextValue);
+    this.#setValue(this.topFlapValue, nextValue);
+    this.#setValue(this.bottomFlapValue, nextValue);
 
     this.value = nextValue;
   }
 
-  #setFace(element, value) {
-    const span = element.querySelector('span');
+  #setValue(span, value) {
 
     if (!span) {
       throw Error('Flipcard face is missing its value span.');

@@ -2,6 +2,8 @@
 
 The countdown_flipclock module is a reusable flip-card countdown block for Drupal 10 and 11.
 
+Each layer translates data into the language of the next layer.
+
 The primary use case for this module is:
 
 - Use case #1
