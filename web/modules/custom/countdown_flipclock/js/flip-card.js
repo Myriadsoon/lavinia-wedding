@@ -62,6 +62,8 @@ export default class FlipCard {
   }
 
   #prepare(nextValue) {
+    this.#setValue(this.staticTopValue, nextValue);
+    this.#setValue(this.staticBottomValue, this.value);
     this.#setValue(this.topFlapValue, this.value);
     this.#setValue(this.bottomFlapValue, nextValue);
   }

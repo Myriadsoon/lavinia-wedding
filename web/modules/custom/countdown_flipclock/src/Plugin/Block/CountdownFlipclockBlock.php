@@ -22,7 +22,7 @@ final class CountdownFlipclockBlock extends BlockBase
     public function build():array {
         return [
           '#theme' => 'countdown_flipclock',
-          '#title' => 'Countdown to the wedding',
+          '#title' => 'Countdown clock',
           '#units' => [
             'months'=> 0,
             'weeks' => 0,
