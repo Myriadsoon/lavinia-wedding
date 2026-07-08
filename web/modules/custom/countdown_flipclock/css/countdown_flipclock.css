@@ -3,13 +3,13 @@
    ========================================================== */
 
 .countdown-flipclock {
-  --countdown-flipclock-gap: 1.5rem;
+  --countdown-flipclock-gap: clamp(0.5rem, 2vw, 1.5rem);
 
-  --countdown-flipclock-card-width: 7rem;
-  --countdown-flipclock-card-height: 5rem;
-  --countdown-flipclock-card-font-size: 3rem;
+  --countdown-flipclock-card-width: clamp(4rem, 18vw, 7rem);
+  --countdown-flipclock-card-height: clamp(3rem, 13vw, 5rem);
+  --countdown-flipclock-card-font-size: clamp(1.8rem, 7vw, 3rem);
   --countdown-flipclock-card-font-weight: 700;
-  --countdown-flipclock-card-border-radius: 0.5rem;
+  --countdown-flipclock-card-border-radius: clamp(0.3rem, 1vw, 0.5rem);
 
   --countdown-flipclock-card-top-background: #2b2b2b;
   --countdown-flipclock-card-bottom-background: #1f1f1f;
@@ -32,7 +32,8 @@
 }
 
 .countdown-flipclock__title {
-  margin-bottom: 2rem;
+  margin-bottom: clamp(0.4rem, 1vw, 0.75rem);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
 }
 
 .countdown-flipclock__units {
@@ -49,8 +50,8 @@
 }
 
 .countdown-flipclock__label {
-  margin-top: 0.75rem;
-  font-size: 0.875rem;
+  margin-top: clamp(0.4rem, 1vw, .75rem);
+  font-size: clamp(0.65rem, 2vw, .875rem);
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
