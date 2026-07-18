@@ -1,0 +1,33 @@
+@font-face {
+  font-family: inter;
+  src: url("../assets/fonts/inter/inter.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: inter;
+  src: url("../assets/fonts/inter/inter-italic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --bs-font-sans-serif:
+    inter,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    roboto,
+    "Helvetica Neue",
+    "Noto Sans",
+    "Liberation Sans",
+    arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+}

@@ -3,7 +3,7 @@
  * Variables should follow the $component-state-property-size formula for
  * consistent naming. Examples:
  * $nav-link-disabled-color
- * $modal-content-box-shadow-xs 
+ * $modal-content-box-shadow-xs
  *
  * Customization:
  * To customize Bootstrap variables:
@@ -14,3 +14,12 @@
  * $body-bg: #000;
  * $body-color: $gray-100;
  */
+$font-family-sans-serif:
+  "Inter",
+  system-ui,
+  -apple-system,
+  "Segoe UI",
+  Roboto,
+  "Helvetica Neue",
+  Arial,
+  sans-serif;

@@ -1,6 +1,10 @@
+// Fonts
+@use "fonts/inter";
+@use "fonts/newsreader";
 // Bootstrap
 // -----------------------------------------------------------------------------
 @import "init";
+@import "base/variables";
 @import "bootstrap";
 
 // Include any custom stylesheets here

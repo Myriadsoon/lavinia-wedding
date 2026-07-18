@@ -137,14 +137,17 @@ const globalCtx = await context({
   sourcemap: true,
   minify: false,
   outdir: 'build',
-  external: ['/themes/*'],
+  external: [
+    '/themes/*',
+    '*.woff2',
+  ],
   plugins: [
     makeSassPlugin(),
     reloadPlugin,
     stylelintPlugin,
     copyPlugin(true),
     bootstrapIconsPlugin
-  ]
+  ],
 })
 
 await globalCtx.watch()
