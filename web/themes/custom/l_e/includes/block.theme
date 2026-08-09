@@ -4,3 +4,29 @@
  * @file
  * Theme and preprocess functions for blocks.
  */
+/** hook preprocess_block()
+ *
+ */
+function l_e_preprocess_block(array &$variables): void {
+  $block_content = $variables['content']['#block_content'] ?? NULL;
+
+  if (
+    $block_content &&
+    $block_content->bundle() === 'hero_image' &&
+    !$block_content->get('field_navigation_colour')->isEmpty()
+  ) {
+    $field_values = $block_content
+      ->get('field_navigation_colour')
+      ->getValue();
+
+    $navigation_colour = $field_values[0]['value'] ?? NULL;
+
+
+    if ($navigation_colour === 'light_text') {
+      $variables['attributes']['class'][] = 'hero-image--nav-light';
+    }
+    else {
+      $variables['attributes']['class'][] = 'hero-image--nav-dark';
+    }
+  }
+}

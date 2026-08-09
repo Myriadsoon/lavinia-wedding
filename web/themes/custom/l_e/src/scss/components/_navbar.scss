@@ -1,0 +1,57 @@
+body {
+  --le-nav-color: rgba(0, 0, 0, 0.65);
+  --le-nav-active-color: rgba(0, 0, 0, 1);
+}
+
+body:has(.hero-image--nav-light) {
+  --le-nav-color: rgba(255, 255, 255, 0.9);
+  --le-nav-active-color: rgba(255, 255, 255, 1);
+}
+
+.navbar {
+  --bs-navbar-color: var(--le-nav-color);
+  --bs-navbar-hover-color: var(--le-nav-color);
+  --bs-navbar-active-color: var(--le-nav-active-color);
+
+  a.nav-link,
+  a.language-link {
+    position: relative;
+    color: var(--le-nav-color);
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    &.is-active {
+      color: var(--le-nav-color);
+      text-decoration: none;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        background-color: currentColor;
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.2s ease;
+      }
+
+      &:hover::after,
+      &:focus-visible::after,
+      &.active::after,
+      &.is-active::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  a.language-link {
+    padding-top: var(--bs-nav-link-padding-y);
+    padding-bottom: var(--bs-nav-link-padding-y);
+  }
+}
+

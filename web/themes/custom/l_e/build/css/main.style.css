@@ -33,14 +33,14 @@
     "Noto Color Emoji";
 }
 @font-face {
-  font-family: "Newsreader";
+  font-family: newsreader;
   src: url(../assets/fonts/newsreader/newsreader.woff2) format("woff2");
   font-weight: 200 800;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Newsreader";
+  font-family: newsreader;
   src: url(../assets/fonts/newsreader/newsreader-italic.woff2) format("woff2");
   font-weight: 200 800;
   font-style: italic;
@@ -12275,5 +12275,109 @@ fieldset:disabled .btn {
 }
 .draggable div.handle {
   box-sizing: content-box;
+}
+body {
+  --le-nav-color: rgba(0, 0, 0, 0.65);
+  --le-nav-active-color: rgba(0, 0, 0, 1);
+}
+body:has(.hero-image--nav-light) {
+  --le-nav-color: rgba(255, 255, 255, 0.9);
+  --le-nav-active-color: rgba(255, 255, 255, 1);
+}
+.navbar {
+  --bs-navbar-color: var(--le-nav-color);
+  --bs-navbar-hover-color: var(--le-nav-color);
+  --bs-navbar-active-color: var(--le-nav-active-color);
+}
+.navbar a.nav-link,
+.navbar a.language-link {
+  position: relative;
+  color: var(--le-nav-color);
+  text-decoration: none;
+}
+.navbar a.nav-link:hover,
+.navbar a.nav-link:focus,
+.navbar a.nav-link:active,
+.navbar a.nav-link.active,
+.navbar a.nav-link.is-active,
+.navbar a.language-link:hover,
+.navbar a.language-link:focus,
+.navbar a.language-link:active,
+.navbar a.language-link.active,
+.navbar a.language-link.is-active {
+  color: var(--le-nav-color);
+  text-decoration: none;
+}
+.navbar a.nav-link:hover::after,
+.navbar a.nav-link:focus::after,
+.navbar a.nav-link:active::after,
+.navbar a.nav-link.active::after,
+.navbar a.nav-link.is-active::after,
+.navbar a.language-link:hover::after,
+.navbar a.language-link:focus::after,
+.navbar a.language-link:active::after,
+.navbar a.language-link.active::after,
+.navbar a.language-link.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: currentColor;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  transition: -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
+}
+.navbar a.nav-link:hover:hover::after,
+.navbar a.nav-link:hover:focus-visible::after,
+.navbar a.nav-link:hover.active::after,
+.navbar a.nav-link:hover.is-active::after,
+.navbar a.nav-link:focus:hover::after,
+.navbar a.nav-link:focus:focus-visible::after,
+.navbar a.nav-link:focus.active::after,
+.navbar a.nav-link:focus.is-active::after,
+.navbar a.nav-link:active:hover::after,
+.navbar a.nav-link:active:focus-visible::after,
+.navbar a.nav-link:active.active::after,
+.navbar a.nav-link:active.is-active::after,
+.navbar a.nav-link.active:hover::after,
+.navbar a.nav-link.active:focus-visible::after,
+.navbar a.nav-link.active.active::after,
+.navbar a.nav-link.active.is-active::after,
+.navbar a.nav-link.is-active:hover::after,
+.navbar a.nav-link.is-active:focus-visible::after,
+.navbar a.nav-link.is-active.active::after,
+.navbar a.nav-link.is-active.is-active::after,
+.navbar a.language-link:hover:hover::after,
+.navbar a.language-link:hover:focus-visible::after,
+.navbar a.language-link:hover.active::after,
+.navbar a.language-link:hover.is-active::after,
+.navbar a.language-link:focus:hover::after,
+.navbar a.language-link:focus:focus-visible::after,
+.navbar a.language-link:focus.active::after,
+.navbar a.language-link:focus.is-active::after,
+.navbar a.language-link:active:hover::after,
+.navbar a.language-link:active:focus-visible::after,
+.navbar a.language-link:active.active::after,
+.navbar a.language-link:active.is-active::after,
+.navbar a.language-link.active:hover::after,
+.navbar a.language-link.active:focus-visible::after,
+.navbar a.language-link.active.active::after,
+.navbar a.language-link.active.is-active::after,
+.navbar a.language-link.is-active:hover::after,
+.navbar a.language-link.is-active:focus-visible::after,
+.navbar a.language-link.is-active.active::after,
+.navbar a.language-link.is-active.is-active::after {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+.navbar a.language-link {
+  padding-top: var(--bs-nav-link-padding-y);
+  padding-bottom: var(--bs-nav-link-padding-y);
 }
 /*# sourceMappingURL=main.style.css.map */
