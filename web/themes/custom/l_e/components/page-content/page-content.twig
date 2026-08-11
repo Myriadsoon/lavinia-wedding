@@ -72,9 +72,49 @@
 	{% if page.content %}
     <div class="page__content" id="main-content">
       <div {{ page_content_container_attributes.addClass(page_content_container_classes) }}>
-        {% block page_inner_content %}
-          {{ page.content }}
-        {% endblock %}
+
+        {# Sidebar is optional; main content must never depend on it #}
+        {# see 'is_user_router' variable set in inlcudes/content.theme file #}
+        {% set has_sidebar = page.sidebar is not empty and not (is_user_route ?? false) %}
+
+        <div class="row g-4">
+          {# LEFT sidebar (only when present) #}
+          {% if has_sidebar %}
+
+            <div class="col-12 col-lg-3 order-2 order-lg-1">
+
+              {# Toggler visible only below lg #}
+              <div class="d-lg-none mb-3">
+                <button
+                  class="btn btn-outline-secondary w-100"
+                  type="button"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#sidebarOffcanvas"
+                  aria-controls="sidebarOffcanvas"
+                >
+                  Browse Events
+                </button>
+              </div>
+
+              <div class="position-sticky lavinia-wedding-sidebar-sticky">
+                {# Offcanvas below lg, static panel on lg+ (Radix handles this pattern #}
+                {% include "radix:offcanvas" with {
+                  offcanvas_id: "sidebarOffcanvas",
+                  placement: "start",
+                  offcanvas_title: "Eventss",
+                  close_button: true,
+                  offcanvas_content: page.sidebar
+                } only %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="{{ has_sidebar ? 'col-12 col-lg-9 order-1 order-lg-2' : 'col-12' }}">
+          {% block page_inner_content_with_sidebar %}
+            {{ page.content }}
+          {% endblock %}
+        </div>
       </div>
     </div>
   {% endif %}

@@ -4,3 +4,12 @@
  * @file
  * Theme and preprocess functions for nodes.
  */
+
+/**
+ * Implements hook_preprocess_page()
+ * Variable 'is_user_route' used in page-content.twig file
+ */
+function l_e_preprocess_page(array &$variables): void {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $variables['is_user_route'] = str_starts_with($route_name, 'user.');
+}
