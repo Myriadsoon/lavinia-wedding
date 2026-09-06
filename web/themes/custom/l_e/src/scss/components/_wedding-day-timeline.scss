@@ -1,0 +1,164 @@
+.wedding-day__timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0.75rem;
+    bottom: 0.75rem;
+    left: 5.25rem;
+    width: 1px;
+    background: currentColor;
+    opacity: 0.25;
+  }
+}
+
+.wedding-day__timeline-event {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: 4rem 1.5rem minmax(0, 1fr);
+  align-items: center;
+  column-gap: 0.5rem;
+
+  width: 100%;
+  padding: 0.5rem 0;
+
+  color: inherit;
+  text-align: left;
+
+  background: transparent;
+  border: 0;
+
+  cursor: pointer;
+}
+
+.wedding-day__timeline-marker {
+  display: block;
+  justify-self: center;
+
+  width: 0.75rem;
+  height: 0.75rem;
+
+  background: var(--bs-body-bg);
+  border: 2px solid currentColor;
+  border-radius: 50%;
+
+  transition:
+    background-color 150ms ease,
+    transform 150ms ease;
+}
+
+.wedding-day__timeline-time {
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+}
+
+.wedding-day__timeline-title {
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.wedding-day__timeline-marker.is-active {
+  .wedding-day__timeline-time {
+    opacity: 1;
+  }
+  .wedding-day__timeline-title {
+    font-weight: 600;
+  }
+  .wedding-day__timeline-marker {
+    background-color: currentColor;
+    transform: scale(1.2);
+  }
+}
+
+.wedding-day__timeline-event:hover,
+.wedding-day__timeline-event:focus-visible {
+  .wedding-day__timeline-title {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .wedding-day__timeline-marker {
+    transform: scale(1.15);
+  }
+}
+
+.wedding-day__timeline-event:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 0.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wedding-day__timeline-marker {
+    transition: none;
+  }
+}
+
+.wedding-day__detail_panel {
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
+}
+
+.wedding-day__detail-image {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.wedding-day__accordion {
+  .accordion-body {
+    padding: 0;
+  }
+
+  .wedding-day__detail-content {
+    padding: 1.25rem;
+  }
+}
+
+.wedding-day__detail-inner {
+  width: 100%;
+  margin-inline: auto;
+}
+
+@include media-breakpoint-up(md) {
+  .wedding-day__detail-inner {
+    width: min(100%, calc(60vh * 1.5));
+  }
+
+  .wedding-day__detail-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+  }
+
+}
+
+.wedding-day__detail-content {
+  margin-top: 1.5rem;
+}
+
+.wedding-day__venue,
+.wedding-day__address {
+  text-align: left;
+}
+
+.wedding-day__description {
+  margin-top: 1.5rem;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.wedding-day__timeline {
+  position: sticky;
+  top: var(--drupal-displace-offset-top, 0px);
+  align-self: start;
+}

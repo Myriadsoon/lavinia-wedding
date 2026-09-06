@@ -17,6 +17,8 @@
 #}
 {% set page_header_container_attributes = page_header_container_attributes ?: create_attribute() %}
 {% set page_content_container_attributes = page_content_container_attributes ?: create_attribute() %}
+{% set page_hero_attributes = page_hero_attributes ? : create_attribute() %}
+{% set page_main_attributes = page_main_attributes ? : create_attribute() %}
 
 {%
   set page_main_classes = []|merge(page_main_utility_classes ?: [])
@@ -49,15 +51,17 @@
   ]|merge(page_content_container_utility_classes ?: [])
 %}
 
-<div{{ content_attributes.addClass(page_hero_classes)}}>
-  {% if page.hero %}
-    {% block page_hero %}
-      {{ page.hero }}
-    {% endblock %}
-  {% endif %}
-</div>
 
-<main{{content_attributes.addClass(page_main_classes)}}>
+  {% if page.hero %}
+    <div{{ page_hero_attributes.addClass(page_hero_classes)}}>
+      {% block page_hero %}
+        {{ page.hero }}
+      {% endblock %}
+    </div>
+  {% endif %}
+
+
+<main{{page_main_attributes.addClass(page_main_classes)}}>
 	{% if page.header %}
 		<header class="page__header">
 			<div {{ page_header_container_attributes.addClass(page_header_container_classes) }}>

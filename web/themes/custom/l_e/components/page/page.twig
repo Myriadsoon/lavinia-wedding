@@ -17,13 +17,11 @@
 	{% endblock %}
 
   {% block page_content %}
-    {% set page_main_utility_classes = page_main_utility_classes ?: ['py-5'] %}
-    {% set page_header_container_utility_classes = page_header_container_utility_classes ?: ['mb-3'] %}
-    {% set page_hero_utility_classes = page_hero_utility_classes ?: ['page__hero'] %}
 
     {% include 'l_e:page-content' with {
-      page_main_utility_classes,
-      page_header_container_utility_classes,
+      page_main_utility_classes: ['py-5'],
+      page_header_container_utility_classes: ['mb-3'],
+      page_hero_utility_classes: ['page__hero']
     }%}
   {% endblock %}
 

@@ -5,6 +5,8 @@
  * Theme and preprocess functions for nodes.
  */
 
+use Drupal\media\MediaInterface;
+
 /**
  * Implements hook_preprocess_page()
  * Variable 'is_user_route' used in page-content.twig file
@@ -12,4 +14,62 @@
 function l_e_preprocess_page(array &$variables): void {
   $route_name = \Drupal::routeMatch()->getRouteName();
   $variables['is_user_route'] = str_starts_with($route_name, 'user.');
+}
+
+/**
+ * Implements hook_preprocess_node()
+ */
+function l_e_preprocess_node(array &$variables): void {
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $variables['node'];
+
+  if ($node->bundle() === 'wedding-day') {
+    return;
+  }
+
+  if (!$node->hasField('field_timeline_events')) {
+    return;
+  }
+
+  $timeline_events = [];
+
+  foreach ($node->get('field_timeline_events')->referencedEntities() as $paragraph) {
+
+    $description = [];
+
+    if (!$paragraph->get('field_description')->isEmpty()) {
+      $description = [
+        '#type' => 'processed_text',
+        '#text' => $paragraph->get('field_description')->value,
+        '#format' => $paragraph->get('field_description')->format,
+      ];
+    }
+
+    $image = [];
+
+    if ($paragraph->hasField('field_image') &&
+      !$paragraph->get('field_image')->isEmpty()
+    ) {
+      $media = $paragraph->get('field_image')->entity;
+
+      if ($media instanceof MediaInterface) {
+        $image = \Drupal::entityTypeManager()
+          ->getViewBuilder('media')
+          ->view($media, 'timeline_image');
+      }
+    }
+
+    $timeline_events[] = [
+      'id' => $paragraph->id(),
+      'time' => $paragraph->get('field_time')->value ?? '',
+      'title' => $paragraph->get('field_event_title')->value ?? '',
+      'venue' => $paragraph->get('field_venue')->value ?? '',
+      'address' => $paragraph->get('field_address')->value ?? '',
+      'description' => $description,
+      'image' => $image,
+    ];
+  }
+
+  $variables['timeline_events'] = $timeline_events;
+
 }
