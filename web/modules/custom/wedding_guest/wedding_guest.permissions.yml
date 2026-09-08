@@ -1,0 +1,4 @@
+view wedding guests responses:
+  title: 'View wedding guests responses'
+  description: 'View wedding guests responses including dietary requirements and wedding advice.'
+  restrict access: true

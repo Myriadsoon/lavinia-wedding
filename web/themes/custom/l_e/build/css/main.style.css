@@ -12519,4 +12519,150 @@ body:has(.hero-image--nav-light) {
   top: var(--drupal-displace-offset-top, 0px);
   align-self: start;
 }
+.wedding-guest__progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.wedding-guest__progress-step {
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  opacity: 0.45;
+}
+.wedding-guest__progress-step--active {
+  opacity: 1;
+}
+.wedding-guest__progress-step--complete {
+  opacity: 0.7;
+}
+.wedding-guest__progress-divider {
+  width: 3rem;
+  height: 1px;
+  background-color: currentColor;
+  opacity: 0.3;
+}
+.wedding-guest__step {
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  padding-block: 1.5rem 2rem;
+}
+.wedding-guest__step fieldset.form-item {
+  margin-bottom: 1.75rem !important;
+}
+.wedding-guest__step .fieldset-legend,
+.wedding-guest__step .form-label {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.wedding-guest__step .fieldset-legend {
+  margin-bottom: 0.75rem !important;
+}
+.wedding-guest__step .form-label {
+  margin-bottom: 0.75rem;
+}
+.wedding-guest {
+  width: 100%;
+}
+.wedding-guest__step .form-radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+}
+.wedding-guest__step .form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0;
+}
+.wedding-guest__step .form-check-input[type=radio] {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0;
+  cursor: pointer;
+}
+.wedding-guest__step .form-check-label {
+  cursor: pointer;
+}
+.wedding-guest__step textarea.form-control {
+  min-height: 8rem;
+  padding: 0.875rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  background-color: transparent;
+  line-height: 1.6;
+  resize: vertical;
+}
+.wedding-guest__step:focus {
+  border-color: currentColor;
+  box-shadow: 0 0 0 1px currentColor;
+  outline: none;
+}
+.wedding-guest__step textarea.form-control.error .error {
+  border-color: var(--bs-danger);
+}
+.wedding-guest__step textarea.form-control.error .error:focus {
+  border-color: var(--bs-danger);
+  box-shadow: 0 0 0 1px var(--bs-danger);
+}
+.wedding-guest__step .button--secondary,
+.wedding-guest-summary .button--secondary {
+  --bs-btn-color: var(--bs-body-color);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: var(--bs-body-color);
+  --bs-btn-hover-color: var(--bs-body-bg);
+  --bs-btn-hover-bg: var(--bs-body-color);
+  --bs-btn-hover-border-color: var(--bs-body-color);
+  --bs-btn-focus-shadow-rgb: none;
+}
+.wedding-guest__step .form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+.wedding-guest__step .btn {
+  min-width: 0.8rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0;
+  font-weight: 500;
+}
+.wedding-guest-summary {
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+  padding: 2rem 1rem;
+}
+.wedding-guest-summary h2,
+.wedding-guest-summary .h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.wedding-guest-summary h3,
+.wedding-guest-summary .h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.wedding-guest-summary p {
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+.wedding-guest-summary > .btn {
+  margin-top: 2rem;
+}
+.wedding-guest-summary__item {
+  padding-block: 1.25rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+.wedding-guest-summary__item:last-of-type {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
 /*# sourceMappingURL=main.style.css.map */

@@ -22,6 +22,7 @@
         "drupal/core-recommended": "^11.3",
         "drupal/paragraphs": "^1.23",
         "drupal/radix": "^6.0",
+        "drupal/views_data_export": "^1.10",
         "drush/drush": "^13.7"
     },
     "conflict": {

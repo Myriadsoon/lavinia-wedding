@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * Implements hook_etity_field_access().
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Session\AccountInterface;
+
+/**
+ * Implements hook_entity_field_access().
+ */
+function wedding_guest_entity_field_access(
+  $operation,
+  FieldDefinitionInterface $field_definition,
+  AccountInterface $account,
+  ?FieldItemListInterface $items = NULL
+) {
+  $protected_fields = [
+    'field_dietary_status',
+    'field_dietary_requirements',
+    'field_marriage_advice',
+  ];
+
+  if (in_array($field_definition->getName(), $protected_fields, TRUE)) {
+
+    if ($operation === 'view') {
+      if ($account->hasPermission('view wedding guests responses')) {
+        return AccessResult::allowed()
+          ->cachePerUser();
+      }
+
+      if ($items !== NULL && $items->getEntity()->id() === $account->id()) {
+        return AccessResult::allowed()
+          ->cachePerUser();
+      }
+
+      return AccessResult::forbidden()
+        ->cachePerPermissions()
+        ->cachePerUser();
+    }
+
+    if ($operation === 'edit') {
+      if ($items !== NULL && $items->getEntity()->id() === $account->id()) {
+        return AccessResult::allowed()
+          ->cachePerUser();
+      }
+
+      return AccessResult::forbidden()
+        ->cachePerUser();
+    }
+
+  }
+
+  return AccessResult::neutral();
+
+}
+
+/**
+ * Implements hook_theme()
+ */
+function wedding_guest_theme(): array {
+  return [
+    'wedding_guest_response_summary' => [
+      'variables' => [
+        'dietary_status' => NULL,
+        'dietary_requirements' => NULL,
+        'marriage_advice' => NULL,
+        'edit_url' => NULL,
+      ],
+    ],
+  ];
+}

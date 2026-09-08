@@ -1,0 +1,7 @@
+wedding_guest.guest_details:
+  path: '/guest-details'
+  defaults:
+    _form: '\Drupal\wedding_guest\Form\GuestDetailsForm'
+    _title: 'Your details'
+  requirements:
+    _user_is_logged_in: 'TRUE'

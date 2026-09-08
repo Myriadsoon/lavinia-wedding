@@ -1,0 +1,36 @@
+{% if dietary_status or marriage_advice %}
+  <section class="wedding-guest-summary">
+    <h2>{{ 'Your details'|t }}</h2>
+
+    <div class="wedding-guest-summary__item">
+      <h3>{{ 'Dieterary requirements you have informed us of:'|t }}</h3>
+
+      {% if dietary_status == 'yes' %}
+        <p>{{ dietary_requirements }}</p>
+      {% elseif dietary_status == 'no'%}
+        <p>{{ 'No dietary requirements'|t }}</p>
+      {% endif %}
+    </div>
+
+    {% if marriage_advice %}
+      <div class="wedding-guest-summary__item">
+        <h3>{{ 'Marriage advice you have suggested:'|t }}</h3>
+        <p>{{ marriage_advice }}</p>
+      </div>
+    {% endif %}
+
+    <a href="{{ edit_url }}" class="btn button--secondary">
+      {{ 'Edit your details.'|t }}
+    </a>
+  </section>
+{% else %}
+  <section class="wedding-guest-summary">
+    <h2>{{ 'Your details'|t }}</h2>
+
+    <p>{{ 'You have not completed your guest details yet.' }}</p>
+
+    <a href="{{ edit_url }}" class="btn button--secondary">
+      {{ 'Add your details.'|t }}
+    </a>
+  </section>
+{% endif %}
