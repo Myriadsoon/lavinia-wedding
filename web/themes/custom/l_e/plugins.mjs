@@ -84,16 +84,34 @@ export const bootstrapIconsPlugin = {
       if (copied) {
         return;
       }
-      const from = 'node_modules/bootstrap-icons/icons';
-      const to = 'assets/icons/bootstrap-icons';
-      if (!existsSync(from)) {
-        console.warn(
-          `[bootstrap-icons] ${from} not found, run \`npm install\` so the Icon API has its SVG source.`
-        );
-        return;
+      const svgFrom = 'node_modules/bootstrap-icons/icons';
+      const svgTo = 'assets/icons/bootstrap-icons';
+
+      const fontsFrom = 'node_modules/bootstrap-icons/font/fonts';
+      const fontsTo = 'build/assets/fonts/bootstrap-icons';
+
+      // Copy SVG icons for Drupal's Icon API
+      if (existsSync(svgFrom)) {
+        mkdirSync(dirname(svgTo), { recursive: true });
+        cpSync(svgFrom, svgTo, { recursive: true });
       }
-      mkdirSync(dirname(to), { recursive: true });
-      cpSync(from, to, { recursive: true });
+      else {
+        console.warn(
+          `[bootstrap-icons] ${svgFrom} not found, run \`npm install\` so the Icon API has its SVG source.`
+        );
+      }
+
+      // Copy Bootstrap Icons webfonts for CSS-based icons.
+      if (existsSync(fontsFrom)) {
+        mkdirSync(dirname(fontsTo), { recursive: true });
+        cpSync(fontsFrom, fontsTo, { recursive: true });
+      }
+      else {
+        console.warn(
+          `[bootstrap-icons] ${fontsFrom} not found, run \`npm install\` so the webfonts has its font source.`
+        );
+      }
+
       copied = true;
     });
   }
