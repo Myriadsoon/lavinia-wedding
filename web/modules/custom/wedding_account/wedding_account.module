@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function wedding_account_theme($existing, $type, $theme, $path) {
+  return [
+    'wedding_account_trigger' => [
+      'variables' => [],
+    ],
+    'wedding_account_content' => [
+      'variables' => [
+        'logged_in' => FALSE,
+        'display_name' => NULL,
+        'account_url' => NULL,
+        'logout_url' => NULL,
+        'guest_available' => FALSE,
+        'guest_complete' => FALSE,
+        'guest_details_url' => NULL,
+        'login_url' => NULL,
+        'password_url' => NULL,
+      ],
+    ],
+  ];
+}

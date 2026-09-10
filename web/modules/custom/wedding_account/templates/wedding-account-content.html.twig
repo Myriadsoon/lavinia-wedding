@@ -1,0 +1,73 @@
+{% embed 'radix:offcanvas' with {
+  offcanvas_id: 'wedding-account-offcanvas',
+  placement: 'end',
+  offcanvas_title: 'Your account'|t,
+  offcanvas_title_tag: 'h2',
+  offcanvas_content: true,
+} %}
+
+  {% block offcanvas_toggler %}
+  {% endblock %}
+
+  {% block offcanvas_body %}
+    {% if logged_in %}
+      <p>{{ 'Hello, '|t }}<strong>{{ display_name }}</strong> </p>
+
+      <nav aria-label="{{ 'Account options'|t }}">
+        <ul class="list-unstyled">
+          <li>
+            <a href="{{ account_url }}">{{ 'My account'|t }}</a>
+          </li>
+          <li>
+            <a href="{{ logout_url }}">{{ 'Logout'|t }}</a>
+          </li>
+        </ul>
+      </nav>
+    {% else %}
+      <p>{{ 'Sign in to view and update your wedding details.'|t }}</p>
+
+      <nav aria-label="{{ 'Account options'|t }}">
+        <ul class="list-unstyled">
+          <li>
+            <a href="{{ login_url }}">
+              {{ 'Sign in'|t }}
+            </a>
+          </li>
+          <li>
+            <a href="{{ password_url }}">
+              {{ 'Forgotten password. Reset option.'|t }}
+            </a>
+          </li>
+        </ul>
+      </nav>
+    {% endif %}
+
+    {% if guest_available %}
+      <div class="wedding-account__guest-status">
+        <h3 class="h6">{{ 'Wedding Form Completion'|t }}</h3>
+
+        {% if guest_complete %}
+          <p class="wedding-account__status wedding-account__status--complete">
+            <i class="bi bi-check-circle" aria-hidden="true"></i>
+            <span>{{ 'Thank you for completing the guest form.'|t }}</span>
+          </p>
+
+          <a class="btn button-secondary" href="{{ guest_details_url }}">
+            {{ 'View / modify form'|t }}
+          </a>
+
+        {% else %}
+          <p class="wedding-account__status wedding-account__status--incomplete">
+            <i class="bi bi-exclamation-circle" aria-hidden="true"></i>
+            <span>{{ "Please do complete the wedding guest form"|t }}</span>
+          </p>
+
+          <a class="btn button-secondary" href="{{ guest_details_url }}">
+            {{ 'Guest form.'|t }}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endblock %}
+
+{% endembed %}

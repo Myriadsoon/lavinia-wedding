@@ -1,0 +1,102 @@
+.block-wedding-account.contextual-region {
+  .contextual {
+    right: 2.5rem;
+  }
+}
+
+.navbar-right {
+}
+
+.wedding-account__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .375rem;
+  border: 0;
+  color: var(--le-nav-color);
+  line-height: 1;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  &.is-active {
+    color: var(--le-nav-color);
+  }
+
+  .bi {
+    font-size: 1.35rem;
+  }
+}
+
+#wedding-account-offcanvas {
+  --bs-offcanvas-width: 26rem;
+
+  .offcanvas-header {
+    padding: 1.5rem 1.5rem 1rem;
+  }
+
+  .offcanvas-body {
+    padding: 1rem 1.5rem 1.5rem;
+  }
+
+  .offcanvas-title {
+    margin: 0;
+  }
+}
+
+.wedding-account__guest-status {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, .12);
+}
+
+#wedding-account-offcanvas nav ul {
+  margin-bottom: 0;
+}
+
+#wedding-account-offcanvas nav li + li {
+  margin-top: 0.75rem;
+}
+
+#wedding-account-offcanvas nav a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+#wedding-account-offcanvas nav a:hover,
+#wedding-account-offcanvas nav a:focus-visible {
+  text-decoration: underline;
+}
+
+#wedding-account-offcanvas {
+  .button-secondary {
+    --bs-btn-color: var(--bs-body-color);
+    --bs-btn-bg: transparent;
+    --bs-btn-border-color: var(--bs-body-color);
+
+    --bs-btn-hover-color: var(--bs-body-bg);
+    --bs-btn-hover-bg: var(--bs-body-color);
+    --bs-btn-hover-border-color: var(--bs-body-color);
+
+    --bs-btn-focus-shadow-rgb: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  #wedding-account-offcanvas {
+    --bs-offcanvas-width: min(90vh, 26rem);
+  }
+}
+
+.wedding-account__status {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  margin-bottom: 1rem;
+
+  .bi {
+    flex: 0 0 auto;
+    margin-top: .125re;
+  }
+}

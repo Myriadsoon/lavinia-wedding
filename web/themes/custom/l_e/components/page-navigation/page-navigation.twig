@@ -26,7 +26,7 @@
 
   {% block left %}
     {% if page.navbar_left %}
-      <div class="me-auto">
+      <div class="navbar__center me-auto">
         {{ page.navbar_left }}
       </div>
     {% endif %}
@@ -34,8 +34,7 @@
 
   {% block right %}
     {% if page.navbar_right %}
-      <div class="ms-auto">
-        <i class="bi bi-person"></i>
+      <div class="navbar__right ms-auto d-flex align-items-center gap-3">
         {{ page.navbar_right }}
       </div>
     {% endif %}
