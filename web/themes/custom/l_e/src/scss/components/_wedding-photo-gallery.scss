@@ -1,0 +1,40 @@
+.wedding-photo-gallery {
+
+  &__grid {
+    column-count: 1;
+    column-gap: 1.5rem;
+
+    @include media-breakpoint-up(md) {
+      column-count: 2;
+    }
+
+    @include media-breakpoint-up(xl) {
+      column-count: 3;
+    }
+  }
+
+  h3,
+  &__heading {
+    margin: 3rem 0;
+  }
+
+  &__item {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+}
+
+.view-wedding-photos-gallery {
+  h3 {
+    text-align: center;
+    margin-top: 3rem;
+  }
+}
+

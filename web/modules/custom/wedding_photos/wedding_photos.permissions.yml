@@ -1,0 +1,19 @@
+upload wedding photos:
+  title: 'Upload wedding photographs'
+  description: 'Allows users to upload photos to the private wedding gallery'
+
+view wedding photo gallery:
+  title: 'View wedding photo gallery'
+  description: 'Allows users to view photographs in the private wedding gallery'
+
+access wedding photo moderation:
+  title: 'Wedding photo access moderation View'
+  description: 'Allows users to access the wedding photo moderation View'
+
+view unpublished wedding photos:
+  title: 'View unpublished wedding photographs'
+  description: 'Allow users to view wedding photos even if they are unpublished, for moderation purposes.'
+
+download wedding photos:
+  title: 'Download wedding photos'
+  description: 'Download original wedding photographs.'

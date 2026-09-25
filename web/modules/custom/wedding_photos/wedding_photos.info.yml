@@ -1,0 +1,5 @@
+name: 'Wedding Photos'
+type: module
+description: 'Provides private wedding photograph uploads, moderation and gallery access.'
+package: Custom
+core_version_requirement: ^10 || ^11

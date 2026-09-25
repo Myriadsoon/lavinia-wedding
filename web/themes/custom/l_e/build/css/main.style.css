@@ -18995,6 +18995,65 @@ body:has(.hero-image--nav-light) {
   flex: 0 0 auto;
   margin-top: 0.125re;
 }
+.wedding-photo-card__image {
+  position: relative;
+}
+.card.is-selected {
+  outline: 2px solid var(--bs-primary);
+}
+.form--views-form-wedding-photo-moderation-page-1 .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+  margin-right: 0.75rem;
+}
+.view-wedding-photo-moderation .view-header {
+  text-align: center;
+  margin-top: 3rem;
+}
+.wedding-photo-gallery__grid {
+  -webkit-column-count: 1;
+  -moz-column-count: 1;
+  column-count: 1;
+  -webkit-column-gap: 1.5rem;
+  -moz-column-gap: 1.5rem;
+  column-gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .wedding-photo-gallery__grid {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+@media (min-width: 1200px) {
+  .wedding-photo-gallery__grid {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+}
+.wedding-photo-gallery h3,
+.wedding-photo-gallery .h3,
+.wedding-photo-gallery__heading {
+  margin: 3rem 0;
+}
+.wedding-photo-gallery__item {
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+.wedding-photo-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.view-wedding-photos-gallery h3,
+.view-wedding-photos-gallery .h3 {
+  text-align: center;
+  margin-top: 3rem;
+}
 /*!
  * Bootstrap Icons v1.13.1 (https://icons.getbootstrap.com/)
  * Copyright 2019-2024 The Bootstrap Authors

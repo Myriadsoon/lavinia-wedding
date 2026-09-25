@@ -1,0 +1,26 @@
+.wedding-photo-card {
+  &__image {
+    position: relative;
+  }
+}
+
+.card.is-selected {
+  outline: 2px solid var(--bs-primary);
+}
+
+.form--views-form-wedding-photo-moderation-page-1 {
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+    margin-right: 0.75rem;
+  }
+}
+
+.view-wedding-photo-moderation {
+  .view-header {
+    text-align: center;
+    margin-top: 3rem;
+  }
+}
+

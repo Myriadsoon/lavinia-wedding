@@ -1,0 +1,28 @@
+wedding_photos.upload:
+  path: 'photos/upload'
+  defaults:
+    _form: '\Drupal\wedding_photos\Form\PhotoUploadForm'
+    _title: 'Share your photographs'
+  requirements:
+    _permission: 'upload wedding photos'
+
+wedding_photos.publish:
+  path: '/photos/{node}/publish'
+  defaults:
+    _form: '\Drupal\wedding_photos\Form\PhotoPublishConfirmForm'
+    _title: 'Publish photograph'
+  requirements:
+    _permission: 'view unpublished wedding photos'
+    node: '\d+'
+
+wedding_photos.download:
+  path: '/photos/{node}/download'
+  defaults:
+    _controller: '\Drupal\wedding_photos\Controller\PhotoDownloadController::download'
+  requirements:
+    _permission: 'download wedding photos'
+    node: '\d+'
+  options:
+    parameters:
+      node:
+        type: entity:node

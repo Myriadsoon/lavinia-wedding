@@ -1,0 +1,6 @@
+download:
+  js:
+    js/wedding_photos.download.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

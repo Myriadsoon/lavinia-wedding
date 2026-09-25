@@ -1,0 +1,122 @@
+<?php
+
+declare(strict_types=1);
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_file_download().
+ */
+function wedding_photos_file_download($uri) {
+  if (!str_starts_with($uri, 'private://wedding_photos/')) {
+    return NULL;
+  }
+
+  $account = \Drupal::currentUser();
+
+  if (!$account->hasPermission('view wedding photo gallery')) {
+    return -1;
+  }
+
+  $mime_type_guesser = \Drupal::service('file.mime_type.guesser');
+
+  return [
+    'Content-Type' => $mime_type_guesser->guessMimeType($uri),
+    'Content-Length' => filesize($uri),
+  ];
+}
+
+function wedding_photos_node_access(
+  NodeInterface $node,
+  string $operation,
+  AccountInterface $account,
+): AccessResultInterface {
+  if (
+    $node->bundle() != 'wedding_photos'
+    || $operation !== 'view'
+    || $node->isPublished()
+  ) {
+    return AccessResult::neutral();
+  }
+
+  return AccessResult::allowedIfHasPermission(
+    $account,
+    'view unpublished wedding photos',
+  )->addCacheableDependency($node);
+}
+
+function wedding_photos_form_views_form_wedding_photo_moderation_page_1_alter(
+  array &$form,
+  FormStateInterface $form_state,
+  string $form_id
+): void {
+
+  if (isset($form['actions']['submit'])) {
+    $form['actions']['submit']['#value'] = t('Publish selected');
+
+    $form['actions']['submit']['#attributes']['class'][] = 'btn';
+    $form['actions']['submit']['#attributes']['class'][] = 'btn-primary';
+
+    // Position the form actions above the photograph grid
+    $form['actions']['#weight'] = -10;
+  }
+
+  $form['#validate'][] = 'wedding_photos_moderation_validate';
+
+}
+
+/**
+ * Implements hook_views_data().
+ */
+function wedding_photos_views_data(): array {
+
+  $data = [];
+
+  $data['node']['wedding_photo_category_selector'] = [
+    'title' => t('Wedding photo category selector'),
+    'help' => t('Provides the category selector for wedding photos moderation.'),
+    'field' => [
+      'id' => 'wedding_photo_category',
+    ],
+  ];
+  return $data;
+}
+
+/**
+ * Validates category selections on the photograph moderation form.
+ */
+function wedding_photos_moderation_validate(
+  array &$form,
+  FormStateInterface $form_state,
+): void {
+  $categories = $form_state->getValue('wedding_photo_category_selector') ?? [];
+
+  $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+
+  foreach ($categories as $row_index => $term_id) {
+    // Ignore photographs that have not been selected for publication.
+    if (empty($term_id)) {
+      continue;
+    }
+
+    $term_id = $categories[$row_index] ?? NULL;
+
+    // Ensure that the submitted term actually exists.
+    $term = $term_storage->load((int) $term_id);
+
+    if (
+      !$term
+    || $term->bundle() !== 'wedding_photo_categories'
+    ) {
+      $form_state->setError(
+        $form['wedding_photo_category_selector'][$row_index],
+        t('The selected photograph category is not valid.'),
+      );
+    }
+  }
+}
+
+

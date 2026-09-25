@@ -1,0 +1,53 @@
+<?php
+
+use Drupal\node\NodeInterface;
+
+function l_e_preprocess_photoswipe_image_formatter(array &$variables): void {
+
+  $entity = $variables['entity'] ?? null;
+
+  if (
+    !$entity instanceof NodeInterface ||
+    $entity->bundle() !== 'wedding_photos'
+  ) {
+    return;
+  }
+
+  // Provide photograph caption to PhotoSwipe Dynamic Caption
+  if (
+    $entity->hasField('field_caption') &&
+    !$entity->get('field_caption')->isEmpty()
+  ) {
+    $variables['attributes']['data-overlay-title'] = $entity->get('field_caption')->value;
+  }
+
+  // Provide the original photograph download url to PhotoSwipe
+  if (
+    \Drupal::currentUser()->hasPermission('download wedding photos')
+  ) {
+    $variables['attributes']['data-wedding-photo-download'] =
+      \Drupal\Core\Url::fromRoute(
+        'wedding_photos.download',
+        ['node' => $entity->id()]
+      )->toString();
+  }
+}
+
+function l_e_preprocess_views_view_unformatted(array &$variables): void {
+  $view = $variables['view'] ?? null;
+
+  if (
+    !$view
+    || $view->id() !== 'wedding_photos_gallery'
+    || $view->current_display !== 'page_1'
+  ) {
+    return;
+  }
+
+  $can_download = \Drupal::currentUser()->hasPermission('download wedding photos');
+
+  $variables['can_download_wedding_photos'] = $can_download;
+
+  $view->element['#cache']['contexts'][] = 'user.permissions';
+
+}

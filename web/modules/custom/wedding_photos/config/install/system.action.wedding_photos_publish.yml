@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - wedding_photos
+id: wedding_photos_publish
+label: 'Publish selected wedding photographs'
+type: node
+plugin: wedding_photos_publish
+configuration: { }
