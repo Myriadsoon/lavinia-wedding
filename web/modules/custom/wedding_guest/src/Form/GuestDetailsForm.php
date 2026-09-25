@@ -123,7 +123,7 @@ class GuestDetailsForm extends FormBase {
           'no' => $this->t('No'),
           'yes' => $this->t('Yes'),
         ],
-        '#defult_value' => $form_state->get('dietary_status')
+        '#default_value' => $form_state->get('dietary_status')
           ?? $account->get('field_dietary_status')->value,
       ];
 
