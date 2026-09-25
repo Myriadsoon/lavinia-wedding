@@ -1,0 +1,5 @@
+services:
+  wedding_guest.status:
+    class: Drupal\wedding_guest\Service\GuestStatus
+    arguments:
+      - '@entity_type.manager'

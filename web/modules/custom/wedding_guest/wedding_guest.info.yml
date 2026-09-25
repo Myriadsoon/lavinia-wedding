@@ -1,0 +1,5 @@
+name: 'Wedding Guest'
+type: module
+description: 'Provides guest information forms and manages guest responses for the Lavinia Wedding website.'
+package: Custom
+core_version_requirement: ^10 || ^11
