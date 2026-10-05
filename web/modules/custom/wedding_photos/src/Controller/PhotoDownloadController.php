@@ -18,10 +18,6 @@ class PhotoDownloadController extends ControllerBase {
    * Download the original wedding photograph
    */
   public function download(NodeInterface $node): BinaryFileResponse {
-    \Drupal::logger('wedding_photos')->notice(
-      'Download controller reached. Node ID: @nid; bundle: @bundle',
-      ['@nid' => $node->id(), '@bundle' => $node->bundle()]
-    );
 
     if ($node->bundle() !== 'wedding_photos') {
       throw new NotFoundHttpException('Not a wedding_photos node.');
@@ -47,11 +43,6 @@ class PhotoDownloadController extends ControllerBase {
     }
 
     $uri = $file->getFileUri();
-    \Drupal::logger('wedding_photos')->notice(
-      'Wedding photograph file found. URI: @uri; filename: @filename',
-      ['@uri' => $uri, '@filename' => $file->getFilename()]
-    );
-
     /** @var \Drupal\Core\File\FileSystemInterface $file_system */
     $file_system = \Drupal::service('file_system');
 
