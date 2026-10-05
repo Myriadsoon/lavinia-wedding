@@ -6,3 +6,4 @@ style:
     build/js/main.script.js: {}
   dependencies:
     - core/drupal
+    - core/once

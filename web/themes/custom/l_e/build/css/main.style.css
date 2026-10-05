@@ -18995,6 +18995,162 @@ body:has(.hero-image--nav-light) {
   flex: 0 0 auto;
   margin-top: 0.125re;
 }
+.wedding-photo-upload {
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+  padding: 1.5rem 1rem 2rem;
+  overflow-wrap: anywhere;
+}
+.wedding-photo-upload__intro {
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+.wedding-photo-upload__heading {
+  margin-bottom: 1rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+.wedding-photo-upload__selection {
+  margin-bottom: 1.75rem;
+}
+.wedding-photo-upload__picker {
+  position: relative;
+}
+.wedding-photo-upload__picker input[type=file] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.wedding-photo-upload__picker:focus-within .wedding-photo-upload__choose {
+  outline: 2px solid currentColor;
+  outline-offset: 0.25rem;
+}
+.wedding-photo-upload__choose {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: clamp(2rem, 8vw, 4rem) 1rem;
+  border: 1px solid var(--bs-body-color);
+  text-align: center;
+  cursor: pointer;
+}
+.wedding-photo-upload__choose-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.wedding-photo-upload__formats {
+  font-size: 0.875rem;
+}
+.wedding-photo-upload__preview {
+  margin-bottom: 1rem;
+}
+.wedding-photo-upload__preview img {
+  display: block;
+  width: 100%;
+  max-height: 28rem;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+.wedding-photo-upload__widget:has(> .wedding-photo-upload__preview) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+.wedding-photo-upload__widget:has(> .wedding-photo-upload__preview) > .wedding-photo-upload__preview {
+  flex: 0 0 100%;
+  min-width: 0;
+  margin-bottom: 0.25rem;
+}
+.wedding-photo-upload__metadata {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+.wedding-photo-upload__widget .file {
+  display: inline;
+  overflow-wrap: anywhere;
+}
+.wedding-photo-upload__widget .file,
+.wedding-photo-upload__widget .file + span {
+  color: var(--bs-secondary-color);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+.wedding-photo-upload__widget .file + span {
+  display: inline-block;
+}
+.wedding-photo-upload__widget input[name=photo_remove_button] {
+  --bs-btn-color: var(--bs-secondary-color);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: var(--bs-secondary-color);
+  --bs-btn-hover-color: var(--bs-body-color);
+  --bs-btn-hover-bg: var(--bs-tertiary-bg);
+  --bs-btn-hover-border-color: var(--bs-body-color);
+  --bs-btn-active-color: var(--bs-body-color);
+  --bs-btn-active-bg: var(--bs-secondary-bg);
+  --bs-btn-active-border-color: var(--bs-body-color);
+  display: block;
+  flex: 0 0 auto;
+  min-height: 2.75rem;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-decoration: none;
+}
+.wedding-photo-upload__share {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.wedding-photo-upload__icon {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  line-height: 1;
+}
+.wedding-photo-upload .form-label {
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.wedding-photo-upload .form-control {
+  max-width: 100%;
+  min-width: 0;
+  border-radius: 0;
+}
+.wedding-photo-upload__caption .form-control {
+  padding: 0.875rem 1rem;
+}
+.wedding-photo-upload__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+.wedding-photo-upload .btn {
+  max-width: 100%;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0;
+  white-space: normal;
+  font-weight: 500;
+}
+.wedding-photo-upload input:focus-visible,
+.wedding-photo-upload button:focus-visible,
+.wedding-photo-upload a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 0.25rem;
+}
 .wedding-photo-card__image {
   position: relative;
 }

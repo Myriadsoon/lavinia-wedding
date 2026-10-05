@@ -4,3 +4,31 @@
  * @file
  * Theme and preprocess functions for forms.
  */
+
+/**
+ * Implements hook_theme_suggestions_file_managed_file_alter().
+ */
+function l_e_theme_suggestions_file_managed_file_alter(array &$suggestions, array $variables): void {
+  $classes = $variables['element']['#attributes']['class'] ?? [];
+  if (in_array('wedding-photo-upload__widget', $classes, TRUE)) {
+    $suggestions[] = 'file_managed_file__wedding_photo_upload';
+  }
+}
+
+/**
+ * Implements hook_preprocess_file_managed_file().
+ */
+function l_e_preprocess_file_managed_file(array &$variables): void {
+  $element = &$variables['element'];
+  $classes = $element['#attributes']['class'] ?? [];
+  if (!in_array('wedding-photo-upload__widget', $classes, TRUE)) {
+    return;
+  }
+
+  // Change only the presentation of Core's existing filename children.
+  foreach (\Drupal\Core\Render\Element::children($element) as $key) {
+    if (isset($element[$key]['filename']['#theme']) && $element[$key]['filename']['#theme'] === 'file_link') {
+      $element[$key]['filename']['#theme'] = 'file_link__wedding_photo_upload';
+    }
+  }
+}

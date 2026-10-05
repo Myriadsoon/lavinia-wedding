@@ -1,0 +1,7 @@
+{# Core supplies the filename and formatted size; no link is rendered here. #}
+<div class="wedding-photo-upload__metadata">
+  <span{{ attributes }}>{{ link['#title'] }}</span>
+  {% if file_size %}
+    <span>({{ file_size }})</span>
+  {% endif %}
+</div>

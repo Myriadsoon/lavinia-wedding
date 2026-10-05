@@ -1,0 +1,8 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+name: Wedding Photo Upload
+status: stable
+description: 'Presentation for the single-photograph guest upload form.'
+slots:
+  content:
+    title: Form content
+    description: 'All Drupal-rendered form controls and hidden values.'

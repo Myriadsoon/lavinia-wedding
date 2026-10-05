@@ -21,6 +21,7 @@
 /web/sites/*/files/
 /web/sites/*/private/
 /web/sites/simpletest/
+/private/
 
 # Drupal cache/export artefacts sometimes created locally
 /web/sites/*/files/php/

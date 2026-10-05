@@ -1,0 +1,8 @@
+{# Preserve Drupal's form attributes and every rendered child, including tokens. #}
+{% embed 'radix:form' %}
+  {% block form_children %}
+    {% include 'l_e:wedding-photo-upload' with {
+      content: children,
+    } only %}
+  {% endblock %}
+{% endembed %}

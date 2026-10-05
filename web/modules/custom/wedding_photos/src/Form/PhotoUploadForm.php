@@ -46,9 +46,17 @@ final class PhotoUploadForm extends FormBase {
    * @inheritDoc
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
-    $form['photo'] = [
+    $form['selection'] = [
+      '#type' => 'container',
+      '#attributes' => ['class' => ['wedding-photo-upload__selection']],
+    ];
+
+    $form['selection']['photo'] = [
       '#type' => 'managed_file',
       '#title' => $this->t('Photograph'),
+      '#title_display' => 'invisible',
+      '#attributes' => ['class' => ['wedding-photo-upload__widget']],
+      '#accept' => '.jpg,.jpeg,.png,.webp',
       '#upload_location' => 'private://wedding_photos/',
       '#upload_validators' => [
         'FileExtension' => [
@@ -59,6 +67,7 @@ final class PhotoUploadForm extends FormBase {
     ];
 
     $form['caption'] = [
+      '#wrapper_attributes' => ['class' => ['wedding-photo-upload__caption']],
       "#type" => "textfield",
       "#title" => $this->t('Caption'),
       '#maxlength' => 255,
@@ -67,11 +76,13 @@ final class PhotoUploadForm extends FormBase {
 
     $form['actions'] = [
       '#type' => 'actions',
+      '#attributes' => ['class' => ['wedding-photo-upload__actions']],
     ];
 
     $form['actions']['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Upload'),
+      '#value' => $this->t('Share photograph'),
+      '#theme_wrappers' => ['input__wedding_photo_share'],
       '#button_type' => 'primary',
     ];
 

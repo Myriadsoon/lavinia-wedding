@@ -5573,6 +5573,129 @@
       }
     };
   })(Drupal, once);
+
+  // src/js/_wedding-photo-upload.js
+  (function(Drupal2, once2) {
+    const states = /* @__PURE__ */ new WeakMap();
+    const widgetSelector = ".wedding-photo-upload__widget";
+    const fileId = (widget) => widget?.querySelector('input[type="hidden"][name="photo[fids]"]')?.value.trim() || "";
+    const clearPreview = (state) => {
+      if (state.url) {
+        URL.revokeObjectURL(state.url);
+      }
+      state.url = null;
+      state.acceptedId = null;
+      state.file = null;
+    };
+    const synchronise = (form, state) => {
+      const widget = form.querySelector(widgetSelector);
+      if (!widget) {
+        return;
+      }
+      const fid = fileId(widget);
+      if (state.pending && state.pending.widget !== widget) {
+        const pending = state.pending;
+        state.pending = null;
+        clearPreview(state);
+        if (/^[1-9]\d*$/.test(fid) && fid !== pending.previousId) {
+          state.file = pending.file;
+          state.acceptedId = fid;
+          state.url = URL.createObjectURL(pending.file);
+        }
+      }
+      if (state.acceptedId && fid !== state.acceptedId) {
+        clearPreview(state);
+      }
+      const preview = widget.querySelector(".wedding-photo-upload__preview");
+      if (!preview) {
+        return;
+      }
+      if (!state.url || fid !== state.acceptedId) {
+        preview.replaceChildren();
+        preview.hidden = true;
+        return;
+      }
+      if (preview.querySelector("img")?.getAttribute("src") === state.url) {
+        return;
+      }
+      const image = document.createElement("img");
+      image.alt = Drupal2.t("Preview of the selected photograph");
+      image.src = state.url;
+      image.addEventListener("error", () => {
+        preview.replaceChildren();
+        preview.hidden = true;
+        if (state.url === image.getAttribute("src")) {
+          clearPreview(state);
+        }
+      }, { once: true });
+      preview.replaceChildren(image);
+      preview.hidden = false;
+    };
+    Drupal2.behaviors.weddingPhotoUpload = {
+      attach(context) {
+        const forms = /* @__PURE__ */ new Set();
+        if (context instanceof Element) {
+          const form = context.closest("form");
+          if (form?.querySelector(widgetSelector)) {
+            forms.add(form);
+          }
+        }
+        context.querySelectorAll(widgetSelector).forEach((widget) => {
+          if (widget.closest("form")) {
+            forms.add(widget.closest("form"));
+          }
+        });
+        once2("wedding-photo-upload", [...forms]).forEach((form) => {
+          const state = { pending: null, file: null, acceptedId: null, url: null };
+          states.set(form, state);
+          state.onChange = (event) => {
+            const input = event.target;
+            if (!(input instanceof HTMLInputElement) || input.type !== "file") {
+              return;
+            }
+            const widget = input.closest(widgetSelector);
+            if (!widget) {
+              return;
+            }
+            state.pending = null;
+            clearPreview(state);
+            const file = input.files?.[0];
+            if (file && /\.(jpe?g|png|webp)$/i.test(file.name)) {
+              state.pending = { file, widget, previousId: fileId(widget) };
+            }
+          };
+          state.onPageHide = () => {
+            state.pending = null;
+            clearPreview(state);
+            synchronise(form, state);
+          };
+          form.addEventListener("change", state.onChange, true);
+          window.addEventListener("pagehide", state.onPageHide);
+        });
+        forms.forEach((form) => synchronise(form, states.get(form)));
+      },
+      detach(context, settings, trigger) {
+        if (trigger !== "unload") {
+          return;
+        }
+        const forms = [...context.querySelectorAll("form")];
+        if (context instanceof Element && context.matches("form")) {
+          forms.push(context);
+        }
+        forms.forEach((form) => {
+          const state = states.get(form);
+          if (state) {
+            clearPreview(state);
+            state.pending = null;
+            form.removeEventListener("change", state.onChange, true);
+            window.removeEventListener("pagehide", state.onPageHide);
+            states.delete(form);
+            once2.remove("wedding-photo-upload", form);
+          }
+        });
+      }
+    };
+  })(Drupal, once);
 })();
 /*! Bundled license information:
 
