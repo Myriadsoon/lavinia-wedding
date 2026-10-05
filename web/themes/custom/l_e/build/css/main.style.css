@@ -19151,6 +19151,38 @@ body:has(.hero-image--nav-light) {
   outline: 2px solid currentColor;
   outline-offset: 0.25rem;
 }
+.wedding-photo-upload-success {
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+  padding: 1.5rem 1rem 2rem;
+  overflow-wrap: anywhere;
+}
+.wedding-photo-upload-success__intro {
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+.wedding-photo-upload-success__heading {
+  margin-bottom: 1rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+.wedding-photo-upload-success__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+.wedding-photo-upload-success .btn {
+  max-width: 100%;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0;
+  white-space: normal;
+  font-weight: 500;
+}
+.wedding-photo-upload-success a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 0.25rem;
+}
 .wedding-photo-card__image {
   position: relative;
 }

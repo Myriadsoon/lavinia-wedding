@@ -6,6 +6,14 @@ wedding_photos.upload:
   requirements:
     _permission: 'upload wedding photos'
 
+wedding_photos.upload_success:
+  path: '/photos/upload-success'
+  defaults:
+    _controller: '\Drupal\wedding_photos\Controller\PhotoUploadSuccessController::build'
+    _title: 'Photograph submitted'
+  requirements:
+    _permission: 'upload wedding photos'
+
 wedding_photos.publish:
   path: '/photos/{node}/publish'
   defaults:

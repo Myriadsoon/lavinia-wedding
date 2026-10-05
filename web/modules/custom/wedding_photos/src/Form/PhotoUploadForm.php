@@ -116,11 +116,8 @@ final class PhotoUploadForm extends FormBase {
 
     $node->save();
 
-    $this->messenger()->addStatus(
-      $this->t('Thank you, your file was successfully uploaded.')
-    );
-
-    $form_state->setRedirect('wedding_photos.upload');
+    $form_state->setIgnoreDestination(TRUE);
+    $form_state->setRedirect('wedding_photos.upload_success');
 
   }
 }

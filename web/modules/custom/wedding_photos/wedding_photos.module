@@ -8,6 +8,20 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
 
 /**
+ * Implements hook_theme().
+ */
+function wedding_photos_theme(): array {
+  return [
+    'wedding_photos_upload_success' => [
+      'variables' => [
+        'share_another' => NULL,
+        'view_gallery' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
  * Implements hook_file_download().
  */
 function wedding_photos_file_download($uri) {
@@ -118,5 +132,4 @@ function wedding_photos_moderation_validate(
     }
   }
 }
-
 
