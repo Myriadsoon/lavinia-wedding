@@ -67,6 +67,18 @@ class WeddingAccountBlockContent extends BlockBase implements ContainerFactoryPl
 
     $guest_details_url = Url::fromRoute('wedding_guest.guest_details')->toString();
 
+    $photo_upload_route = Url::fromRoute('wedding_photos.upload');
+    $can_upload_photos = $logged_in && $photo_upload_route->access($this->currentUser);
+    $photo_upload_url = $can_upload_photos
+      ? $photo_upload_route->toString()
+      : NULL;
+
+    $photo_moderation_route = Url::fromRoute('view.wedding_photo_moderation.page_1');
+    $can_moderate_photos = $logged_in && $photo_moderation_route->access($this->currentUser);
+    $photo_moderation_url = $can_moderate_photos
+      ? $photo_moderation_route->toString()
+      : NULL;
+
     $login_url = Url::fromRoute('user.login')->toString();
     $password_url = Url::fromRoute('user.pass')->toString();
 
@@ -79,6 +91,10 @@ class WeddingAccountBlockContent extends BlockBase implements ContainerFactoryPl
       '#guest_available' => $guest_available,
       '#guest_complete' => $guest_complete,
       '#guest_details_url' => $logged_in ? $guest_details_url : NULL,
+      '#can_upload_photos' => $can_upload_photos,
+      '#photo_upload_url' => $photo_upload_url,
+      '#can_moderate_photos' => $can_moderate_photos,
+      '#photo_moderation_url' => $photo_moderation_url,
       '#login_url' => !$logged_in ? $login_url : NULL,
       '#password_url' => !$logged_in ? $password_url : NULL,
       '#cache' => [

@@ -18952,7 +18952,8 @@ body:has(.hero-image--nav-light) {
 #wedding-account-offcanvas .offcanvas-title {
   margin: 0;
 }
-.wedding-account__guest-status {
+.wedding-account__guest-status,
+.wedding-account__photos {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(0, 0, 0, 0.12);

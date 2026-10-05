@@ -68,6 +68,33 @@
         {% endif %}
       </div>
     {% endif %}
+
+    {% if can_upload_photos or can_moderate_photos %}
+      <div class="wedding-account__photos">
+        <h3 class="h6">{{ 'Photographs'|t }}</h3>
+
+        <p>
+          {{ 'Share your photographs from the wedding with us.'|t }}
+        </p>
+
+        <div class="wedding-account__photo-actions d-flex flex-column align-items-start gap-2">
+          {% if can_upload_photos %}
+            <a class="btn button-secondary" href="{{ photo_upload_url }}">
+              <i class="bi bi-image" aria-hidden="true"></i>
+              <span>{{ 'Share your photographs'|t }}</span>
+            </a>
+          {% endif %}
+
+          {% if can_moderate_photos %}
+            <a class="btn button-secondary" href="{{ photo_moderation_url }}">
+              <i class="bi bi-upload" aria-hidden="true"></i>
+              <span>{{ 'Moderate photographs'|t }}</span>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
   {% endblock %}
 
 {% endembed %}
