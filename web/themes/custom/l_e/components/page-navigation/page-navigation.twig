@@ -8,6 +8,7 @@
   embed 'radix:navbar' with {
     container: 'fixed',
     navbar_theme: 'light',
+    navbar_id: 'wedding-navbar-collapse',
     navbar_utility_classes: [
       'justify-content-between',
        'position-absolute',
@@ -24,9 +25,36 @@
     {% endif %}
   {% endblock %}
 
+  {% block navbar_toggler %}
+    <div class="navbar__controls d-flex align-items-center gap-3">
+
+      {% if page.navbar_controls %}
+        <div class="navbar__account">
+          {{ page.navbar_controls }}
+        </div>
+      {% endif %}
+
+      <button
+        class="navbar-toggler collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#wedding-navbar-collapse"
+        aria-controls="wedding-navbar-collapse"
+        aria-expanded="false"
+        aria-label="{{ 'Toggle navigation'|t }}"
+        >
+        <span class="wedding-navbar-toggler" aria-hidden="true">
+          <span class="wedding-navbar-toggler__line"></span>
+          <span class="wedding-navbar-toggler__line"></span>
+          <span class="wedding-navbar-toggler__line"></span>
+        </span>
+      </button>
+    </div>
+  {% endblock %}
+
   {% block left %}
     {% if page.navbar_left %}
-      <div class="navbar__center me-auto">
+      <div class="navbar__left me-auto">
         {{ page.navbar_left }}
       </div>
     {% endif %}
@@ -34,7 +62,7 @@
 
   {% block right %}
     {% if page.navbar_right %}
-      <div class="navbar__right ms-auto d-flex align-items-center gap-3">
+      <div class="navbar__right ms-auto">
         {{ page.navbar_right }}
       </div>
     {% endif %}

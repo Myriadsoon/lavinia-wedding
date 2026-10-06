@@ -13,6 +13,16 @@ body:has(.hero-image--nav-light) {
   --bs-navbar-hover-color: var(--le-nav-color);
   --bs-navbar-active-color: var(--le-nav-active-color);
 
+  /*
+   * Permanent navbar controls.
+   */
+  .navbar__controls {
+    margin-left: auto;
+  }
+
+  /*
+   * Navigation links.
+   */
   a.nav-link,
   a.language-link {
     position: relative;
@@ -53,5 +63,177 @@ body:has(.hero-image--nav-light) {
     padding-top: var(--bs-nav-link-padding-y);
     padding-bottom: var(--bs-nav-link-padding-y);
   }
+
+  /*
+   * Mobile navigation.
+   */
+  @include media-breakpoint-down(md) {
+    .navbar__account {
+      order: 2;
+    }
+
+    /*
+     * Toggler
+     *
+     * Bootstrap's background-image hamburger does not naturally follow our
+     * --le-nav-color variable, so draw the three bars with currentColor.
+     */
+    .navbar-toggler {
+      order: 1;
+
+      width: 2.75rem;
+      height: 2.75rem;
+      padding: 0.5rem;
+      border: 0;
+      border-radius: 0;
+      color: var(--le-nav-color);
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      &:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 3px;
+      }
+    }
+
+    /*
+     * Expanded navigation.
+     */
+    .navbar-collapse {
+      flex-basis: 100%;
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.75rem 1.25rem 1rem;
+
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+
+      /*
+       * The menu surface is always dark, so don't inherit the hero-dependent
+       * navigation colour here.
+       */
+      --le-nav-color: rgba(0, 0, 0, 0.72);
+      --le-nav-active-color: rgba(0, 0, 0, 0.95);
+    }
+
+
+    .navbar-collapse.show,
+    .navbar-collapse.collapsing {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /*
+     * Main navigation first.
+     */
+    .navbar__right {
+      order: 1;
+      width: 100%;
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.125rem;
+      }
+
+      .nav-link {
+        display: inline-block;
+        padding: 0.5rem 0;
+      }
+    }
+
+    /*
+     * Language choice second.
+     */
+    .navbar__left {
+      order: 2;
+      width: 100%;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.18);
+
+      a.language-link {
+        font-size: 0.875rem;
+        color: rgba(0, 0, 0, 0.62);
+      }
+    }
+  }
+
+  /*
+   * Desktop ordering.
+   */
+  @include media-breakpoint-up(lg) {
+    .navbar-collapse {
+      order: 1;
+    }
+
+    .navbar__controls {
+      order: 2;
+      margin-left: 1rem;
+    }
+  }
 }
 
+.wedding-navbar-toggler {
+  position: relative;
+  display: block;
+  width: 2rem;
+  height: 1.5rem;
+}
+
+.wedding-navbar-toggler__line {
+  position: absolute;
+  left: 0;
+  width: 2rem;
+  height: 2px;
+  background-color: currentColor;
+  transition:
+    top 0.25s ease,
+    transform 0.25s ease,
+    opacity 0.2s ease;
+
+  &:nth-child(1) {
+    top: 0;
+  }
+
+  &:nth-child(2) {
+    top: calc(50% - 1px);
+  }
+
+  &:nth-child(3) {
+    top: calc(100% - 2px);
+  }
+}
+
+/*
+* Expanded state.
+ */
+.navbar-toggler[aria-expanded="true"] {
+  .wedding-navbar-toggler__line {
+    &:nth-child(1),
+    &:nth-child(3) {
+      top: calc(50% - 1px);
+      left: 0;
+    }
+
+    &:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    &:nth-child(2) {
+      opacity: 0;
+    }
+
+    &:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wedding-navbar-toggler__line {
+    transition: none;
+  }
+}

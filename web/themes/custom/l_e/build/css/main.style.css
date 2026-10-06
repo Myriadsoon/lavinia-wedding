@@ -12289,6 +12289,11 @@ body:has(.hero-image--nav-light) {
   --bs-navbar-hover-color: var(--le-nav-color);
   --bs-navbar-active-color: var(--le-nav-active-color);
 }
+.navbar .navbar__controls {
+  margin-left: auto;
+}
+.navbar {
+}
 .navbar a.nav-link,
 .navbar a.language-link {
   position: relative;
@@ -12379,6 +12384,143 @@ body:has(.hero-image--nav-light) {
 .navbar a.language-link {
   padding-top: var(--bs-nav-link-padding-y);
   padding-bottom: var(--bs-nav-link-padding-y);
+}
+.navbar {
+}
+@media (max-width: 767.98px) {
+  .navbar .navbar__account {
+    order: 2;
+  }
+  .navbar {
+  }
+  .navbar .navbar-toggler {
+    order: 1;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0.5rem;
+    border: 0;
+    border-radius: 0;
+    color: var(--le-nav-color);
+  }
+  .navbar .navbar-toggler:focus {
+    box-shadow: none;
+  }
+  .navbar .navbar-toggler:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+  .navbar {
+  }
+  .navbar .navbar-collapse {
+    flex-basis: 100%;
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1.25rem 1rem;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    --le-nav-color: rgba(0, 0, 0, 0.72);
+    --le-nav-active-color: rgba(0, 0, 0, 0.95);
+  }
+  .navbar .navbar-collapse.show,
+  .navbar .navbar-collapse.collapsing {
+    display: flex;
+    flex-direction: column;
+  }
+  .navbar {
+  }
+  .navbar .navbar__right {
+    order: 1;
+    width: 100%;
+  }
+  .navbar .navbar__right .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.125rem;
+  }
+  .navbar .navbar__right .nav-link {
+    display: inline-block;
+    padding: 0.5rem 0;
+  }
+  .navbar {
+  }
+  .navbar .navbar__left {
+    order: 2;
+    width: 100%;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.18);
+  }
+  .navbar .navbar__left a.language-link {
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.62);
+  }
+}
+.navbar {
+}
+@media (min-width: 992px) {
+  .navbar .navbar-collapse {
+    order: 1;
+  }
+  .navbar .navbar__controls {
+    order: 2;
+    margin-left: 1rem;
+  }
+}
+.wedding-navbar-toggler {
+  position: relative;
+  display: block;
+  width: 2rem;
+  height: 1.5rem;
+}
+.wedding-navbar-toggler__line {
+  position: absolute;
+  left: 0;
+  width: 2rem;
+  height: 2px;
+  background-color: currentColor;
+  transition:
+    top 0.25s ease,
+    opacity 0.2s ease,
+    -webkit-transform 0.25s ease;
+  transition:
+    top 0.25s ease,
+    transform 0.25s ease,
+    opacity 0.2s ease;
+  transition:
+    top 0.25s ease,
+    transform 0.25s ease,
+    opacity 0.2s ease,
+    -webkit-transform 0.25s ease;
+}
+.wedding-navbar-toggler__line:nth-child(1) {
+  top: 0;
+}
+.wedding-navbar-toggler__line:nth-child(2) {
+  top: calc(50% - 1px);
+}
+.wedding-navbar-toggler__line:nth-child(3) {
+  top: calc(100% - 2px);
+}
+.navbar-toggler[aria-expanded=true] .wedding-navbar-toggler__line:nth-child(1),
+.navbar-toggler[aria-expanded=true] .wedding-navbar-toggler__line:nth-child(3) {
+  top: calc(50% - 1px);
+  left: 0;
+}
+.navbar-toggler[aria-expanded=true] .wedding-navbar-toggler__line:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.navbar-toggler[aria-expanded=true] .wedding-navbar-toggler__line:nth-child(2) {
+  opacity: 0;
+}
+.navbar-toggler[aria-expanded=true] .wedding-navbar-toggler__line:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .wedding-navbar-toggler__line {
+    transition: none;
+  }
 }
 .wedding-day__timeline {
   position: relative;
