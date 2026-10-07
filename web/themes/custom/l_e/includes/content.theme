@@ -14,6 +14,17 @@ use Drupal\media\MediaInterface;
 function l_e_preprocess_page(array &$variables): void {
   $route_name = \Drupal::routeMatch()->getRouteName();
   $variables['is_user_route'] = str_starts_with($route_name, 'user.');
+
+  $variables['decorative_frame'] = FALSE;
+
+  if (
+    isset($variables['node'])
+    && $variables['node']->bundle() === 'page'
+    && $variables['node']->hasField('field_decorative_frame')
+  ) {
+    $variables['decorative_frame'] =
+      (bool) $variables['node']->get('field_decorative_frame')->value;
+  }
 }
 
 /**

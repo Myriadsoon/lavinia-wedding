@@ -19385,6 +19385,91 @@ body:has(.hero-image--nav-light) {
   text-align: center;
   margin-top: 3rem;
 }
+.wedding-content-frame {
+  --wedding-frame-color: #aaa;
+  --wedding-frame-weight: 1px;
+  --savile-width: clamp(11rem, 20vw, 19rem);
+  --angel-width: clamp(8.25rem, 14.5vw, 13.5rem);
+  --frame-top-gap: clamp(8rem, 14vw, 13rem);
+  --frame-right-start: clamp(10rem, 16vw, 14rem);
+  position: relative;
+  margin-block: clamp(2rem, 5vw, 4rem);
+}
+.wedding-content-frame::before,
+.wedding-content-frame::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+.wedding-content-frame::before {
+  top: 0;
+  left: 0;
+  right: var(--frame-top-gap);
+  border-top: var(--wedding-frame-weight) solid var(--wedding-frame-color);
+}
+.wedding-content-frame::after {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-bottom: var(--wedding-frame-weight) solid var(--wedding-frame-color);
+}
+.wedding-content-frame__inner {
+  max-width: 70rem;
+  margin-inline: auto;
+  padding: clamp(2.5rem, 6vw, 5rem);
+}
+.wedding-content-frame__ornament {
+  position: absolute;
+  z-index: 1;
+  color: var(--wedding-frame-color);
+  pointer-events: none;
+}
+.wedding-content-frame__ornament svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.wedding-content-frame__ornament--savile {
+  bottom: -0.25rem;
+  left: -0.25rem;
+  width: var(--savile-width);
+}
+.wedding-content-frame__ornament--holy-trinity {
+  top: -3rem;
+  right: -0.65rem;
+  width: var(--angel-width);
+}
+.wedding-content-frame__border {
+  position: absolute;
+  width: var(--wedding-frame-weight);
+  background-color: var(--wedding-frame-color);
+  pointer-events: none;
+}
+.wedding-content-frame__border--left {
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+.wedding-content-frame__border--right {
+  top: var(--frame-right-start);
+  right: 0;
+  bottom: 0;
+}
+@media (max-width: 767.98px) {
+  .wedding-content-frame {
+    --savile-width: clamp(8rem, 30vw, 11rem);
+    --angel-width: clamp(7rem, 27vw, 10rem);
+    --frame-top-gap: clamp(7rem, 13vw, 12rem);
+    --frame-right-start: clamp(9rem, 13vw, 14rem);
+  }
+  .wedding-content-frame__ornament--savile {
+    width: var(--savile-width);
+  }
+  .wedding-content-frame__ornament--holy-trinity {
+    width: var(--angel-width);
+    top: -2rem;
+  }
+}
 /*!
  * Bootstrap Icons v1.13.1 (https://icons.getbootstrap.com/)
  * Copyright 2019-2024 The Bootstrap Authors

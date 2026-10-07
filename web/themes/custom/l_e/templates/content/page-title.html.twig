@@ -12,4 +12,10 @@
  *   displayed after the main title tag that appears in the template.
  */
 #}
-{% include "radix:page-title" %}
+{% include "radix:page-title" with {
+    page_title_utility_classes: [
+      'text-center',
+      'my-3',
+    ]
+  }
+%}

@@ -116,7 +116,36 @@
 
         <div class="{{ has_sidebar ? 'col-12 col-lg-9 order-1 order-lg-2' : 'col-12' }}">
           {% block page_inner_content_with_sidebar %}
-            {{ page.content }}
+            {% if decorative_frame %}
+            <div class="wedding-content-frame">
+
+              <span
+                class="wedding-content-frame__border wedding-content-frame__border--left"
+                aria-hidden="true">
+              </span>
+              <span
+                class="wedding-content-frame__border wedding-content-frame__border--right"
+                aria-hidden="true">
+              </span>
+
+              <div class="wedding-content-frame__inner">
+                {{ page.content }}
+              </div>
+
+              <div class="wedding-content-frame__ornament wedding-content-frame__ornament--holy-trinity"
+                   aria-hidden="true">
+                {{ source('@l_e/assets/images/ornaments/holy-trinity-ornament.svg') }}
+              </div>
+              <div class="wedding-content-frame__ornament wedding-content-frame__ornament--savile"
+                aria-hidden="true">
+                {{ source('@l_e/assets/images/ornaments/savile-club-ornament.svg') }}
+              </div>
+            </div>
+            {% else %}
+
+              {{ page.content }}
+
+            {% endif %}
           {% endblock %}
         </div>
       </div>

@@ -57,6 +57,11 @@ props:
     page_content_container_attributes:
       type: Drupal\Core\Template\Attribute
       description: 'HTML attributes for the main content area of the page.'
+    decorative_frame:
+      type: boolean
+      title: Decorative frame
+      description: 'Whether to display the decorative wedding frame around the page content.'
+      default: false
 slots:
   page_header:
     title: Page Header
