@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Core\Form\FormStateInterface;
+
 /**
  * Implements hook_theme().
  */
@@ -25,5 +27,77 @@ function wedding_account_theme($existing, $type, $theme, $path) {
         'password_url' => NULL,
       ],
     ],
+    'wedding_account' => [
+      'variables' => [
+        'username' => NULL,
+        'email' => NULL,
+        'account_form' => NULL,
+        'guest_response' => NULL,
+        'guest_details_url' => NULL,
+        'photo_upload_url' => NULL,
+        'photographs' => NULL,
+      ],
+    ],
   ];
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function wedding_account_form_user_form_alter(&$form, &$form_state):void {
+
+  $current_user = \Drupal::currentUser();
+  $account = $form_state->getFormObject()->getEntity();
+
+  // Check to see if current user is altering their user form and
+  // that they have the 'wedding_guest' role. So that Administrators
+  // can still access full user form to make amendments.
+  If (
+    (int) $current_user->id() !== (int) $account->id()
+    || !in_array('wedding_guest', $current_user->getRoles(), TRUE)
+  ) {
+    return;
+  }
+
+//  // Remove account fields that a wedding guest should not edit.
+  $form['account']['name']['#access'] = FALSE;
+  $form['account']['status']['#access'] = FALSE;
+  $form['account']['roles']['#access'] = FALSE;
+  $form['account']['notify']['#access'] = FALSE;
+
+//  // Remove profile settings that are not relevant to wedding guests.
+  $form['language']['#access'] = FALSE;
+  $form['timezone']['#access'] = FALSE;
+  $form['user_picture']['#access'] = FALSE;
+
+  // Adapt Drupal's user form for the wedding guest account experience
+  $form['account']['#type'] = 'fieldset';
+  $form['account']['#title'] = t('Account details');
+
+  $form['account']['mail']['#title'] = t('Email address');
+  $form['account']['mail']['#description'] = t(
+    'This is the email address you use to sign in. To change it, enter
+      a new email address here and confirm the change with your current password below.'
+  );
+
+  $form['account']['current_pass']['#title'] = t('Current password');
+  $form['account']['current_pass']['#description'] = t(
+    'Your current password is required if you want to change your email address or password.'
+  );
+
+  $form['account']['pass']['#description'] = t(
+    'Enter a new password only if you want to change your current password.'
+  );
+
+  $form['actions']['submit']['#value'] = t('Save changes');
+
+  $form['account']['mail']['#weight'] = 0;
+  $form['account']['current_pass']['#weight'] = 10;
+  $form['account']['pass']['#weight'] = 20;
+
+  // Retain an accessible fieldset label without repeating page heading.
+  if (isset($form['account'])) {
+    $form['account']['#title'] = t('Edit your account information');
+  }
+
 }

@@ -3,3 +3,6 @@ type: module
 description: 'A module to create an account nav item'
 package: Custom
 core_version_requirement: ^10 || ^11
+dependencies:
+  - wedding_guest:wedding_guest
+  - wedding_photos:wedding_photos

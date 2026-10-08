@@ -19125,7 +19125,7 @@ body:has(.hero-image--nav-light) {
 }
 @media (max-width: 575.98px) {
   #wedding-account-offcanvas {
-    --bs-offcanvas-width: min(90vh, 26rem);
+    --bs-offcanvas-width: min(90vw, 26rem);
   }
 }
 .wedding-account__status {
@@ -19136,7 +19136,180 @@ body:has(.hero-image--nav-light) {
 }
 .wedding-account__status .bi {
   flex: 0 0 auto;
-  margin-top: 0.125re;
+  margin-top: 0.125rem;
+}
+.wedding-account {
+  max-width: 56rem;
+  margin-inline: auto;
+  padding-block: clamp(2rem, 5vw, 4rem);
+}
+.wedding-account__header {
+  margin-bottom: clamp(3rem, 5vw, 4rem);
+  text-align: center;
+}
+.wedding-account__eyebrow {
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+}
+.wedding-account__title {
+  margin-bottom: 1rem;
+}
+.wedding-account__intro {
+  margin-bottom: 0;
+  opacity: 0.75;
+}
+.wedding-account__section {
+  padding-block: clamp(2rem, 4vw, 3.5rem);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+.wedding-account__section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.wedding-account__section-number {
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  opacity: 0.45;
+}
+.wedding-account__section-title {
+  margin: 0;
+}
+.wedding-account__summary {
+  margin-bottom: 1.5rem;
+}
+.wedding-account__label {
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.wedding-account__value {
+  margin-block: 0;
+  overflow-wrap: anywhere;
+}
+.wedding-account__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+.wedding-account__edit {
+  margin-top: 2rem;
+}
+.wedding-account form {
+  max-width: 34rem;
+}
+.wedding-account #edit-account {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.wedding-account .fieldset-legend {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+.wedding-account .form-item-mail,
+.wedding-account .form-item-current-pass,
+.wedding-account .form-item-pass {
+  margin-bottom: 1.75rem;
+}
+.wedding-account .form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.wedding-account input.form-control {
+  width: 100%;
+}
+.wedding-account .description {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--bs-secondary-color);
+}
+.wedding-account .password-parent {
+  margin-bottom: 1.5rem;
+}
+.wedding-account .password-strength-meter {
+  margin-bottom: 0.35rem;
+}
+.wedding-account .password-strength__title,
+.wedding-account .password-confirm-message {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.wedding-account .password-confirm-message {
+  margin-top: 0.5rem;
+}
+.wedding-account__description {
+  margin-bottom: 1.5rem;
+  opacity: 0.75;
+}
+.wedding-account__photo-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.25rem 0 0;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--bs-secondary-color);
+}
+.wedding-account__photo-status .bi {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+@media (max-width: 767.98px) {
+  .wedding-account {
+    padding-block: 2rem;
+  }
+  .wedding-account__header {
+    margin-bottom: 2.5rem;
+  }
+  .wedding-account__section-header {
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .wedding-account__section-number {
+    font-size: 1.25rem;
+  }
+}
+.wedding-account__photo-grid .view-my-wedding-photographs .view-content {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.wedding-account__photo-grid .view-my-wedding-photographs .views-row {
+  min-width: 0;
+}
+.wedding-account__photo-grid .view-my-wedding-photographs .views-field,
+.wedding-account__photo-grid .view-my-wedding-photographs .field-content {
+  width: 100%;
+  height: 100%;
+}
+.wedding-account__photo-grid .view-my-wedding-photographs img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+@media (max-width: 767.98px) {
+  .wedding-account__photo-grid .view-my-wedding-photographs .view-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
 }
 .wedding-photo-upload {
   width: 100%;

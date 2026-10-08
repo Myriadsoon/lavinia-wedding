@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+{% embed "radix:views-view--unformatted" with {
+  rows: rows,
+  default_row_class: default_row_class,
+  row_utility_classes: row_utility_classes,
+}%}
+  {% block views_unformatted_rows %}
+    {% for row in rows %}
+      {% set row_classes = [
+        default_row_class ? 'views-row',
+        'wedding-account__photo',
+      ]|merge(row_utility_classes ?: []) %}
+
+      <div {{ row.attributes.addClass(row_classes) }}>
+        {{ row.content }}
+
+        {% if row.moderation_state == 'pending' %}
+          <p class="wedding-account__photo-status">
+            <i class="bi bi-clock-history" aria-hidden="true"></i>
+            {{ 'Awaiting approval'|t }}
+          </p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% endblock %}
+{% endembed %}

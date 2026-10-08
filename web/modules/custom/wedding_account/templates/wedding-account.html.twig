@@ -1,0 +1,158 @@
+<section class="wedding-account">
+  {# Page iintroduction. #}
+  <header class="wedding-account__header">
+    <p class="wedding-account__eyebrow">
+      {{ 'Lavinia & Edward · 29 May 2027'|t }}
+    </p>
+
+    <h1 class="wedding-account__title">
+      {{ 'My account'|t }}
+    </h1>
+
+    <p class="wedding-account__intro">
+      {{ 'Your personal details and wedding photographs'|t }}
+    </p>
+  </header>
+
+
+  {# 01 - Account details. #}
+  <section class="wedding-account__section wedding-account__account-details"
+    aria-labelledby="wedding-account-details-heading">
+
+    <header class="wedding-account__section-header">
+      <span class="wedding-account__section-number" aria-hidden="true">01</span>
+      <h2 id="wedding-account-detais-heading"
+        class="wedding-account__section-title">
+        {{ 'Account details'|t }}
+      </h2>
+    </header>
+
+    <div class="row g-4 wedding-account__summary">
+      <div class="col-12 col-md-6 wedding-account__item">
+        <h3 class="wedding-account__label">{{ 'Username'|t }}</h3>
+        <p class="wedding-account__value">{{ username }}</p>
+      </div>
+
+      <div class="col-12 col-md-6 wedding-account__item">
+        <h3 class="wedding-account__label">{{ 'Email address'|t }}</h3>
+        <p class="wedding-account__value">{{ email }}</p>
+      </div>
+    </div>
+
+    <div class="wedding-account__actions">
+      <button
+        class="btn button--secondary"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#wedding-account-edit"
+        aria-expanded="false"
+        aria-controls="wedding-account-edit"
+        >
+        {{ 'Edit account details'|t }}
+      </button>
+    </div>
+
+    <div
+      class="collapse wedding-account__edit"
+        id="wedding-account-edit">
+      {{ account_form }}
+    </div>
+
+  </section>
+
+  {# 02 - Wedding questionnaire details #}
+  <section class="wedding-account__section wedding-account__guest-details"
+    aria-labelledby="wedding-guest-details-heading">
+
+    <header class="wedding-account__section-header">
+      <span class="wedding-account__section-number" aria-hidden="true">02</span>
+      <h2 id="wedding-guest-details-heading"
+        class="wedding-account__section-title">
+        {{ 'Your form status.'|t }}
+      </h2>
+    </header>
+
+    {% if guest_response.dietary_status %}
+
+      <div class="row g-4 wedding-account__summary">
+        <div class="col-12 col-md-5 wedding-account__item">
+          <h3 class="wedding-account__label">
+            {{ 'Dietary requirements'|t }}
+          </h3>
+
+          {% if guest_response.dietary_status == 'yes' %}
+            <p class="wedding-account__value">
+              {{ guest_response.dietary_requirements }}
+            </p>
+          {% else %}
+            <p class="wedding-account__value">
+              {{ 'I have reported I have no special dietary requirements.'|t }}
+            </p>
+          {% endif %}
+        </div>
+
+        {% if guest_response.marriage_advice %}
+          <div class="col-12 col-md-6 wedding-account__item">
+            <h3 class="wedding-account__label">
+              {{ 'Marriage advice I have offered'|t }}
+            </h3>
+            <p class="wedding-account__value">
+              {{ guest_response.marriage_advice }}
+            </p>
+          </div>
+        {% endif %}
+
+      </div>
+
+      <div class="wedding-account__actions">
+        <a href="{{ guest_details_url }}"
+           class="btn button--secondary">
+          {{ 'Edit your details' }}
+        </a>
+      </div>
+
+    {% else %}
+
+      <p class="wedding-account__empty">
+        {{ 'You have not yet completed your wedding details form.'|t }}
+      </p>
+
+      <div class="wedding-account__actions">
+        <a href="{{ guest_details_url }}"
+           class="btn btn--secondary">
+          {{ 'Add your details' }}
+        </a>
+      </div>
+
+    {% endif %}
+
+  </section>
+
+  {# 03 - Photographs. #}
+  <section class="wedding-account__section wedding-account__photographs"
+    aria-labelledby="wedding-photographs-heading">
+
+    <header class="wedding-account__section-header">
+      <span class="wedding-account__section-number">03</span>
+      <h2 id="wedding-photographs-heading"
+        class="wedding-account__section-title">
+        {{ 'Your photographs'|t }}
+      </h2>
+    </header>
+
+    <div class="wedding-account__photo-grid">
+      {{ photographs }}
+    </div>
+
+    <div class="wedding-account__actions">
+      <a href="{{ photo_upload_url }}" class="btn button--secondary">
+        {{ 'Share your photos'|t }}
+      </a>
+
+    </div>
+
+  </section>
+
+</section>
+
+

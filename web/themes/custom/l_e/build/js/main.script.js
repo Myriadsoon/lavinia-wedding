@@ -5696,6 +5696,28 @@
       }
     };
   })(Drupal, once);
+
+  // src/js/_wedding-account-validation.js
+  (function(Drupal2, once2) {
+    Drupal2.behaviors.weddingAccountValidation = {
+      attach(context) {
+        once2("wedding-account-validation", ".wedding-account__edit", context).forEach((panel) => {
+          const invalidField = panel.querySelector('[aria-invalid="true"]');
+          if (!invalidField) {
+            return;
+          }
+          panel.classList.add("show");
+          const toggle = document.querySelector(
+            `[data-bs-target="#${panel.id}"]`
+          );
+          if (toggle) {
+            toggle.setAttribute("aria-expanded", true);
+            toggle.classList.remove("collapsed");
+          }
+        });
+      }
+    };
+  })(Drupal, once);
 })();
 /*! Bundled license information:
 

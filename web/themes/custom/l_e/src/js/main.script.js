@@ -5,3 +5,4 @@ import './_bootstrap';
 import './_wedding-day-timeline';
 import './_wedding-photo-moderation'
 import './_wedding-photo-upload';
+import './_wedding-account-validation'

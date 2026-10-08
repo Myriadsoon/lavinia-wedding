@@ -36,18 +36,37 @@ function l_e_preprocess_photoswipe_image_formatter(array &$variables): void {
 function l_e_preprocess_views_view_unformatted(array &$variables): void {
   $view = $variables['view'] ?? null;
 
-  if (
-    !$view
-    || $view->id() !== 'wedding_photos_gallery'
-    || $view->current_display !== 'page_1'
-  ) {
+  if (!$view) {
     return;
   }
 
-  $can_download = \Drupal::currentUser()->hasPermission('download wedding photos');
+  // Main wedding gallery: expose photographs download permission.
+  if (
+    $view->id() === 'wedding_photos_gallery' &&
+    $view->current_display === 'page_1'
+  ) {
+    $can_download = \Drupal::currentUser()->hasPermission('download wedding photos');
+    $variables['can_download_wedding_photos'] = $can_download;
+    $view->element['#cache']['contexts'][] = 'user.permissions';
+  }
 
-  $variables['can_download_wedding_photos'] = $can_download;
+  // Account photographs: expose each photograph's moderation state.
+  if (
+    $view->id() === 'my_wedding_photographs' &&
+    $view->current_display === 'block_1'
+  ) {
+    foreach ($variables['rows'] as $index => &$row) {
+      $node = $view->result[$index]->_entity ?? NULL;
 
-  $view->element['#cache']['contexts'][] = 'user.permissions';
+      $row['moderation_state'] = (
+        $node &&
+        $node->hasField('moderation_state') &&
+        !$node->get('moderation_state')->isEmpty()
+      )
+        ? $node->get('moderation_state')->value
+        : NULL;
+    }
+    unset($row);
+  }
 
 }
