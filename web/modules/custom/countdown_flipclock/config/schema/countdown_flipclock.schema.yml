@@ -1,0 +1,22 @@
+block.settings.countdown_flipclock_block:
+  type: block_settings
+  label: 'Countdown FlipClock settings'
+  mapping:
+    title:
+      type: label
+      label: 'Countdown heading'
+    target_datetime:
+      type: string
+      label: 'Target date and time'
+    show_months:
+      type: boolean
+      label: 'Show months'
+    show_weeks:
+      type: boolean
+      label: 'Show weeks'
+    show_days:
+      type: boolean
+      label: 'Show days'
+    show_hours:
+      type: boolean
+      label: 'Show hours'

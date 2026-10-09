@@ -5,19 +5,19 @@
 .countdown-flipclock {
   --countdown-flipclock-gap: clamp(0.5rem, 2vw, 1.5rem);
 
-  --countdown-flipclock-card-width: clamp(4rem, 18vw, 7rem);
-  --countdown-flipclock-card-height: clamp(3rem, 13vw, 5rem);
-  --countdown-flipclock-card-font-size: clamp(1.8rem, 7vw, 3rem);
+  --countdown-flipclock-card-width: clamp(3.5rem, 15vw, 5.5rem);
+  --countdown-flipclock-card-height: clamp(2.75rem, 11vw, 4rem);
+  --countdown-flipclock-card-font-size: clamp(1.6rem, 6vw, 2.5rem);
   --countdown-flipclock-card-font-weight: 700;
-  --countdown-flipclock-card-border-radius: clamp(0.3rem, 1vw, 0.5rem);
+  --countdown-flipclock-card-border-radius: clamp(0.25rem, 0.8vw, 0.4rem);
 
-  --countdown-flipclock-card-top-background: #2b2b2b;
-  --countdown-flipclock-card-bottom-background: #1f1f1f;
-  --countdown-flipclock-card-foreground: #ffffff;
+  --countdown-flipclock-card-top-background: #f1ede5;
+  --countdown-flipclock-card-bottom-background: #e5dfd5;
+  --countdown-flipclock-card-foreground: #34312d;
 
-  --countdown-flipclock-card-highlight: rgba(255, 255, 255, 0.12);
-  --countdown-flipclock-card-shadow: rgba(0, 0, 0, 0.35);
-  --countdown-flipclock-card-seam: rgba(255, 255, 255, 0.15);
+  --countdown-flipclock-card-highlight: rgba(255, 255, 255, 0.35);
+  --countdown-flipclock-card-shadow: rgba(65, 55, 45, 0.12);
+  --countdown-flipclock-card-seam: rgba(65, 55, 45, 0.25);
 
   --countdown-flipclock-flip-duration: 600ms;
   --countdown-flipclock-flip-easing: cubic-bezier(.37, .01, .19, 1.06);
@@ -32,8 +32,8 @@
 }
 
 .countdown-flipclock__title {
-  margin-bottom: clamp(1rem, 4vw, 2rem);
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
+  font-size: clamp(1.5rem, 4vw, 2.125rem);
 }
 
 .countdown-flipclock__units {
@@ -54,6 +54,13 @@
   font-size: clamp(0.65rem, 2vw, 0.875rem);
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+
+.countdown-flipclock__eyebrow {
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
 }
 
 /* ==========================================================

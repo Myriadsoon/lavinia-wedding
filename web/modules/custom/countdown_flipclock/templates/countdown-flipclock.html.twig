@@ -1,5 +1,12 @@
 <section class="countdown-flipclock" data-countdown-flipclock data-countdown-target="{{ target_datetime|e('html_attr') }}">
-  <h2 class="countdown-flipclock__title">{{ title }}</h2>
+  <header class="countdown-flipclock__header">
+    <p class="countdown-flipclock__eyebrow">
+      {{ 'Lavinia & Edward · 29 May 2027'|t }}
+    </p>
+    <h1 class="countdown-flipclock__title">
+      {{ title }}
+    </h1>
+  </header>
 
   <div class="countdown-flipclock__units">
     {% for unit, value in units %}
@@ -22,8 +29,14 @@
           </div>
         </div>
 
+        {% set unit_labels = {
+          'months': 'Months'|t,
+          'weeks': 'Weeks'|t,
+          'days': 'Days'|t,
+          'hours': 'Hours'|t,
+        } %}
         <div class="countdown-flipclock__label">
-          {{ unit|capitalize }}
+          {{ unit_labels[unit] }}
         </div>
       </div>
     {% endfor %}

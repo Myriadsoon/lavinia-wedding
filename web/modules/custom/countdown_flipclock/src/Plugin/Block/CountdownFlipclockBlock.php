@@ -19,7 +19,7 @@ final class CountdownFlipclockBlock extends BlockBase
 
   public function defaultConfiguration(): array {
     return [
-        'title' => 'Countdown clock',
+        'title' => $this->t('Countdown to the big event'),
         'target_datetime' => '2027-05-29T14:30:00+01:00',
         'show_months' => TRUE,
         'show_weeks' => TRUE,

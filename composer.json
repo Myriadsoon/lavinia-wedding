@@ -23,6 +23,7 @@
         "drupal/paragraphs": "^1.23",
         "drupal/photoswipe": "^5.0",
         "drupal/radix": "^6.0",
+        "drupal/symfony_mailer": "^2.0",
         "drupal/views_data_export": "^1.10",
         "drush/drush": "^13.7"
     },
