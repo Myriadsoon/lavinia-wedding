@@ -1,9 +1,15 @@
+{#
+Radix only renders the offcanvas_body block when
+offcanvas_content is truthy. Supply a non-empty string
+to satisfy that condition and the component's string schema.
+The actual content is provided by the block override below.
+#}
 {% embed 'radix:offcanvas' with {
   offcanvas_id: 'wedding-account-offcanvas',
   placement: 'end',
   offcanvas_title: 'Your account'|t,
   offcanvas_title_tag: 'h2',
-  offcanvas_content: true,
+  offcanvas_content: 'Provided by offcanvas_body block',
 } %}
 
   {% block offcanvas_toggler %}
