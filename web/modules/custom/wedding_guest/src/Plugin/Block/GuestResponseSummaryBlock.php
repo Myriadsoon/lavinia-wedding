@@ -5,8 +5,10 @@ namespace Drupal\wedding_guest\Plugin\Block;
 use Drupal\Core\Access\AccessManagerInterface;
 use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -48,6 +50,10 @@ class GuestResponseSummaryBlock extends BlockBase implements ContainerFactoryPlu
     );
   }
 
+  public function getCacheContexts() {
+    return Cache::mergeContexts(parent::getCacheContexts(), ['user']);
+  }
+
   public function build(): array {
     $account = $this->entityTypeManager
       ->getStorage('user')
@@ -61,18 +67,23 @@ class GuestResponseSummaryBlock extends BlockBase implements ContainerFactoryPlu
     $dietary_requirements = $account->get('field_dietary_requirements')->value;
     $marriage_advice = $account->get('field_marriage_advice')->value;
 
+    $edit_url = Url::fromRoute('wedding_guest.guest_details')
+      ->toString(TRUE);
+
     $build = [
       '#theme' => 'wedding_guest_response_summary',
       '#dietary_status' => $dietary_status,
       '#dietary_requirements' => $dietary_requirements,
       '#marriage_advice' => $marriage_advice,
-      '#edit_url' => Url::fromRoute('wedding_guest.guest_details')->toString(),
+      '#edit_url' => $edit_url->getGeneratedUrl(),
       '#cache' => [
         'contexts' => ['user'],
       ],
     ];
 
-    \Drupal\Core\Cache\CacheableMetadata::createFromObject($account)
+    BubbleableMetadata::createFromRenderArray($build)
+      ->addCacheableDependency($account)
+      ->addCacheableDependency($edit_url)
       ->applyTo($build);
 
     return $build;

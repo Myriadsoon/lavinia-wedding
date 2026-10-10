@@ -5,7 +5,9 @@ namespace Drupal\wedding_account\Plugin\Block;
 
 use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -25,6 +27,7 @@ class WeddingAccountBlockContent extends BlockBase implements ContainerFactoryPl
     $plugin_id,
     $plugin_definition,
     protected AccountProxyInterface $currentUser,
+    protected EntityTypeManagerInterface $entityTypeManager,
     protected ?GuestStatus $guestStatus = null,
   ) {
     parent::__construct(
@@ -45,6 +48,7 @@ class WeddingAccountBlockContent extends BlockBase implements ContainerFactoryPl
       $plugin_id,
       $plugin_definition,
       $container->get('current_user'),
+      $container->get('entity_type.manager'),
       $container->has('wedding_guest.status')
         ? $container->get('wedding_guest.status')
         : NULL,
@@ -56,33 +60,65 @@ class WeddingAccountBlockContent extends BlockBase implements ContainerFactoryPl
    */
   public function build() {
     $logged_in = $this->currentUser->isAuthenticated();
+    $metadata = new BubbleableMetadata();
+    $metadata->addCacheContexts(['user']);
+
+    if ($logged_in) {
+      $account = $this->entityTypeManager->getStorage('user')
+        ->load($this->currentUser->id());
+      if ($account) {
+        $metadata->addCacheableDependency($account);
+      }
+    }
+
+    // Retain URL cacheability and attachments, including logout placeholders.
+    $generate_url = static function (Url $url) use ($metadata): string {
+      $generated_url = $url->toString(TRUE);
+      $metadata->addCacheableDependency($generated_url);
+      return $generated_url->getGeneratedUrl();
+    };
+
     $display_name = $this->currentUser->getDisplayName();
-    $account_url = Url::fromRoute('entity.user.canonical', ['user' => $this->currentUser->id()])->toString();
-    $logout_url = Url::fromRoute('user.logout')->toString();
+    $account_url = $logged_in
+      ? $generate_url(Url::fromRoute('entity.user.canonical', ['user' => $this->currentUser->id()]))
+      : NULL;
+    $logout_url = $logged_in
+      ? $generate_url(Url::fromRoute('user.logout'))
+      : NULL;
 
     $guest_available = $logged_in && $this->guestStatus !== NULL;
     $guest_complete = $guest_available
       ? $this->guestStatus->isComplete((int) $this->currentUser->id())
       : NULL;
 
-    $guest_details_url = Url::fromRoute('wedding_guest.guest_details')->toString();
+    $guest_details_url = $generate_url(Url::fromRoute('wedding_guest.guest_details'));
 
     $photo_upload_route = Url::fromRoute('wedding_photos.upload');
-    $can_upload_photos = $logged_in && $photo_upload_route->access($this->currentUser);
+    $can_upload_photos = FALSE;
+    if ($logged_in) {
+      $upload_access = $photo_upload_route->access($this->currentUser, TRUE);
+      $metadata->addCacheableDependency($upload_access);
+      $can_upload_photos = $upload_access->isAllowed();
+    }
     $photo_upload_url = $can_upload_photos
-      ? $photo_upload_route->toString()
+      ? $generate_url($photo_upload_route)
       : NULL;
 
     $photo_moderation_route = Url::fromRoute('view.wedding_photo_moderation.page_1');
-    $can_moderate_photos = $logged_in && $photo_moderation_route->access($this->currentUser);
+    $can_moderate_photos = FALSE;
+    if ($logged_in) {
+      $moderation_access = $photo_moderation_route->access($this->currentUser, TRUE);
+      $metadata->addCacheableDependency($moderation_access);
+      $can_moderate_photos = $moderation_access->isAllowed();
+    }
     $photo_moderation_url = $can_moderate_photos
-      ? $photo_moderation_route->toString()
+      ? $generate_url($photo_moderation_route)
       : NULL;
 
-    $login_url = Url::fromRoute('user.login')->toString();
-    $password_url = Url::fromRoute('user.pass')->toString();
+    $login_url = $generate_url(Url::fromRoute('user.login'));
+    $password_url = $generate_url(Url::fromRoute('user.pass'));
 
-    return [
+    $build = [
       '#theme' => 'wedding_account_content',
       '#logged_in' => $logged_in,
       '#display_name' => $logged_in ? $display_name : NULL,
@@ -101,6 +137,12 @@ class WeddingAccountBlockContent extends BlockBase implements ContainerFactoryPl
         'contexts' => ['user'],
       ],
     ];
+
+    BubbleableMetadata::createFromRenderArray($build)
+      ->merge($metadata)
+      ->applyTo($build);
+
+    return $build;
   }
 
 }

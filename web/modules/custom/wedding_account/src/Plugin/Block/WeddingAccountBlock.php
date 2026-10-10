@@ -4,6 +4,7 @@ namespace Drupal\wedding_account\Plugin\Block;
 
 use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Url;
 use Drupal\user\UserInterface;
 use Drupal\views\Views;
@@ -60,29 +61,18 @@ class WeddingAccountBlock extends BlockBase implements ContainerFactoryPluginInt
    * {@inheritdoc }
    */
   protected function blockAccess(AccountInterface $account): AccessResult {
-    // Only authenticated users can access the dashboard.
-    if ($account->isAnonymous()) {
-      return AccessResult::forbidden()
-        ->addCacheContexts(['user.roles:authenticated']);
-    }
-
-    // The dashboard belongs exclusively on the canonical user page.
-    if ($this->routeMatch->getRouteName() !== 'entity.user.canonical') {
-      return AccessResult::forbidden()
-        ->addCacheContexts(['route']);
-    }
-
-    // The account being viewed must belong to the logged in user.
+    // The personal dashboard belongs only on its owner's canonical page.
     $route_user = $this->routeMatch->getParameter('user');
+    $is_owner = $account->isAuthenticated()
+      && $this->routeMatch->getRouteName() === 'entity.user.canonical'
+      && $route_user instanceof UserInterface
+      && (int) $route_user->id() === (int) $account->id();
 
-    if (!$route_user instanceof UserInterface) {
-      return AccessResult::forbidden()
-        ->addCacheContexts(['route']);
-    }
+    $access = $is_owner
+      ? AccessResult::allowed()
+      : AccessResult::forbidden();
 
-    // Limit the user account view only to authenticated users.
-    return AccessResult::allowedIf($account->isAuthenticated())
-      ->addCacheContexts(['user.roles:authenticated']);
+    return $access->addCacheContexts(['route', 'user']);
   }
 
   /**
@@ -123,15 +113,17 @@ class WeddingAccountBlock extends BlockBase implements ContainerFactoryPluginInt
       $photographs_build = $photographs->buildRenderable('block_1');
     }
 
+    $guest_details_url = Url::fromRoute(
+      'wedding_guest.guest_details',
+    )->toString(TRUE);
+
     $build = [
       '#theme' => 'wedding_account',
       '#username' => $account->getAccountName(),
       '#email' => $account->getEmail(),
       '#account_form' => $account_form,
       '#guest_response' => $response,
-      '#guest_details_url' => Url::fromRoute(
-        'wedding_guest.guest_details',
-      )->toString(),
+      '#guest_details_url' => $guest_details_url->getGeneratedUrl(),
       '#photo_upload_url' => Url::fromRoute(
         'wedding_photos.upload',
       ),
@@ -141,7 +133,9 @@ class WeddingAccountBlock extends BlockBase implements ContainerFactoryPluginInt
       ],
     ];
 
-    \Drupal\Core\Cache\CacheableMetadata::createFromObject($account)
+    BubbleableMetadata::createFromRenderArray($build)
+      ->addCacheableDependency($account)
+      ->addCacheableDependency($guest_details_url)
       ->applyTo($build);
 
     return $build;
