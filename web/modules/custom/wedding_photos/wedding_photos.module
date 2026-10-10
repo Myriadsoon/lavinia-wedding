@@ -133,3 +133,96 @@ function wedding_photos_moderation_validate(
   }
 }
 
+/**
+ * Implements wedding_photos_mail()
+ */
+function wedding_photos_mail(string $key, array &$message, array $params): void {
+
+  if ($key !== 'gallery_invitation') {
+    return;
+  }
+
+  $login_url = $params['login_url'];
+  $langcode = $message['langcode'];
+
+  if ($langcode === 'it') {
+    $message['subject'] = 'Invito alla galleria fotografica del matrimonio';
+
+    $message['body'][] = implode("\n\n", [
+      'Ciao!',
+      'Sei stato invitato a vedere le fotografie del matrimonio di Lavinia ed Ed.',
+      'Per accedere alla galleria, utilizza questo link per impostare la tua password:',
+      $login_url,
+      'Questo link può essere utilizzato una sola volta.',
+      'A presto!',
+      'Lavinia ed Ed',
+    ]);
+  }
+  else {
+    $message['subject'] = 'Invitation to the wedding gallery';
+
+    $message['body'][] = implode("\n\n", [
+        'Hello!',
+        'You have been invited to view the photographs from Lavinia and Ed\'s wedding.',
+        'To access the gallery, use this link to set your password:',
+        $login_url,
+        'This link can only be used once.',
+        'We hope you enjoy the photographs!',
+        'Lavinia and Ed',
+      ]);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function wedding_photos_form_user_form_alter(
+  array &$form,
+  FormStateInterface $form_state,
+  string $form_id
+): void {
+
+  $account = $form_state->getFormObject()->getEntity();
+
+  // Only affect gallery-only users.
+  $roles = $account->getRoles(TRUE);
+
+  if (
+    count($roles) !== 1 ||
+    !in_array('wedding_gallery_viewer', $roles, TRUE)
+  ) {
+    return;
+  }
+
+  // Only redirect after a one-time login.
+  if (!$form_state->get('user_pass_reset')) {
+    return;
+  }
+
+  // Run after Drupal's normal account-saving submit handler.
+  $form['actions']['submit']['#submit'][] =
+    'wedding_photos_gallery_activation_redirect';
+}
+
+/**
+ * Redirects a newly activated gallery viewer to the photo gallery.
+ */
+function wedding_photos_gallery_activation_redirect(
+  array &$form,
+  FormStateInterface $form_state,
+): void {
+
+  $account = $form_state->getFormObject()->getEntity();
+
+  $language = \Drupal::languageManager()
+    ->getLanguage($account->getPreferredLangcode());
+
+  $url = \Drupal\Core\Url::fromRoute(
+    'view.wedding_photos_gallery.page_1',
+    [],
+    ['language' => $language]
+  );
+
+  $form_state->setRedirectUrl($url);
+  
+}

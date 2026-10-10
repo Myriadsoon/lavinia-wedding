@@ -17,3 +17,8 @@ view unpublished wedding photos:
 download wedding photos:
   title: 'Download wedding photos'
   description: 'Download original wedding photographs.'
+
+manage wedding gallery invitations:
+  title: 'Manage wedding gallery invitations'
+  description: 'Invite users to view the wedding photo gallery'
+  restrict access: true

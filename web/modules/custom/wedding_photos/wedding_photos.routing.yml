@@ -34,3 +34,11 @@ wedding_photos.download:
     parameters:
       node:
         type: entity:node
+
+wedding_photos.gallery_invitations:
+  path: '/photos/invitations'
+  defaults:
+    _form: '\Drupal\wedding_photos\Form\GalleryInvitationForm'
+    _title: 'Invite gallery viewers'
+  requirements:
+    _permission: 'manage wedding gallery invitations'

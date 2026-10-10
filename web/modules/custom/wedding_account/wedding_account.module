@@ -45,7 +45,6 @@ function wedding_account_theme($existing, $type, $theme, $path) {
  * Implements hook_form_FORM_ID_alter()
  */
 function wedding_account_form_user_form_alter(&$form, &$form_state):void {
-
   $current_user = \Drupal::currentUser();
   $account = $form_state->getFormObject()->getEntity();
 
