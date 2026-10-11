@@ -1,0 +1,5 @@
+name: 'Wedding Access'
+type: module
+description: 'Require authentication for the wedding website, with explicit exceptions for the authentication process.'
+package: Custom
+core_version_requirement: ^10 || ^11

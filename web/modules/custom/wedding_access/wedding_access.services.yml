@@ -1,0 +1,10 @@
+services:
+  wedding_access.access_check:
+    class: Drupal\wedding_access\Access\WeddingAccessCheck
+    tags:
+      - { name: access_check, applies_to: _wedding_auth_required }
+
+  wedding_access.route_subscriber:
+    class: Drupal\wedding_access\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
