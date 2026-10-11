@@ -118,7 +118,7 @@
         include 'radix:heading' with {
           content: label|default(''),
           heading_html_tag: heading_html_tag|default('h3'),
-          title_link: title_link|default(url),
+          title_link: title_link ?? url ?? false,
           heading_attributes: title_attributes,
           heading_utility_classes: [
             'my-3',
