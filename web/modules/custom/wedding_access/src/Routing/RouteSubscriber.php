@@ -11,12 +11,43 @@ use Symfony\Component\Routing\RouteCollection;
 final class RouteSubscriber extends RouteSubscriberBase {
 
   /**
+   * Routes that must remain available without authentication.
+   */
+  private const PUBLIC_ROUTES = [
+    'user.login',
+    'user.pass',
+    'user.reset',
+    'user.reset.form',
+    'user.reset.login',
+    'user.cancel_confirm',
+    'user.well-known.change_password',
+  ];
+
+  /**
    * @inheritDoc
    */
-  protected function alterRoutes(RouteCollection $collection) {
-    if ($route = $collection->get('entity.node.canonical')) {
+  protected function alterRoutes(RouteCollection $collection): void {
+    foreach ($collection->all() as $route_name => $route) {
+      if (in_array($route_name,self::PUBLIC_ROUTES, true)) {
+        continue;
+      }
+
       $route->setRequirement('_wedding_auth_required', TRUE);
     }
   }
+  /**
+   * {@inheritdoc }
+   */
+  public static function getSubscribedEvents(): array {
+    $events = parent::getSubscribedEvents();
 
+    $events[\Drupal\Core\Routing\RoutingEvents::ALTER] = [
+      'onAlterRoutes',
+      -1000,
+    ];
+
+    return $events;
+  }
 }
+
+

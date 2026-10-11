@@ -8,3 +8,10 @@ services:
     class: Drupal\wedding_access\Routing\RouteSubscriber
     tags:
       - { name: event_subscriber }
+
+  wedding_access.login_redirect_subscriber:
+    class: Drupal\wedding_access\EventSubscriber\LoginRedirectSubscriber
+    arguments:
+      - '@current_user'
+    tags:
+      - { name: event_subscriber }
