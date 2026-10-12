@@ -54,8 +54,28 @@ h2,
 .page-title {
   font-family: newsreader, Serif;
 }
+:root {
+  --le-navbar-height: 5rem;
+}
 .page-nav-offset {
   top: var(--drupal-displace-offset-top, 0px);
+}
+.page-main--nav-offset {
+  padding-top: 5rem;
+}
+main {
+  padding-top: 1.5rem;
+}
+.page-main--nav-offset {
+  padding-top: var(--le-navbar-height);
+}
+.block__header .block-system-breadcrumb-block nav {
+  margin-bottom: 1rem;
+}
+.page__content #user-form {
+  width: 100%;
+  max-width: 640px;
+  margin-inline: auto;
 }
 :root,
 [data-bs-theme=light] {
@@ -335,8 +355,28 @@ h2,
   --bs-form-invalid-color: rgb(234, 133.8, 143.4);
   --bs-form-invalid-border-color: rgb(234, 133.8, 143.4);
 }
+:root {
+  --le-navbar-height: 5rem;
+}
 .page-nav-offset {
   top: var(--drupal-displace-offset-top, 0px);
+}
+.page-main--nav-offset {
+  padding-top: 5rem;
+}
+main {
+  padding-top: 1.5rem;
+}
+.page-main--nav-offset {
+  padding-top: var(--le-navbar-height);
+}
+.block__header .block-system-breadcrumb-block nav {
+  margin-bottom: 1rem;
+}
+.page__content #user-form {
+  width: 100%;
+  max-width: 640px;
+  margin-inline: auto;
 }
 :root,
 [data-bs-theme=light] {
@@ -19641,6 +19681,141 @@ body:has(.hero-image--nav-light) {
   .wedding-content-frame__ornament--holy-trinity {
     width: var(--angel-width);
     top: -2rem;
+  }
+}
+.wedding-auth {
+  --auth-welcome-x: 50%;
+  --auth-welcome-y: 12%;
+  --auth-form-x: 50%;
+  --auth-form-y: 72%;
+  --auth-form-text-color: #fffaf0;
+  --auth-btn-bg-color: #596449;
+  --auth-btn-bg-border: #596449;
+  --auth-btn-hover-bg-color: #46513a;
+  --auth-btn-hover-bg-border: #46513a;
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  background-image: url(/themes/custom/l_e/assets/images/auth/login-page-background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.wedding-auth__welcome,
+.wedding-auth__form {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: min(90%, 420px);
+}
+.wedding-auth__welcome {
+  left: var(--auth-welcome-x);
+  top: var(--auth-welcome-y);
+  text-align: center;
+}
+.wedding-auth__form {
+  left: var(--auth-form-x);
+  top: var(--auth-form-y);
+}
+.wedding-auth__eyebrow {
+  margin: 0;
+  font-size: clamp(0.875rem, 1.2vw, 1.125rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--auth-form-text-color);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+}
+.wedding-auth__form .form-label {
+  color: var(--auth-form-text-color);
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+.wedding-auth .form-actions {
+  margin-top: 1.5rem;
+}
+.wedding-auth .form-actions .btn {
+  background-color: var(--auth-btn-bg-color);
+  border-color: var(--auth-btn-bg-border);
+  color: #fff;
+  padding: 0.65rem 1.75rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease;
+}
+.wedding-auth .form-actions .btn:hover {
+  background-color: var(--auth-btn-hover-bg-color);
+  border-color: var(--auth-btn-hover-bg-border);
+}
+.wedding-auth .form-actions .btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+.wedding-auth__language {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  z-index: 10;
+}
+.wedding-auth__language a {
+  color: var(--auth-form-text-color);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.25rem;
+  transition: border-color 0.2s ease;
+}
+.wedding-auth__language a:hover,
+.wedding-auth__language a:focus-visible,
+.wedding-auth__language a.is-active,
+.wedding-auth__language a[aria-current=page] {
+  color: var(--auth-form-text-color);
+  border-bottom-color: currentColor;
+}
+.wedding-auth__language:hover,
+.wedding-auth__language:focus-visible {
+  color: #fff;
+  text-decoration: none;
+}
+.wedding-auth__recovery {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+.wedding-auth__recovery a {
+  color: var(--auth-form-text-color);
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-decoration: none;
+  text-shadow: 0.1px 4px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.2rem;
+  transition: border-color 0.2s ease;
+}
+.wedding-auth__recovery a:hover,
+.wedding-auth__recovery a:focus-visible {
+  color: var(--auth-form-text-color);
+  border-bottom-color: currentColor;
+}
+.wedding-auth .user-pass.needs-validation p {
+  color: var(--auth-form-text-color);
+  text-shadow: 0.1px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
+}
+.wedding-auth .user-pass-reset p {
+  color: var(--auth-form-text-color);
+  text-shadow: 0.1px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
+}
+@media (max-width: 767.98px) {
+  .wedding-auth {
+    --auth-welcome-y: 10%;
+    --auth-form-y: 68%;
+  }
+  .wedding-auth .wedding-auth__welcome {
+    width: min(92%, 420px);
+  }
+  .wedding-auth .wedding-auth__eyebrow {
+    font-size: 0.875rem;
+    line-height: 1.6;
   }
 }
 /*!

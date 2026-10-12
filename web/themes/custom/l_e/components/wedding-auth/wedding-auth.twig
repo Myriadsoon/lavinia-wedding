@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Shared wedding authentication layout.
+ *
+ * Props:
+ * - heading: Authentication page heading.
+ *
+ * Slots:
+ * - language_switcher: Drupal language switcher.
+ * - auth_content: Authentication form and links.
+ */
+#}
+
+<div class="page page--authentication">
+
+  <main class="wedding-auth" id="main-content">
+
+    {% if language_switcher %}
+      <div class="wedding-auth__language">
+        {{ language_switcher }}
+      </div>
+    {% endif %}
+
+    {% if heading %}
+      <div class="wedding-auth__welcome">
+        <h1 class="wedding-auth__eyebrow">
+          {{ heading }}
+        </h1>
+      </div>
+    {% endif %}
+
+    <div class="wedding-auth__form">
+      {% block auth_content %}
+        {{ auth_content }}
+      {% endblock %}
+    </div>
+
+  </main>
+
+</div>

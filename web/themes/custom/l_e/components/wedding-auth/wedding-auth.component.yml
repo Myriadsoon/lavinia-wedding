@@ -1,0 +1,22 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/11.x/core/modules/sdc/src/metadata.schema.json
+
+name: Wedding Authentication
+description: Shared layout for wedding authentication pages.
+
+status: stable
+
+props:
+  type: object
+  properties:
+    heading:
+      type: string
+      title: Heading
+
+slots:
+  language_switcher:
+    title: Language switcher
+    description: Drupal language switcher block.
+
+  auth_content:
+    title: Authentication content
+    description: Drupal authentication form and associated links.

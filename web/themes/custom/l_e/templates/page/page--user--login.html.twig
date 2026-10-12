@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Wedding login page.
+ */
+#}
+
+{% embed 'l_e:wedding-auth' with {
+  heading: 'Lavinia & Edward · 29 May 2027'|t,
+  language_switcher: page.navbar_left
+} %}
+
+  {% block auth_content %}
+
+    {{ page.content }}
+
+    <div class="wedding-auth__recovery">
+      <a href="{{ path('user.pass') }}">
+        {{ 'Forgotten password?'|t }}
+      </a>
+    </div>
+
+  {% endblock %}
+
+{% endembed %}

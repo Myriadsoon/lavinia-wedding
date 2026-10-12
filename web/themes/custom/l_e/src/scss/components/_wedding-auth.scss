@@ -1,0 +1,171 @@
+.wedding-auth {
+  --auth-welcome-x: 50%;
+  --auth-welcome-y: 12%;
+
+  --auth-form-x: 50%;
+  --auth-form-y: 72%;
+
+  --auth-form-text-color: #fffaf0;
+  --auth-btn-bg-color: #596449;
+  --auth-btn-bg-border: #596449;
+
+  --auth-btn-hover-bg-color: #46513a;
+  --auth-btn-hover-bg-border: #46513a;
+
+
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+
+
+  background-image: url("/themes/custom/l_e/assets/images/auth/login-page-background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__welcome,
+  &__form {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: min(90%, 420px);
+  }
+
+  &__welcome {
+    left: var(--auth-welcome-x);
+    top: var(--auth-welcome-y);
+    text-align: center;
+  }
+
+  &__form {
+    left: var(--auth-form-x);
+    top: var(--auth-form-y);
+  }
+
+  &__eyebrow {
+    margin: 0;
+    font-size: clamp(0.875rem, 1.2vw, 1.125rem);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--auth-form-text-color);
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+  }
+
+  &__form {
+    .form-label {
+      color: var(--auth-form-text-color);
+      font-weight: 500;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  .form-actions {
+    margin-top: 1.5rem;
+  }
+
+  .form-actions .btn {
+    background-color: var(--auth-btn-bg-color);
+    border-color: var(--auth-btn-bg-border);
+    color: #fff;
+    padding: 0.65rem 1.75rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--auth-btn-hover-bg-color);
+      border-color: var(--auth-btn-hover-bg-border);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+
+  }
+
+  &__language {
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    z-index: 10;
+
+    a {
+      color: var(--auth-form-text-color);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+      text-decoration: none;
+
+      border-bottom: 1px solid transparent;
+      padding-bottom: 0.25rem;
+
+      transition: border-color 0.2s ease;
+
+      &:hover,
+      &:focus-visible,
+      &.is-active,
+      &[aria-current="page"] {
+        color: var(--auth-form-text-color);
+        border-bottom-color: currentColor;
+      }
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  &__recovery {
+    margin-top: 1.25rem;
+    text-align: center;
+
+    a {
+      color: var(--auth-form-text-color);
+      font-size: 0.9rem;
+      font-weight: 400;
+      text-decoration: none;
+      text-shadow: 0.1px 4px rgba(0, 0, 0, 0.5);
+
+      border-bottom: 1px solid transparent;
+      padding-bottom: 0.2rem;
+
+      transition: border-color 0.2s ease;
+
+      &:hover,
+      &:focus-visible {
+        color: var(--auth-form-text-color);
+        border-bottom-color: currentColor;
+      }
+    }
+  }
+
+  .user-pass.needs-validation {
+    p {
+      color: var(--auth-form-text-color);
+      text-shadow: 0.1px 4px rgba(0, 0, 0, 0.5);
+      line-height: 1.5;
+    }
+  }
+
+  .user-pass-reset {
+    p {
+      color: var(--auth-form-text-color);
+      text-shadow: 0.1px 4px rgba(0, 0, 0, 0.5);
+      line-height: 1.5;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    --auth-welcome-y: 10%;
+    --auth-form-y: 68%;
+
+    .wedding-auth__welcome {
+      width: min(92%, 420px);
+    }
+
+    .wedding-auth__eyebrow {
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+  }
+}

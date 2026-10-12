@@ -21,7 +21,8 @@
 {% set page_main_attributes = page_main_attributes ? : create_attribute() %}
 
 {%
-  set page_main_classes = []|merge(page_main_utility_classes ?: [])
+  set page_main_classes = [not page.hero ? 'page-main--nav-offset',
+]|merge(page_main_utility_classes ?: [])
 %}
 {%
   set page_hero_classes = []|merge(page_hero_utility_classes ?: [])

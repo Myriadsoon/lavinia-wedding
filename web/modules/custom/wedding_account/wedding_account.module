@@ -55,7 +55,10 @@ function wedding_account_form_user_form_alter(&$form, &$form_state):void {
   // can still access full user form to make amendments.
   If (
     (int) $current_user->id() !== (int) $account->id()
-    || !in_array('wedding_guest', $current_user->getRoles(), TRUE)
+    || !array_intersect(
+      ['wedding_guest', 'wedding_gallery_viewer'],
+      $current_user->getRoles()
+    )
   ) {
     return;
   }

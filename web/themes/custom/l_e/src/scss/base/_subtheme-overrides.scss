@@ -1,5 +1,39 @@
 // Any l_e specific overrides.
 // -----------------------------------------------------------------------------
+:root {
+  --le-navbar-height: 5rem;
+}
+
 .page-nav-offset{
   top: var(--drupal-displace-offset-top, 0px);
+}
+
+.page-main--nav-offset {
+  padding-top: 5rem;
+}
+
+main {
+  padding-top: 1.5rem;
+}
+
+.page-main--nav-offset {
+  padding-top: var(--le-navbar-height);
+}
+
+.block__header {
+  .block-system-breadcrumb-block {
+
+    nav {
+      margin-bottom: 1rem;
+    }
+
+  }
+}
+
+.page__content {
+  #user-form {
+    width: 100%;
+    max-width: 640px;
+    margin-inline: auto;
+  }
 }
