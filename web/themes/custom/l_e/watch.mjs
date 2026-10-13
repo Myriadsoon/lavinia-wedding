@@ -115,7 +115,10 @@ async function rebuildJsContext() {
     bundle: true,
     minify: false,
     sourcemap: true,
-    external: ['/themes/*'],
+    external: [
+      '/themes/*',
+      '../assets/fonts/*',
+    ],
     plugins: [reloadPlugin],
   });
   await jsContext.watch();

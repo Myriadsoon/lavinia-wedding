@@ -30,7 +30,10 @@ if (Object.keys(jsEntries).length > 0) {
     bundle: true,
     minify: false,
     sourcemap: true,
-    external: ['/themes/*'],
+    external: [
+      '/themes/*',
+      '../assets/fonts/*',
+    ],
   })
 }
 

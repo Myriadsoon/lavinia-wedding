@@ -45,7 +45,10 @@ await build({
   minify: true,
   sourcemap: false,
   outdir: 'build',
-  external: ['/themes/*'],
+  external: ['' +
+    '/themes/*',
+    '../assets/fonts/*',
+  ],
   plugins: [
     makeSassPlugin(),
     stylelintPlugin,
