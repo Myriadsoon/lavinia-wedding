@@ -37,6 +37,9 @@ final class RouteSubscriber extends RouteSubscriberBase {
   }
   /**
    * {@inheritdoc }
+   *
+   * Assigns our route alteration handler low priority so that
+   * our subscriber runs after subscribers with higher priority.
    */
   public static function getSubscribedEvents(): array {
     $events = parent::getSubscribedEvents();

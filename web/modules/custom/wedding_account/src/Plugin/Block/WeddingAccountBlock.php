@@ -91,52 +91,70 @@ class WeddingAccountBlock extends BlockBase implements ContainerFactoryPluginInt
       return [];
     }
 
-    $response = $this->guestResponse->getResponse(
-      (int) $this->currentUser->id()
-    );
+    $roles = $account->getRoles(TRUE);
 
-    if ($response === NULL) {
-      return [];
+    $gallery_only = in_array('wedding_gallery_viewer', $roles, TRUE)
+      && !in_array('wedding_guest', $roles, TRUE)
+      && !in_array('wedding_photo_moderator', $roles, TRUE)
+      && !in_array('administrator', $roles, TRUE);
+
+    $response = NULL;
+    $photographs_build = NULL;
+    $guest_details_url = NULL;
+    $photo_upload_url = NULL;
+
+    if (!$gallery_only) {
+      $response = $this->guestResponse->getResponse(
+        (int) $this->currentUser->id()
+      );
+
+      if ($response === NULL) {
+        return [];
+      }
+
+      $photographs = Views::getView('my_wedding_photographs');
+
+      if ($photographs) {
+        $photographs_build = $photographs->buildRenderable('block_1');
+      }
+
+      $guest_details_url = Url::fromRoute(
+        'wedding_guest.guest_details',
+      )->toString(TRUE);
+
+      $photo_upload_url = Url::fromRoute(
+        'wedding_photos.upload',
+      );
+
     }
-
 
     $account_form = $this->entityFormBuilder->getForm(
       $account,
       'default',
     );
 
-    $photographs = Views::getView('my_wedding_photographs');
-
-    $photographs_build = [];
-
-    if ($photographs) {
-      $photographs_build = $photographs->buildRenderable('block_1');
-    }
-
-    $guest_details_url = Url::fromRoute(
-      'wedding_guest.guest_details',
-    )->toString(TRUE);
-
     $build = [
       '#theme' => 'wedding_account',
+      '#gallery_only' => $gallery_only,
       '#username' => $account->getAccountName(),
       '#email' => $account->getEmail(),
       '#account_form' => $account_form,
       '#guest_response' => $response,
-      '#guest_details_url' => $guest_details_url->getGeneratedUrl(),
-      '#photo_upload_url' => Url::fromRoute(
-        'wedding_photos.upload',
-      ),
+      '#guest_details_url' => $guest_details_url?->getGeneratedUrl(),
+      '#photo_upload_url' => $photo_upload_url,
       '#photographs' => $photographs_build,
       '#cache' => [
         'contexts' => ['user'],
       ],
     ];
 
-    BubbleableMetadata::createFromRenderArray($build)
-      ->addCacheableDependency($account)
-      ->addCacheableDependency($guest_details_url)
-      ->applyTo($build);
+    $metadata = BubbleableMetadata::createFromRenderArray($build)
+      ->addCacheableDependency($account);
+      if ($guest_details_url !== NULL) {
+        $metadata->addCacheableDependency($guest_details_url);
+      }
+
+      $metadata->applyTo($build);
 
     return $build;
 

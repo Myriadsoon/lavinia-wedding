@@ -29,4 +29,19 @@ function l_e_preprocess_block(array &$variables): void {
       $variables['attributes']['class'][] = 'hero-image--nav-dark';
     }
   }
+
+  if (($variables['plugin_id'] ?? '') !== 'system_breadcrumb_block') {
+    return;
+  }
+
+  $roles = \Drupal::currentUser()->getRoles();
+
+  $gallery_only = in_array('wedding_gallery_viewer', $roles, TRUE)
+    && !in_array('wedding_guest', $roles, TRUE)
+    && !in_array('wedding_photo_moderator', $roles, TRUE)
+    && !in_array('administrator', $roles, TRUE);
+
+  if ($gallery_only) {
+    $variables['content'] = [];
+  }
 }

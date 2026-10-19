@@ -86,12 +86,17 @@ class WeddingAccountBlockContent extends BlockBase implements ContainerFactoryPl
       ? $generate_url(Url::fromRoute('user.logout'))
       : NULL;
 
-    $guest_available = $logged_in && $this->guestStatus !== NULL;
+    $guest_available = $logged_in
+      && in_array('wedding_guest', $this->currentUser->getRoles(), TRUE)
+      && $this->guestStatus !== NULL;
+
     $guest_complete = $guest_available
       ? $this->guestStatus->isComplete((int) $this->currentUser->id())
       : NULL;
 
-    $guest_details_url = $generate_url(Url::fromRoute('wedding_guest.guest_details'));
+    $guest_details_url = $guest_available
+      ? $generate_url(Url::fromRoute('wedding_guest.guest_details'))
+      : NULL;
 
     $photo_upload_route = Url::fromRoute('wedding_photos.upload');
     $can_upload_photos = FALSE;

@@ -32,6 +32,7 @@ function wedding_account_theme($existing, $type, $theme, $path) {
     'wedding_account' => [
       'variables' => [
         'username' => NULL,
+        'gallery_only' => FALSE,
         'email' => NULL,
         'account_form' => NULL,
         'guest_response' => NULL,
@@ -53,8 +54,9 @@ function wedding_account_form_user_form_alter(&$form, &$form_state):void {
   // Check to see if current user is altering their user form and
   // that they have the 'wedding_guest' role. So that Administrators
   // can still access full user form to make amendments.
-  If (
+  if (
     (int) $current_user->id() !== (int) $account->id()
+    || in_array('administrator', $current_user->getRoles(), TRUE)
     || !array_intersect(
       ['wedding_guest', 'wedding_gallery_viewer'],
       $current_user->getRoles()
@@ -141,13 +143,6 @@ function wedding_account_login_redirect(
     return;
   }
 
-  // Leave explicitly supplied destinations to Drupal core.
-  $request = \Drupal::request();
-  if ($request->query->has('destination')
-    || $request->request->has('destination')) {
-    return;
-  }
-
   $account = User::load($uid);
   if (!$account) {
     return;
@@ -162,13 +157,38 @@ function wedding_account_login_redirect(
     $account->getPreferredLangcode(),
   ) ?? $language_manager->getDefaultLanguage();
 
+  // Gallery-only visitors must always reach the gallery.
+  if ($gallery_only) {
+    $url = Url::fromRoute(
+      'view.wedding_photos_gallery.page_1',
+      [],
+      ['language' => $language],
+    );
+
+    // Prevent the original destination from overriding our redirect.
+    \Drupal::request()->query->remove('destination');
+    \Drupal::request()->request->remove('destination');
+
+    $form_state->setRedirectUrl($url);
+    return;
+  }
+
+  // Preserve explicit destinations for other users.
+  $request = \Drupal::request();
+  if ($request->query->has('destination')
+    || $request->request->has('destination')) {
+    return;
+  }
+
+  // Other authenticated users return to the homepage
   $url = Url::fromRoute(
-    $gallery_only ? 'view.wedding_photos_gallery.page_1' : '<front>',
+    '<front>',
     [],
     ['language' => $language],
   );
 
   $form_state->setRedirectUrl($url);
+
 }
 
 /**
@@ -185,18 +205,25 @@ function wedding_account_initial_password_redirect(
   }
 
   // Respect an explicit destination, if present
-  $request = \Drupal::request();
-
-  if ($request->query->has('destination')
-    || $request->request->has('destination')
-  ) {
-    return;
-  }
-
   $roles = $account->getRoles(TRUE);
 
   $gallery_only = count($roles) === 1
     && in_array('wedding_gallery_viewer', $roles, TRUE);
+
+  // Preserve explicit destination for other account types.
+  $request = \Drupal::request();
+
+  if ($gallery_only) {
+    // Gallery-only users must return to the gallery
+    $request->query->remove('destination');
+    $request->request->remove('destination');
+  }
+  elseif (
+    $request->query->has('destination')
+    || $request->request->has('destination')
+  ) {
+    return;
+  }
 
   // Use the account's preferred language
   $language_manager = \Drupal::languageManager();
