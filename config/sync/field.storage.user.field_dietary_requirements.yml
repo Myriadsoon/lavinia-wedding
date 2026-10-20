@@ -1,0 +1,19 @@
+uuid: 6c42e9ad-1bc4-407d-9e98-eb6f7640b2fd
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_dietary_requirements
+field_name: field_dietary_requirements
+entity_type: user
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

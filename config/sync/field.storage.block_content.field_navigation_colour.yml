@@ -1,0 +1,27 @@
+uuid: cfffc208-6778-4acf-9392-17ad24bcf67b
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_navigation_colour
+field_name: field_navigation_colour
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: dark_text
+      label: 'Dark text'
+    -
+      value: light_text
+      label: 'Light text'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

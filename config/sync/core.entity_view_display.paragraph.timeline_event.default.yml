@@ -1,0 +1,66 @@
+uuid: a80cd765-5ff6-47eb-9315-5f5e0ee0d2b8
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.timeline_event.field_address
+    - field.field.paragraph.timeline_event.field_description
+    - field.field.paragraph.timeline_event.field_event_title
+    - field.field.paragraph.timeline_event.field_image
+    - field.field.paragraph.timeline_event.field_time
+    - field.field.paragraph.timeline_event.field_venue
+    - paragraphs.paragraphs_type.timeline_event
+id: paragraph.timeline_event.default
+targetEntityType: paragraph
+bundle: timeline_event
+mode: default
+content:
+  field_address:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_description:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_event_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_time:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_venue:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

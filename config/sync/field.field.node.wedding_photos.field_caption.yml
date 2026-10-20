@@ -1,0 +1,19 @@
+uuid: 811e1960-38d2-41e7-8316-5556b856739f
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_caption
+    - node.type.wedding_photos
+id: node.wedding_photos.field_caption
+field_name: field_caption
+entity_type: node
+bundle: wedding_photos
+label: Caption
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

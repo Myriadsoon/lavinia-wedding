@@ -1,0 +1,12 @@
+uuid: a4fb71b4-0022-48df-950e-e57ec037f1ed
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - wedding_photos
+id: wedding_gallery_viewer
+label: 'Wedding gallery viewer'
+weight: 6
+is_admin: false
+permissions:
+  - 'view wedding photo gallery'

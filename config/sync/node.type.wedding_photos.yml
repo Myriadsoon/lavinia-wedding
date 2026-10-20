@@ -1,0 +1,18 @@
+uuid: dee68ebb-c4b0-46a5-b615-5352aca1e140
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Wedding photos'
+type: wedding_photos
+description: 'A photograph uploaded by a wedding guest for inclusion in the private wedding gallery.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

@@ -1,0 +1,14 @@
+uuid: 66f5439b-8a9d-4556-9a75-a4b820d26c15
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - user.role.wedding_photo_moderator
+  module:
+    - user
+id: user_remove_role_action.wedding_photo_moderator
+label: 'Remove the Wedding photo moderator role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: wedding_photo_moderator

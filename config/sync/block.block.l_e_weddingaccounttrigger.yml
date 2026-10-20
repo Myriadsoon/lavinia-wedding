@@ -1,0 +1,20 @@
+uuid: 8cb21c34-ed60-43e7-a5ff-8ead7b36541a
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - wedding_account
+  theme:
+    - l_e
+id: l_e_weddingaccounttrigger
+theme: l_e
+region: navbar_controls
+weight: -7
+provider: null
+plugin: wedding_account_block_trigger
+settings:
+  id: wedding_account_block_trigger
+  label: 'Wedding Account Trigger'
+  label_display: '0'
+  provider: wedding_account
+visibility: {  }

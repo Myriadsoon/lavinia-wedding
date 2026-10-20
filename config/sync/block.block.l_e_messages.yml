@@ -1,0 +1,22 @@
+uuid: 97852ff6-593a-4444-9454-ce1632b63366
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - l_e
+_core:
+  default_config_hash: C_uUFW59VzhRdNvgGMxuAJDzwq9Ave7vkfLuWzWyW8A
+id: l_e_messages
+theme: l_e
+region: header
+weight: -5
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

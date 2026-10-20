@@ -1,0 +1,20 @@
+uuid: 94b46758-c9ae-479d-91fc-85492b800194
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_marriage_advice
+  module:
+    - user
+id: user.user.field_marriage_advice
+field_name: field_marriage_advice
+entity_type: user
+bundle: user
+label: 'Marriage advice'
+description: 'Marriage advice'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

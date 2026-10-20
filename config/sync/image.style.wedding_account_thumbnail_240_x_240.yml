@@ -1,0 +1,21 @@
+uuid: 7b326eeb-c9a6-4606-a4d1-c1b0b28d555e
+langcode: en-gb
+status: true
+dependencies: {  }
+name: wedding_account_thumbnail_240_x_240
+label: 'Wedding account thumbnail (240 x 240)'
+effects:
+  54a24321-bdf1-4b42-b189-49403ee16d60:
+    uuid: 54a24321-bdf1-4b42-b189-49403ee16d60
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 240
+      height: 240
+      anchor: center-center
+  953dff77-41d8-4daf-aae7-4d9441bc9a56:
+    uuid: 953dff77-41d8-4daf-aae7-4d9441bc9a56
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

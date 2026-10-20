@@ -1,0 +1,21 @@
+uuid: e08d3111-1432-4eb9-a4a8-bc273f54b905
+langcode: en-gb
+status: true
+dependencies: {  }
+name: hero_md
+label: hero_md
+effects:
+  7b5af707-32fd-4821-bec5-c0fb6d224487:
+    uuid: 7b5af707-32fd-4821-bec5-c0fb6d224487
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1280
+      height: 576
+      anchor: center-center
+  4d26f1dc-c4d9-427a-ae80-b43944cdea2e:
+    uuid: 4d26f1dc-c4d9-427a-ae80-b43944cdea2e
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

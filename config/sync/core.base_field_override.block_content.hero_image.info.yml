@@ -1,0 +1,18 @@
+uuid: 22b1f2d8-5276-430d-b7a5-619d700f2feb
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_image
+id: block_content.hero_image.info
+field_name: info
+entity_type: block_content
+bundle: hero_image
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

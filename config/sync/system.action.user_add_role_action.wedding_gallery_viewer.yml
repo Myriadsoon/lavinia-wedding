@@ -1,0 +1,14 @@
+uuid: 5e11e228-7031-49a9-87f4-db1045d20f70
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - user.role.wedding_gallery_viewer
+  module:
+    - user
+id: user_add_role_action.wedding_gallery_viewer
+label: 'Add the Wedding gallery viewer role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: wedding_gallery_viewer

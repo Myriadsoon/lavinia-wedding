@@ -1,0 +1,28 @@
+uuid: 8fcf2553-0432-4164-8e2f-8a82ad9a88c8
+langcode: en-gb
+status: true
+dependencies:
+  content:
+    - 'block_content:hero_image:5a312c04-8ca5-4194-87a9-d3072016fcd8'
+  module:
+    - block_content
+    - system
+  theme:
+    - l_e
+id: l_e_frontpageheroimage
+theme: l_e
+region: hero
+weight: -7
+provider: null
+plugin: 'block_content:5a312c04-8ca5-4194-87a9-d3072016fcd8'
+settings:
+  id: 'block_content:5a312c04-8ca5-4194-87a9-d3072016fcd8'
+  label: 'Frontpage hero image'
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

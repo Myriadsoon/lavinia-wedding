@@ -1,0 +1,38 @@
+uuid: 3c81fa81-f889-4350-9bf2-7495cdc16d2f
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.compact
+    - field.field.user.user.field_dietary_requirements
+    - field.field.user.user.field_dietary_status
+    - field.field.user.user.field_marriage_advice
+    - field.field.user.user.user_picture
+    - image.style.thumbnail
+  module:
+    - image
+    - user
+_core:
+  default_config_hash: 00zr_RBdTjPjBGITD3h4c1ESQZimjdVCcHGt1trLqIY
+id: user.user.compact
+targetEntityType: user
+bundle: user
+mode: compact
+content:
+  user_picture:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_dietary_requirements: true
+  field_dietary_status: true
+  field_marriage_advice: true
+  langcode: true
+  member_for: true

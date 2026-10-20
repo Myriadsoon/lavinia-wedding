@@ -1,0 +1,14 @@
+uuid: 3c4ee983-b82e-4f21-b05c-3e79e3868bd5
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - user.role.wedding_gallery_viewer
+  module:
+    - user
+id: user_remove_role_action.wedding_gallery_viewer
+label: 'Remove the Wedding gallery viewer role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: wedding_gallery_viewer

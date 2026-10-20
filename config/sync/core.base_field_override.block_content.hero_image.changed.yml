@@ -1,0 +1,18 @@
+uuid: e36d96d5-1f04-45c0-bbd8-6ef1b1e0e45a
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_image
+id: block_content.hero_image.changed
+field_name: changed
+entity_type: block_content
+bundle: hero_image
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

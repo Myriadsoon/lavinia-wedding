@@ -1,0 +1,65 @@
+uuid: 6a9ecbc9-b17c-4568-b6fb-936055d836d3
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.wedding_photos
+  module:
+    - content_moderation
+id: wedding_photograph_moderation
+label: 'Wedding photograph moderation'
+type: content_moderation
+type_settings:
+  states:
+    draft:
+      label: Draft
+      weight: 0
+      published: false
+      default_revision: false
+    pending:
+      label: Pending
+      weight: 2
+      published: false
+      default_revision: true
+    published:
+      label: Published
+      weight: 1
+      published: true
+      default_revision: true
+  transitions:
+    create_new_draft:
+      label: 'Create New Draft'
+      from:
+        - draft
+        - published
+      to: draft
+      weight: 0
+    create_pending_photograph:
+      label: 'Create pending photograph'
+      from:
+        - pending
+      to: pending
+      weight: 2
+    publish:
+      label: Publish
+      from:
+        - draft
+        - published
+      to: published
+      weight: 1
+    publish_photograph:
+      label: 'Publish photograph'
+      from:
+        - pending
+      to: published
+      weight: 3
+    unpublish_photograph:
+      label: 'Unpublish photograph'
+      from:
+        - published
+      to: pending
+      weight: 4
+  entity_types:
+    node:
+      - wedding_photos
+  default_moderation_state: pending

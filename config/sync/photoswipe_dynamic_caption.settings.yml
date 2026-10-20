@@ -1,0 +1,9 @@
+_core:
+  default_config_hash: iVlaUyC0UrFaf4uWuOm7Tqm--4fvxJQUg-U1CUc8mj4
+options:
+  type: below
+  mobileLayoutBreakpoint: 600
+  horizontalEdgeThreshold: 20
+  mobileCaptionOverlapRatio: 0.3
+  verticallyCenterImage: false
+allowHtmlCaptions: false

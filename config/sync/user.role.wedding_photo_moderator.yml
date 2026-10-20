@@ -1,0 +1,25 @@
+uuid: 4f12b923-298c-4823-90a7-a46ae839ac86
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.wedding_photos
+    - workflows.workflow.wedding_photograph_moderation
+  module:
+    - content_moderation
+    - node
+    - wedding_photos
+id: wedding_photo_moderator
+label: 'Wedding photo moderator'
+weight: 4
+is_admin: false
+permissions:
+  - 'access wedding photo moderation'
+  - 'delete any wedding_photos content'
+  - 'edit any wedding_photos content'
+  - 'manage wedding gallery invitations'
+  - 'upload wedding photos'
+  - 'use wedding_photograph_moderation transition create_pending_photograph'
+  - 'use wedding_photograph_moderation transition publish_photograph'
+  - 'use wedding_photograph_moderation transition unpublish_photograph'
+  - 'view unpublished wedding photos'

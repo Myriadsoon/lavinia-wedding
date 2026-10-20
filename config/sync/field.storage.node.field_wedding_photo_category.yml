@@ -1,0 +1,20 @@
+uuid: 379e6b6b-4c51-471d-9e31-693b0d0735db
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_wedding_photo_category
+field_name: field_wedding_photo_category
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

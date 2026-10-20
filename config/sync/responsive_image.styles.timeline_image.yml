@@ -1,0 +1,48 @@
+uuid: a4d6d887-5808-45b7-b166-2d404392dfd9
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - image.style.timeline_3x2_1200
+    - image.style.timeline_3x2_1440
+    - image.style.timeline_3x2_768
+    - image.style.timeline_3x2_960
+    - image.style.timeline_4x3_576
+    - image.style.timeline_4x3_768
+  theme:
+    - l_e
+id: timeline_image
+label: 'Timeline image'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: timeline_3x2_1440
+    breakpoint_id: default.xxl
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: timeline_3x2_1200
+    breakpoint_id: default.xl
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: timeline_3x2_960
+    breakpoint_id: default.lg
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: timeline_3x2_768
+    breakpoint_id: default.md
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: timeline_4x3_768
+    breakpoint_id: default.sm
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: timeline_4x3_576
+    breakpoint_id: default.xs
+    multiplier: 1x
+breakpoint_group: l_e
+fallback_image_style: timeline_4x3_576

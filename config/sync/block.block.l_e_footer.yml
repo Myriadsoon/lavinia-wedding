@@ -1,0 +1,27 @@
+uuid: 06c7f79c-0e38-4d3e-95df-4a3f665f0ad0
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+  theme:
+    - l_e
+_core:
+  default_config_hash: CFVdJg1mcpyJOMlDuUCxHd5PIodwcWliAFkuE53FBCE
+id: l_e_footer
+theme: l_e
+region: footer
+weight: -5
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: 'Footer menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

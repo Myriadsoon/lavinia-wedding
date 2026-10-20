@@ -1,0 +1,14 @@
+uuid: f4a529d2-8db8-4712-9598-b223023b1d1d
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - user.role.wedding_guest
+  module:
+    - user
+id: user_add_role_action.wedding_guest
+label: 'Add the Wedding guest role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: wedding_guest

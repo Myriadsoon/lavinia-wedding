@@ -1,0 +1,28 @@
+uuid: 7346f149-98e0-4cbc-9c96-27818413bf86
+langcode: en-gb
+status: true
+dependencies:
+  content:
+    - 'block_content:hero_image:8db0dc08-2011-4920-b288-bc6f80bdefae'
+  module:
+    - block_content
+    - system
+  theme:
+    - l_e
+id: l_e_savileclub
+theme: l_e
+region: hero
+weight: -6
+provider: null
+plugin: 'block_content:8db0dc08-2011-4920-b288-bc6f80bdefae'
+settings:
+  id: 'block_content:8db0dc08-2011-4920-b288-bc6f80bdefae'
+  label: 'Savile club'
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/2

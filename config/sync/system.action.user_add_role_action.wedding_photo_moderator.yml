@@ -1,0 +1,14 @@
+uuid: 9e54a062-5105-4f4c-ad38-86f55baf449e
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - user.role.wedding_photo_moderator
+  module:
+    - user
+id: user_add_role_action.wedding_photo_moderator
+label: 'Add the Wedding photo moderator role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: wedding_photo_moderator

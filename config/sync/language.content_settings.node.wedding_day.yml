@@ -1,0 +1,11 @@
+uuid: 8de538f6-d1ac-45cb-b38e-24352b89f68e
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.wedding_day
+id: node.wedding_day
+target_entity_type_id: node
+target_bundle: wedding_day
+default_langcode: site_default
+language_alterable: false

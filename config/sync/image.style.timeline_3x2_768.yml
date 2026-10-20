@@ -1,0 +1,15 @@
+uuid: b69b8058-1a7a-4474-8ef6-3eaa5c265865
+langcode: en-gb
+status: true
+dependencies: {  }
+name: timeline_3x2_768
+label: Timeline_3x2_768
+effects:
+  85c1fe41-d761-4a93-9799-26af6a75bbf8:
+    uuid: 85c1fe41-d761-4a93-9799-26af6a75bbf8
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 768
+      height: 512
+      anchor: center-center

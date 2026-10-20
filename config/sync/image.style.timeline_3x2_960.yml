@@ -1,0 +1,21 @@
+uuid: 88d2b1ac-e5c4-4116-acb2-8a46162df59a
+langcode: en-gb
+status: true
+dependencies: {  }
+name: timeline_3x2_960
+label: Timeline_3x2_960
+effects:
+  dd4997c2-00c7-4c81-87a6-45ec79e79e5d:
+    uuid: dd4997c2-00c7-4c81-87a6-45ec79e79e5d
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 960
+      height: 640
+      anchor: center-center
+  c9290164-6893-4e0b-8e6b-ecfab0f6d5d0:
+    uuid: c9290164-6893-4e0b-8e6b-ecfab0f6d5d0
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

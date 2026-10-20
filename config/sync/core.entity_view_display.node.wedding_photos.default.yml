@@ -1,0 +1,60 @@
+uuid: 235bf473-4232-4e26-8044-c9365c0d70c8
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.node.wedding_photos.field_caption
+    - field.field.node.wedding_photos.field_wedding_photo
+    - field.field.node.wedding_photos.field_wedding_photo_category
+    - node.type.wedding_photos
+  module:
+    - image
+    - photoswipe_dynamic_caption
+    - user
+id: node.wedding_photos.default
+targetEntityType: node
+bundle: wedding_photos
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_caption:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_wedding_photo:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings:
+      photoswipe_dynamic_caption:
+        photoswipe_caption: field_caption
+        photoswipe_caption_custom: ''
+    weight: 102
+    region: content
+  field_wedding_photo_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

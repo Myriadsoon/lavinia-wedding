@@ -1,0 +1,48 @@
+uuid: b5c2e770-caff-4315-9822-cbb4de329e4a
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - image.style.hero_lg
+    - image.style.hero_md
+    - image.style.hero_sm
+    - image.style.hero_xl
+    - image.style.hero_xs
+    - image.style.hero_xxl
+  theme:
+    - l_e
+id: hero_image
+label: 'Hero image'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: hero_xxl
+    breakpoint_id: default.xxl
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: hero_xl
+    breakpoint_id: default.xl
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: hero_lg
+    breakpoint_id: default.lg
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: hero_md
+    breakpoint_id: default.md
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: hero_sm
+    breakpoint_id: default.sm
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: hero_xs
+    breakpoint_id: default.xs
+    multiplier: 1x
+breakpoint_group: l_e
+fallback_image_style: hero_xs

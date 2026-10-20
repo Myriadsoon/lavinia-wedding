@@ -1,0 +1,16 @@
+uuid: 1e5c532d-3d44-439d-b5d2-78775100545b
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.wedding_photo_categories
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.wedding_photo_categories
+target_entity_type_id: taxonomy_term
+target_bundle: wedding_photo_categories
+default_langcode: site_default
+language_alterable: false

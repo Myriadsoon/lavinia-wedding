@@ -1,0 +1,29 @@
+uuid: 5c28ce0c-d6ce-4021-aae2-735bae55e0f7
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_wedding_photo_category
+    - node.type.wedding_photos
+    - taxonomy.vocabulary.wedding_photo_categories
+id: node.wedding_photos.field_wedding_photo_category
+field_name: field_wedding_photo_category
+entity_type: node
+bundle: wedding_photos
+label: 'Wedding photo category'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      wedding_photo_categories: wedding_photo_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

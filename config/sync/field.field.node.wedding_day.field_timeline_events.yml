@@ -1,0 +1,31 @@
+uuid: 98ced2ca-8b57-4b25-8b5a-3755db6eb15a
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_timeline_events
+    - node.type.wedding_day
+    - paragraphs.paragraphs_type.timeline_event
+  module:
+    - entity_reference_revisions
+id: node.wedding_day.field_timeline_events
+field_name: field_timeline_events
+entity_type: node
+bundle: wedding_day
+label: 'Timeline events'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      timeline_event: timeline_event
+    negate: 0
+    target_bundles_drag_drop:
+      timeline_event:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions

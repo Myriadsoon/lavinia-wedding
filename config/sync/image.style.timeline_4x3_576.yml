@@ -1,0 +1,21 @@
+uuid: 21cd4d97-428b-480f-9f9f-ce75bd752bea
+langcode: en-gb
+status: true
+dependencies: {  }
+name: timeline_4x3_576
+label: Timeline_4x3_576
+effects:
+  ad4b5c2e-a4e3-4bcd-b044-9fc25b366d9e:
+    uuid: ad4b5c2e-a4e3-4bcd-b044-9fc25b366d9e
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 576
+      height: 432
+      anchor: center-center
+  44aadb0f-7779-48c3-a2cb-399bfb70b8a7:
+    uuid: 44aadb0f-7779-48c3-a2cb-399bfb70b8a7
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

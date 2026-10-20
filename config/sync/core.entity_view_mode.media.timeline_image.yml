@@ -1,0 +1,11 @@
+uuid: ab04387b-a84c-41df-ba74-40d11801516b
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - media
+id: media.timeline_image
+label: 'Timeline image'
+description: 'Responsive image style for the timeline page'
+targetEntityType: media
+cache: true

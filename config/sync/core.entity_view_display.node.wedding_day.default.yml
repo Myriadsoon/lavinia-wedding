@@ -1,0 +1,31 @@
+uuid: 5f2d4a07-c649-4e4a-98a4-84c231e3835d
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.node.wedding_day.field_timeline_events
+    - node.type.wedding_day
+  module:
+    - entity_reference_revisions
+    - user
+id: node.wedding_day.default
+targetEntityType: node
+bundle: wedding_day
+mode: default
+content:
+  field_timeline_events:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

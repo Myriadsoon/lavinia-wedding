@@ -1,0 +1,27 @@
+uuid: 17bcbfc4-48d5-46e3-ae9f-2e36d119704d
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - l_e
+_core:
+  default_config_hash: '-bwiKgFKibhNjMBAiRR2CZFKAYZjj-1C7gbvWyAZe6k'
+id: l_e_main_menu
+theme: l_e
+region: navbar_right
+weight: -4
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 2
+  expand_all_items: false
+visibility: {  }

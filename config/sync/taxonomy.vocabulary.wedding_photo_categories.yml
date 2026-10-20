@@ -1,0 +1,9 @@
+uuid: 7cf7db67-b46f-4555-b785-b0b3a40d8c93
+langcode: en-gb
+status: true
+dependencies: {  }
+name: 'Wedding photo categories'
+vid: wedding_photo_categories
+description: 'The day-part the photograph belongs in.'
+weight: 0
+new_revision: false

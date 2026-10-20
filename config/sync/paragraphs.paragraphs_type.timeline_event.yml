@@ -1,0 +1,10 @@
+uuid: 37674d2e-23bd-45f0-b5d2-0319de07dc0e
+langcode: en-gb
+status: true
+dependencies: {  }
+id: timeline_event
+label: 'Timeline event'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

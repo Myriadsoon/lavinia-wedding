@@ -1,0 +1,21 @@
+uuid: 2467bc24-d697-4ae7-a7b6-49ceb2f006ce
+langcode: en-gb
+status: true
+dependencies: {  }
+name: timeline_3x2_1440
+label: Timeline_3x2_1440
+effects:
+  76ea6d71-fe1f-4c10-993b-92be6608dbde:
+    uuid: 76ea6d71-fe1f-4c10-993b-92be6608dbde
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1440
+      height: 960
+      anchor: center-center
+  45800831-7738-470b-862e-0a9e5266dfdd:
+    uuid: 45800831-7738-470b-862e-0a9e5266dfdd
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

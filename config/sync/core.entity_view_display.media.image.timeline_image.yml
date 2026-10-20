@@ -1,0 +1,35 @@
+uuid: 6df34c71-a855-4c04-a5f0-3193bd11f7f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.timeline_image
+    - field.field.media.image.field_media_image
+    - media.type.image
+    - responsive_image.styles.timeline_image
+  module:
+    - responsive_image
+_core:
+  default_config_hash: 73xaTNkI5J6sfFcBmNYeuk070X3mQS_iwwWaPYyfG2M
+id: media.image.timeline_image
+targetEntityType: media
+bundle: image
+mode: timeline_image
+content:
+  field_media_image:
+    type: responsive_image
+    label: visually_hidden
+    settings:
+      responsive_image_style: timeline_image
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

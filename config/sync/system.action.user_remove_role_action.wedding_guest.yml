@@ -1,0 +1,14 @@
+uuid: 353a4c19-182a-4797-ae8c-cc46cfc2a5e0
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - user.role.wedding_guest
+  module:
+    - user
+id: user_remove_role_action.wedding_guest
+label: 'Remove the Wedding guest role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: wedding_guest

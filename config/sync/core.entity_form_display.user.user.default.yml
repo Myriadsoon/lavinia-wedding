@@ -1,0 +1,53 @@
+uuid: d37379df-44d1-4c43-b8e8-822d0fe9998b
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_dietary_requirements
+    - field.field.user.user.field_dietary_status
+    - field.field.user.user.field_marriage_advice
+    - field.field.user.user.user_picture
+    - image.style.thumbnail
+  module:
+    - image
+    - user
+_core:
+  default_config_hash: Yj33guGRXeB-uq182k6bwtAUtKGpO17nkYxn8FnjhBM
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  account:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  language:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timezone:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  user_picture:
+    type: image_image
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+hidden:
+  field_dietary_requirements: true
+  field_dietary_status: true
+  field_marriage_advice: true
+  langcode: true

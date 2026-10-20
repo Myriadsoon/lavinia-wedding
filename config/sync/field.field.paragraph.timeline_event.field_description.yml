@@ -1,0 +1,19 @@
+uuid: 0d503877-b509-4d87-8fe4-926a62da6330
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.timeline_event
+id: paragraph.timeline_event.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: timeline_event
+label: Description
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

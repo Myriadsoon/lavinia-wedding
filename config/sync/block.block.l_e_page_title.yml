@@ -1,0 +1,30 @@
+uuid: f949fb06-662f-4cec-9fe8-8e1679a07623
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - node
+  theme:
+    - l_e
+_core:
+  default_config_hash: JtjyqJAtG60DpyMMukJGRXJkte2guxOdayzzp9t130Q
+id: l_e_page_title
+theme: l_e
+region: content
+weight: -7
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      article: article
+      page: page

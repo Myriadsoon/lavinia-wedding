@@ -1,0 +1,18 @@
+uuid: c4ca72c2-ccac-4daf-8b5b-63c91895b487
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.wedding_photos
+  module:
+    - node
+    - wedding_photos
+id: wedding_guest
+label: 'Wedding guest'
+weight: 5
+is_admin: false
+permissions:
+  - 'create wedding_photos content'
+  - 'download wedding photos'
+  - 'upload wedding photos'
+  - 'view wedding photo gallery'

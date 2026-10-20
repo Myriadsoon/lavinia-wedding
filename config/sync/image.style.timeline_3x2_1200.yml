@@ -1,0 +1,21 @@
+uuid: 1d9950d4-aaf6-4776-bfe6-463747dd0b05
+langcode: en-gb
+status: true
+dependencies: {  }
+name: timeline_3x2_1200
+label: Timeline_3x2_1200
+effects:
+  87f69810-7e1d-45a9-bab4-427a78aa1626:
+    uuid: 87f69810-7e1d-45a9-bab4-427a78aa1626
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 800
+      anchor: center-center
+  ac17b35a-a1be-4025-95f1-02f14de1e08d:
+    uuid: ac17b35a-a1be-4025-95f1-02f14de1e08d
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

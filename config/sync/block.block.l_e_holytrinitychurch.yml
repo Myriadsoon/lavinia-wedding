@@ -1,0 +1,28 @@
+uuid: 4df44607-1918-410a-bb2b-026b6a4bc04a
+langcode: en-gb
+status: true
+dependencies:
+  content:
+    - 'block_content:hero_image:45a18fb0-d77c-4774-9e08-6207fe1d0899'
+  module:
+    - block_content
+    - system
+  theme:
+    - l_e
+id: l_e_holytrinitychurch
+theme: l_e
+region: hero
+weight: -5
+provider: null
+plugin: 'block_content:45a18fb0-d77c-4774-9e08-6207fe1d0899'
+settings:
+  id: 'block_content:45a18fb0-d77c-4774-9e08-6207fe1d0899'
+  label: 'Holy Trinity Church'
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/55

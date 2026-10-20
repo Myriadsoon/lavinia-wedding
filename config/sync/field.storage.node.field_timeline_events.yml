@@ -1,0 +1,21 @@
+uuid: 25acbdef-6907-43c3-a960-00501ae9af17
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - node
+    - paragraphs
+id: node.field_timeline_events
+field_name: field_timeline_events
+entity_type: node
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

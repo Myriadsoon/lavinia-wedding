@@ -1,0 +1,21 @@
+uuid: 510f350a-6074-4e6d-9e02-88dd54b7a5da
+langcode: en-gb
+status: true
+dependencies: {  }
+name: wedding_lightbox_2400w
+label: 'Wedding lightbox (2400w)'
+effects:
+  1912b7cb-3e9d-4088-bac8-1e98c97430ac:
+    uuid: 1912b7cb-3e9d-4088-bac8-1e98c97430ac
+    id: image_scale
+    weight: 1
+    data:
+      width: 2400
+      height: null
+      upscale: false
+  beba2f5b-6907-493d-b2c9-a36739286276:
+    uuid: beba2f5b-6907-493d-b2c9-a36739286276
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

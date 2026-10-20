@@ -1,0 +1,44 @@
+uuid: b36b6c3a-9cad-43a9-9fec-177a865c9f64
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_image
+    - field.field.block_content.hero_image.field_hero_image
+    - field.field.block_content.hero_image.field_navigation_colour
+  module:
+    - media_library
+id: block_content.hero_image.default
+targetEntityType: block_content
+bundle: hero_image
+mode: default
+content:
+  field_hero_image:
+    type: media_library_widget
+    weight: 26
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_navigation_colour:
+    type: options_select
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

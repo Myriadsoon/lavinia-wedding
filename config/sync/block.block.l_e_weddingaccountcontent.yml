@@ -1,0 +1,20 @@
+uuid: 590e113d-73bf-4e18-9c23-0ab669bdd0a9
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - wedding_account
+  theme:
+    - l_e
+id: l_e_weddingaccountcontent
+theme: l_e
+region: footer
+weight: 0
+provider: null
+plugin: wedding_account_block_content
+settings:
+  id: wedding_account_block_content
+  label: 'Wedding Account Content'
+  label_display: '0'
+  provider: wedding_account
+visibility: {  }

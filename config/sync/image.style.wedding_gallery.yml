@@ -1,0 +1,21 @@
+uuid: a00bae73-ecc6-44df-838d-677b3d642c50
+langcode: en-gb
+status: true
+dependencies: {  }
+name: wedding_gallery
+label: 'Wedding gallery'
+effects:
+  9fbe26f6-f0d5-4fed-a850-6a98f4c4aa3d:
+    uuid: 9fbe26f6-f0d5-4fed-a850-6a98f4c4aa3d
+    id: image_scale
+    weight: 1
+    data:
+      width: 1000
+      height: null
+      upscale: false
+  12e99933-d1cb-4857-89e2-ca54bf603793:
+    uuid: 12e99933-d1cb-4857-89e2-ca54bf603793
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

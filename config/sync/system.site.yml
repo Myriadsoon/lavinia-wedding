@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: ijfbzDTN4CbE7Sr-6ubWzy_t1vH4OtU1doNCLssVz-4
+langcode: en-gb
+uuid: 692dbed7-9a42-4eb7-9217-db57ae8c8092
+name: 'Lavinia and Edward'
+mail: admin@lavinia-and-edward.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node/1
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en-gb
+mail_notification: ''
