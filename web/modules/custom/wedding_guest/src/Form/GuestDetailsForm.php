@@ -129,7 +129,7 @@ class GuestDetailsForm extends FormBase {
 
       $form['step_content']['dietary_requirements'] = [
         '#type' => 'textarea',
-        '#title' => $this->t('  Please tell us about your dietary Requirements'),
+        '#title' => $this->t('Please tell us about your dietary requirements'),
         '#default_value' => $form_state->get('dietary_requirements')
           ?? $account->get('field_dietary_requirements')->value,
         '#states' => [

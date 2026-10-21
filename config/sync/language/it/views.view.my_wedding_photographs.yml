@@ -1,0 +1,10 @@
+label: 'Le fotografie del mio matrimonio'
+display:
+  default:
+    display_options:
+      empty:
+        area:
+          admin_label: '<p>Non hai ancora condiviso nessuna fotografia.</p>'
+          content:
+            value: '<p>Non hai ancora condiviso nessuna fotografia.</p>'
+            format: basic_html

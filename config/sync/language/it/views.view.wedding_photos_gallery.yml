@@ -4,3 +4,10 @@ display:
       menu:
         title: 'Galleria fotografica'
         description: 'Una galleria di fotografie'
+  default:
+    display_options:
+      header:
+        area:
+          content:
+            value: '<h3>Galleria fotografica</h3>'
+            format: basic_html

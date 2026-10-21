@@ -1,0 +1,17 @@
+display:
+  default:
+    display_options:
+      fields:
+        field_dietary_requirements:
+          label: 'Esigenze alimentari'
+      filters:
+        field_dietary_status_value:
+          expose:
+            description: ''
+  page_1:
+    display_options:
+      header:
+        area:
+          content:
+            value: '<p><a href="/admin/people/wedding-guests/dietary/export">Download dietary CSV</a></p>'
+            format: basic_html
