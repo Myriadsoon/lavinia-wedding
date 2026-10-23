@@ -103,6 +103,13 @@ class WeddingAccountBlock extends BlockBase implements ContainerFactoryPluginInt
     $guest_details_url = NULL;
     $photo_upload_url = NULL;
 
+    $can_access_wedding_reports = $this->currentUser
+      ->hasPermission('access wedding reports');
+
+    $wedding_reports_url = $can_access_wedding_reports
+      ? Url::fromRoute('wedding_reports.dashboard')
+      : NULL;
+
     if (!$gallery_only) {
       $response = $this->guestResponse->getResponse(
         (int) $this->currentUser->id()
@@ -143,8 +150,10 @@ class WeddingAccountBlock extends BlockBase implements ContainerFactoryPluginInt
       '#guest_details_url' => $guest_details_url?->getGeneratedUrl(),
       '#photo_upload_url' => $photo_upload_url,
       '#photographs' => $photographs_build,
+      '#can_access_wedding_reports' => $can_access_wedding_reports,
+      '#wedding_reports_url' => $wedding_reports_url,
       '#cache' => [
-        'contexts' => ['user'],
+        'contexts' => ['user', 'user.permissions'],
       ],
     ];
 

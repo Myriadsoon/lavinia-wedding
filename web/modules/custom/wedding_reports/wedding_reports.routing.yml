@@ -1,0 +1,7 @@
+wedding_reports.dashboard:
+  path: '/wedding/reports'
+  defaults:
+    _controller: '\Drupal\wedding_reports\Controller\WeddingReportsController::dashboard'
+    _title: 'Wedding Reports'
+  requirements:
+    _permission: 'access wedding reports'

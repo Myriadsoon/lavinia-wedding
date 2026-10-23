@@ -1,0 +1,4 @@
+access wedding reports:
+  title: 'Access wedding reports'
+  description: 'Access the wedding reporting dashboard and associated reports'
+  restrict access: true

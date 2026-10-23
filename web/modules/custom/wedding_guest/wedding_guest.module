@@ -27,12 +27,14 @@ function wedding_guest_entity_field_access(
   if (in_array($field_definition->getName(), $protected_fields, TRUE)) {
 
     if ($operation === 'view') {
-      if ($account->hasPermission('view wedding guests responses')) {
+      if ($account->hasPermission('access wedding reports')) {
         return AccessResult::allowed()
-          ->cachePerUser();
+          ->cachePerPermissions();
       }
 
-      if ($items !== NULL && $items->getEntity()->id() === $account->id()) {
+      if ($items !== NULL &&
+        (int) $items->getEntity()->id() === $account->id()
+      ) {
         return AccessResult::allowed()
           ->cachePerUser();
       }
@@ -43,7 +45,9 @@ function wedding_guest_entity_field_access(
     }
 
     if ($operation === 'edit') {
-      if ($items !== NULL && $items->getEntity()->id() === $account->id()) {
+      if ($items !== NULL &&
+        (int) $items->getEntity()->id() === $account->id()
+      ) {
         return AccessResult::allowed()
           ->cachePerUser();
       }

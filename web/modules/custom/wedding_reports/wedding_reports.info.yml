@@ -1,0 +1,5 @@
+name: 'Wedding Reports'
+type: module
+description: 'Provides the wedding reporting dashboard and associated access permissions.'
+package: Wedding
+core_version_requirement: ^10 || ^11

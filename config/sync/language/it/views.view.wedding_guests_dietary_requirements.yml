@@ -4,10 +4,6 @@ display:
       fields:
         field_dietary_requirements:
           label: 'Esigenze alimentari'
-      filters:
-        field_dietary_status_value:
-          expose:
-            description: ''
   page_1:
     display_options:
       header:

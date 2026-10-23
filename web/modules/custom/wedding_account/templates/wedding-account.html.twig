@@ -53,6 +53,7 @@
         aria-controls="wedding-account-edit"
         >
         {{ 'Edit account details'|t }}
+        <i class="bi bi-arrow-up-right ms-2" aria-hidden="true"></i>
       </button>
     </div>
 
@@ -113,6 +114,7 @@
           <a href="{{ guest_details_url }}"
              class="btn button--secondary">
             {{ 'Edit your details'|t }}
+            <i class="bi bi-arrow-up-right ms-2" aria-hidden="true"></i>
           </a>
         </div>
 
@@ -126,6 +128,7 @@
           <a href="{{ guest_details_url }}"
              class="btn btn--secondary">
             {{ 'Add your details'|t }}
+            <i class="bi bi-arrow-up-right ms-2" aria-hidden="true"></i>
           </a>
         </div>
 
@@ -152,11 +155,43 @@
       <div class="wedding-account__actions">
         <a href="{{ photo_upload_url }}" class="btn button--secondary">
           {{ 'Share your photos'|t }}
+          <i class="bi bi-arrow-up-right ms-2" aria-hidden="true"></i>
         </a>
 
       </div>
 
     </section>
+  {% endif %}
+
+  {# 04 - Wedding administration. #}
+  {% if can_access_wedding_reports %}
+    <secion class="wedding-account__section wedding-account__reports"
+        aria-labelledby="wedding-account-reports-heading">
+
+      <header class="wedding-account__section-header">
+        <span class="wedding-account__secttion-number" aria-hidden="true">
+          04
+        </span>
+
+        <h2 id="wedding-account-reports-heading"
+          class="wedding-account__section-title">
+          {{ 'Wedding administration'|t }}
+        </h2>
+      </header>
+
+      <p>
+        {{ 'View guest responses, dietary requirements and photograph reports'|t }}
+      </p>
+
+      <div class="wedding-account__actions">
+        <a href="{{ wedding_reports_url }}"
+           class="btn button--secondary">
+          {{ 'view wedding reports'|t }}
+          <i class="bi bi-arrow-up-right ms-2" aria-hidden="true"></i>
+        </a>
+      </div>
+
+    </secion>
   {% endif %}
 
 </section>

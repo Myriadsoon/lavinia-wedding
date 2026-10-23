@@ -1,0 +1,12 @@
+uuid: 166373b1-7c64-4f7b-8041-904e8d90ab38
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - wedding_reports
+id: wedding_reports_manager
+label: 'Wedding reports manager'
+weight: 7
+is_admin: false
+permissions:
+  - 'access wedding reports'

@@ -39,6 +39,8 @@ function wedding_account_theme($existing, $type, $theme, $path) {
         'guest_details_url' => NULL,
         'photo_upload_url' => NULL,
         'photographs' => NULL,
+        'can_access_wedding_reports' => NULL,
+        'wedding_reports_url' => NULL,
       ],
     ],
   ];

@@ -1,0 +1,14 @@
+uuid: 8739b0c5-6642-4f1d-ae03-66faad321b23
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - user.role.wedding_reports_manager
+  module:
+    - user
+id: user_remove_role_action.wedding_reports_manager
+label: 'Remove the Wedding reports manager role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: wedding_reports_manager

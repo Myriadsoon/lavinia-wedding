@@ -64,6 +64,7 @@ module:
   wedding_account: 0
   wedding_guest: 0
   wedding_photos: 0
+  wedding_reports: 0
   workflows: 0
   content_translation: 10
   views: 10

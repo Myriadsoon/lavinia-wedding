@@ -67,3 +67,16 @@ pnpm-debug.log*
 
 # Keep the Drupal example out of Git
 /web/example.gitignore
+
+# Local DDEV TLS certificates
+.ddev/traefik/certs
+
+#Local Traefik configuration
+.ddev/traefik/config
+
+#Database backups.
+*.sql
+*.sql.gz
+
+#Environment-specific Drupal settings
+web/sites/default/staging.settings.php

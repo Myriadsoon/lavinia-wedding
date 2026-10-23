@@ -41,12 +41,30 @@ display:
           exclude: false
           alter:
             alter_text: false
+            text: ''
             make_link: false
+            path: ''
             absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
             word_boundary: false
             ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
             strip_tags: false
             trim: false
+            preserve_tags: ''
             html: false
           element_type: ''
           element_class: ''
@@ -62,7 +80,8 @@ display:
           hide_alter_empty: true
           click_sort_column: value
           type: user_name
-          settings: {  }
+          settings:
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -167,7 +186,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'view wedding guests responses'
+          perm: 'access wedding reports'
       cache:
         type: tag
         options: {  }
@@ -335,7 +354,7 @@ display:
             format_output: false
       display_description: ''
       display_extenders: {  }
-      path: admin/people/wedding-guests/dietary/export
+      path: wedding/reports/dietary/export
       filename: wedding_guests_dietary_requirements
       automatic_download: false
       export_method: standard
@@ -387,7 +406,7 @@ display:
           tokenize: false
       rendering_language: '***LANGUAGE_entity_translation***'
       display_extenders: {  }
-      path: admin/people/wedding-guests/dietary
+      path: wedding/reports/dietary
     cache_metadata:
       max-age: -1
       contexts:

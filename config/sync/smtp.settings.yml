@@ -1,5 +1,6 @@
 _core:
   default_config_hash: JqYNByWeXZGynyqoPRWQIjp3VcQhuoyq5WlM-7YzBvI
+langcode: en-gb
 smtp_on: false
 smtp_host: silverfindata.co.uk
 smtp_hostbackup: ''

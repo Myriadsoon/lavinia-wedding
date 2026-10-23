@@ -1,0 +1,78 @@
+{#
+/**@file
+  * Wedding reporting dashboard.
+  *
+  *Available variables:
+  * - report_groups: Groups containing report titles
+  *   descriptions and paths
+  */
+#}
+
+<div class="wedding-reports container py-5">
+
+  <header class="wedding-reports__header text-center mx-auto mb-5">
+
+    <p class="wedding-reports__eyebrow">
+      {{ 'Lavinia & Edward · 29 May 2027'|t }}
+    </p>
+
+    <h1>{{ 'Wedding reports'|t }}</h1>
+
+    <p class="wedding-reports__intro">
+      {{ 'Guest information and wedding administration'|t }}
+    </p>
+  </header>
+
+  {% for group in report_groups %}
+
+    <section class="wedding-reports__section mb-5">
+
+      <h2 class="wedding-reports__section-title mb-5">
+        {{ group.title }}
+      </h2>
+
+      <div class="row g-4">
+
+        {% for report in group.reports %}
+
+          <div class="col-12 col-md-6 col-xl-4">
+
+            {% set report_link_content %}
+              {{ 'View report'|t }}
+              <i class="bi bi-arrow-up-right ms-2" aria-hidden="true"></i>
+            {% endset %}
+
+            {% include 'radix:card' with {
+              card_title: report.title,
+              card_title_tag: 'h3',
+              card_body: report.description,
+              card_text_tag: 'p',
+              card_link_text: report_link_content,
+              card_link_url: report.path,
+              card_border: false,
+              card_utility_classes: [
+                'wedding-reports__card',
+                'h-100',
+                'position-relative',
+              ],
+              card_body_utility_classes: [
+                'd-flex',
+                'flex-column',
+              ],
+              card_link_utility_classes: [
+                'stretched-link',
+                'mt-auto',
+              ],
+            } only %}
+
+          </div>
+
+        {% endfor %}
+
+      </div>
+
+    </section>
+
+  {% endfor %}
+
+</div>
