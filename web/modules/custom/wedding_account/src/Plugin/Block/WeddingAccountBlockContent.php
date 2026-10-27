@@ -86,8 +86,13 @@ class WeddingAccountBlockContent extends BlockBase implements ContainerFactoryPl
       ? $generate_url(Url::fromRoute('user.logout'))
       : NULL;
 
+    $roles = $this->currentUser->getRoles();
+
     $guest_available = $logged_in
-      && in_array('wedding_guest', $this->currentUser->getRoles(), TRUE)
+      && (
+        in_array('wedding_guest', $roles, TRUE)
+        || in_array('administrator', $roles, TRUE)
+      )
       && $this->guestStatus !== NULL;
 
     $guest_complete = $guest_available
