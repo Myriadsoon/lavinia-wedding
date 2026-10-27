@@ -22,10 +22,16 @@ The actual content is provided by the block override below.
       <nav aria-label="{{ 'Account options'|t }}">
         <ul class="list-unstyled">
           <li>
-            <a href="{{ account_url }}">{{ 'My account'|t }}</a>
+            <a class="btn button-secondary" href="{{ account_url }}">
+              <span>{{ 'My account'|t }}</span>
+              <i class="bi bi-arrow-up-right ms-2"></i>
+            </a>
           </li>
           <li>
-            <a href="{{ logout_url }}">{{ 'Logout'|t }}</a>
+            <a class="btn button-secondary" href="{{ logout_url }}">
+              <span>{{ 'Logout'|t }}</span>
+              <i class="bi bi-box-arrow-right ms-2"></i>
+            </a>
           </li>
         </ul>
       </nav>
@@ -99,6 +105,22 @@ The actual content is provided by the block override below.
           {% endif %}
         </div>
       </div>
+    {% endif %}
+
+    {% if can_invite_viewers %}
+      <div class="wedding-account__gallery-invitations">
+        <h3 class="h6">{{ 'Gallery invitations'|t }}</h3>
+
+        <p>
+          {{ 'Invite visitors to view the Photo Gallery only.'|t }}
+        </p>
+
+        <a class="btn button-secondary" href="{{ gallery_invitations_form_url }}">
+          <span>{{ 'Invite'|t }}</span>
+          <i class="bi bi-arrow-up-right ms-2" aria-hidden="true"></i>
+        </a>
+      </div>
+
     {% endif %}
 
   {% endblock %}

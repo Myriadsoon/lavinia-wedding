@@ -46,7 +46,8 @@
 }
 
 .wedding-account__guest-status,
-.wedding-account__photos{
+.wedding-account__photos,
+.wedding-account__gallery-invitations {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(0, 0, 0, .12);
@@ -61,8 +62,7 @@
 }
 
 #wedding-account-offcanvas nav a {
-  text-decoration: none;
-  color: currentColor;
+  text-decoration: none !important;
 }
 
 #wedding-account-offcanvas nav a:hover,

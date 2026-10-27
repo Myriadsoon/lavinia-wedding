@@ -19135,7 +19135,8 @@ body:has(.hero-image--nav-light) {
   margin: 0;
 }
 .wedding-account__guest-status,
-.wedding-account__photos {
+.wedding-account__photos,
+.wedding-account__gallery-invitations {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
@@ -19147,8 +19148,7 @@ body:has(.hero-image--nav-light) {
   margin-top: 0.75rem;
 }
 #wedding-account-offcanvas nav a {
-  text-decoration: none;
-  color: currentColor;
+  text-decoration: none !important;
 }
 #wedding-account-offcanvas nav a:hover,
 #wedding-account-offcanvas nav a:focus-visible {

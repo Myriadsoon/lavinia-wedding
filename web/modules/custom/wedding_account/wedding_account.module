@@ -27,6 +27,8 @@ function wedding_account_theme($existing, $type, $theme, $path) {
         'photo_moderation_url' => NULL,
         'login_url' => NULL,
         'password_url' => NULL,
+        'can_invite_viewers' => NULL,
+        'gallery_invitations_form_url' => NULL,
       ],
     ],
     'wedding_account' => [

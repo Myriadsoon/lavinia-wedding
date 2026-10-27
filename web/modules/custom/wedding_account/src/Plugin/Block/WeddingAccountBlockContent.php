@@ -123,6 +123,21 @@ class WeddingAccountBlockContent extends BlockBase implements ContainerFactoryPl
     $login_url = $generate_url(Url::fromRoute('user.login'));
     $password_url = $generate_url(Url::fromRoute('user.pass'));
 
+    $gallery_invitations_route = Url::fromRoute('wedding_photos.gallery_invitations');
+
+    $can_invite_viewers = FALSE;
+
+    if ($logged_in) {
+      $invitation_access = $gallery_invitations_route->access($this->currentUser, TRUE);
+      $metadata->addCacheableDependency($invitation_access);
+      $can_invite_viewers = $invitation_access->isAllowed();
+    }
+
+    $gallery_invitations_form_url = $can_invite_viewers
+      ? $generate_url($gallery_invitations_route)
+      : NULL;
+
+
     $build = [
       '#theme' => 'wedding_account_content',
       '#logged_in' => $logged_in,
@@ -138,6 +153,8 @@ class WeddingAccountBlockContent extends BlockBase implements ContainerFactoryPl
       '#photo_moderation_url' => $photo_moderation_url,
       '#login_url' => !$logged_in ? $login_url : NULL,
       '#password_url' => !$logged_in ? $password_url : NULL,
+      '#can_invite_viewers' => $can_invite_viewers,
+      '#gallery_invitations_form_url' => $gallery_invitations_form_url,
       '#cache' => [
         'contexts' => ['user'],
       ],
