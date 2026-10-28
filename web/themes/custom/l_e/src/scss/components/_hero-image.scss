@@ -1,0 +1,57 @@
+/**===================================================================
+Formatting primarily of text overlay - color uses rules outlined in
+_navbar.scss
+======================================================================
+ */
+.block--type-hero-image {
+
+  .block__content {
+    display: grid;
+  }
+
+  .field--name-field-hero-image,
+  .field--name-field-text-overlay {
+    grid-area: 1/1;
+  }
+
+  // Responsive image establishes the grid dimensions
+  .field--name-field-hero-image {
+    min-width: 0;
+
+    picture,
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    img {
+      height: auto;
+    }
+  }
+
+  // Text sits centrally over the image
+  .field--name-field-text-overlay {
+    z-index: 1;
+    align-self: center;
+    justify-self: center;
+
+    padding: 1.5rem;
+    text-align: center;
+
+    font-family: "Newsreader", Georgia,serif;
+    font-size: clamp(2rem, 5vw, 5rem);
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  // Colour selection
+  --le-hero-overlay-color: #212121;
+
+  &.hero-image--nav-light {
+    --le-hero-overlay-color: #fff;
+  }
+
+  .field--name-field-text-overlay {
+    color: var(--le-hero-overlay-color);
+  }
+}

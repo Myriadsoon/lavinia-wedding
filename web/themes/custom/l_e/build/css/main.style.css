@@ -19881,6 +19881,47 @@ body:has(.hero-image--nav-light) {
     transition: none;
   }
 }
+.block--type-hero-image .block__content {
+  display: grid;
+}
+.block--type-hero-image .field--name-field-hero-image,
+.block--type-hero-image .field--name-field-text-overlay {
+  grid-area: 1/1;
+}
+.block--type-hero-image .field--name-field-hero-image {
+  min-width: 0;
+}
+.block--type-hero-image .field--name-field-hero-image picture,
+.block--type-hero-image .field--name-field-hero-image img {
+  display: block;
+  width: 100%;
+}
+.block--type-hero-image .field--name-field-hero-image img {
+  height: auto;
+}
+.block--type-hero-image .field--name-field-text-overlay {
+  z-index: 1;
+  align-self: center;
+  justify-self: center;
+  padding: 1.5rem;
+  text-align: center;
+  font-family:
+    "Newsreader",
+    Georgia,
+    serif;
+  font-size: clamp(2rem, 5vw, 5rem);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.block--type-hero-image {
+  --le-hero-overlay-color: #212121;
+}
+.block--type-hero-image.hero-image--nav-light {
+  --le-hero-overlay-color: #fff;
+}
+.block--type-hero-image .field--name-field-text-overlay {
+  color: var(--le-hero-overlay-color);
+}
 /*!
  * Bootstrap Icons v1.13.1 (https://icons.getbootstrap.com/)
  * Copyright 2019-2024 The Bootstrap Authors
