@@ -1,0 +1,116 @@
+/**
+* Alternating image and text Paragraph.
+*
+* Paragraph type: image_and_text
+ */
+
+.image-and-text {
+
+  --image-text-accent:  #9acccf;
+  --image-shadow-width: 4rem;
+
+  // Spacing between successive paragraphs
+  margin-block-end: 5rem;
+
+  &__image {
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    @media (min-width: 992px) {
+
+      &--left .image-and-text__image-wrapper {
+        margin-right: auto;
+      }
+
+      &--right .image-and-text__image-wrapper {
+        margin-left: auto;
+      }
+    }
+  }
+
+  &__text {
+    text-align: center;
+
+    > * {
+      max-width: 420px;
+      margin-inline: auto;
+    }
+  }
+
+  // Desktop: two-column alternating layout.
+  @media (min-width: 992px) {
+
+    &--left {
+      .image-and-text__image {
+        order: 1;
+        padding-left: var(--image-shadow-width);
+      }
+
+      .image-and-text__text  {
+        order: 2;
+      }
+    }
+
+    &--right {
+      .image-and-text__image {
+        order: 2;
+        padding-right: var(--image-shadow-width);
+      }
+
+      .image-and-text__text  {
+        order: 1;
+      }
+    }
+  }
+  // Container for the photograph and its decorative background.
+  &__image-wrapper {
+    position: relative;
+    isolation: isolate;
+
+    // The blue panel sits behind the photograph.
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+
+      top: auto;
+      bottom: 0;
+      height: 90%;
+      width: 4rem;
+
+      background-color: var(--image-text-accent);
+    }
+  }
+
+  // Image on the left: panel extends to the left.
+  &--left {
+    .image-and-text__image-wrapper::before {
+      right: 100%;
+    }
+  }
+
+  // Image on the right: panel extends to the right.
+  &--right {
+    .image-and-text__image-wrapper::before {
+      left: 100%;
+    }
+  }
+
+  @media (max-width: 991.98px) {
+    .image-and-text__image-wrapper::before {
+      display: none;
+    }
+  }
+}
+
+.alternating-content-container {
+  max-width: 1440px;
+  padding-inline: 1rem;
+
+  @media (min-width: 992px) {
+    padding-inline: 2rem;
+  }
+}

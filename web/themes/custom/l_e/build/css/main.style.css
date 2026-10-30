@@ -19922,6 +19922,82 @@ body:has(.hero-image--nav-light) {
 .block--type-hero-image .field--name-field-text-overlay {
   color: var(--le-hero-overlay-color);
 }
+.image-and-text {
+  --image-text-accent: #9acccf;
+  --image-shadow-width: 4rem;
+  -webkit-margin-after: 5rem;
+  margin-block-end: 5rem;
+}
+.image-and-text__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (min-width: 992px) {
+  .image-and-text__image--left .image-and-text__image-wrapper {
+    margin-right: auto;
+  }
+  .image-and-text__image--right .image-and-text__image-wrapper {
+    margin-left: auto;
+  }
+}
+.image-and-text__text {
+  text-align: center;
+}
+.image-and-text__text > * {
+  max-width: 420px;
+  margin-inline: auto;
+}
+@media (min-width: 992px) {
+  .image-and-text--left .image-and-text__image {
+    order: 1;
+    padding-left: var(--image-shadow-width);
+  }
+  .image-and-text--left .image-and-text__text {
+    order: 2;
+  }
+  .image-and-text--right .image-and-text__image {
+    order: 2;
+    padding-right: var(--image-shadow-width);
+  }
+  .image-and-text--right .image-and-text__text {
+    order: 1;
+  }
+}
+.image-and-text__image-wrapper {
+  position: relative;
+  isolation: isolate;
+}
+.image-and-text__image-wrapper::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: auto;
+  bottom: 0;
+  height: 90%;
+  width: 4rem;
+  background-color: var(--image-text-accent);
+}
+.image-and-text--left .image-and-text__image-wrapper::before {
+  right: 100%;
+}
+.image-and-text--right .image-and-text__image-wrapper::before {
+  left: 100%;
+}
+@media (max-width: 991.98px) {
+  .image-and-text .image-and-text__image-wrapper::before {
+    display: none;
+  }
+}
+.alternating-content-container {
+  max-width: 1440px;
+  padding-inline: 1rem;
+}
+@media (min-width: 992px) {
+  .alternating-content-container {
+    padding-inline: 2rem;
+  }
+}
 /*!
  * Bootstrap Icons v1.13.1 (https://icons.getbootstrap.com/)
  * Copyright 2019-2024 The Bootstrap Authors

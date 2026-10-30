@@ -25,6 +25,15 @@ function l_e_preprocess_page(array &$variables): void {
     $variables['decorative_frame'] =
       (bool) $variables['node']->get('field_decorative_frame')->value;
   }
+
+  $variables['alternating_text_image_page'] = FALSE;
+
+  $route_node = \Drupal::routeMatch()->getParameter('node');
+
+  if ($route_node instanceof \Drupal\node\NodeInterface) {
+    $variables['alternating_text_image_page'] =
+      $route_node->bundle() === 'alternating_text_and_image';
+  }
 }
 
 /**

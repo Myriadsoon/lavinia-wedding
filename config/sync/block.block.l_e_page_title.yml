@@ -26,5 +26,6 @@ visibility:
     context_mapping:
       node: '@node.node_route_context:node'
     bundles:
+      alternating_text_and_image: alternating_text_and_image
       article: article
       page: page
