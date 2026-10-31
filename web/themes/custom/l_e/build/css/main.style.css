@@ -19998,6 +19998,46 @@ body:has(.hero-image--nav-light) {
     padding-inline: 2rem;
   }
 }
+.wedding-menu {
+  background-color: var(--image-text-accent, #9acccf);
+  width: 100%;
+  max-width: 690px;
+  margin-inline: auto;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.wedding-menu__course p {
+  font-family:
+    "Newsreader",
+    Georgia,
+    serif;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  font-variant: small-caps;
+}
+@media (min-width: 768px) {
+  .wedding-menu {
+    padding: 4rem 3rem;
+  }
+}
+.wedding-menu-intro,
+.wedding-menu-dietary {
+  width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
+  text-align: center;
+  padding: 3.5rem 1rem;
+}
+@media (min-width: 768px) {
+  .wedding-menu-intro,
+  .wedding-menu-dietary {
+    padding-block: 5rem;
+  }
+}
+.wedding-menu-intro p:last-child,
+.wedding-menu-dietary p:last-child {
+  margin-bottom: 0;
+}
 /*!
  * Bootstrap Icons v1.13.1 (https://icons.getbootstrap.com/)
  * Copyright 2019-2024 The Bootstrap Authors
