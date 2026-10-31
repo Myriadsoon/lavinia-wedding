@@ -4,3 +4,16 @@ download:
   dependencies:
     - core/drupal
     - core/once
+
+heic-upload:
+  css:
+    component:
+      css/heic-upload.css: {}
+  js:
+    js/vendor/heic2any.min.js:
+      minified: true
+      weight: -10
+    js/heic-upload.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

@@ -46,6 +46,8 @@ final class PhotoUploadForm extends FormBase {
    * @inheritDoc
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
+    $form['#attached']['library'][] = 'wedding_photos/heic-upload';
+
     $form['selection'] = [
       '#type' => 'container',
       '#attributes' => ['class' => ['wedding-photo-upload__selection']],
@@ -56,7 +58,7 @@ final class PhotoUploadForm extends FormBase {
       '#title' => $this->t('Photograph'),
       '#title_display' => 'invisible',
       '#attributes' => ['class' => ['wedding-photo-upload__widget']],
-      '#accept' => '.jpg,.jpeg,.png,.webp',
+      '#accept' => '.jpg,.jpeg,.png,.webp,.heic,.heif',
       '#upload_location' => 'private://wedding_photos/',
       '#upload_validators' => [
         'FileExtension' => [
@@ -84,6 +86,9 @@ final class PhotoUploadForm extends FormBase {
       '#value' => $this->t('Share photograph'),
       '#theme_wrappers' => ['input__wedding_photo_share'],
       '#button_type' => 'primary',
+      '#attributes' => [
+        'class' => ['wedding-photo-upload__submit'],
+      ],
     ];
 
     return $form;

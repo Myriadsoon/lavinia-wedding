@@ -40,6 +40,7 @@
 		"stylelint-config-standard-scss": "^6.1.0"
 	},
 	"dependencies": {
-		"bootstrap-icons": "^1.13.1"
+		"bootstrap-icons": "^1.13.1",
+		"heic2any": "0.0.4"
 	}
 }
